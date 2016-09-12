@@ -1,0 +1,13 @@
+es:
+  dictionary:
+    description: &description 'Descripción'
+    email: &email 'Correo'
+    filter: &filter 'Filtrar'
+
+  activerecord:
+    models:
+      # Example -> property: "propiedad"
+    attributes:
+      # Example -> user:
+      #              password: Clave
+      

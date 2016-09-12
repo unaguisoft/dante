@@ -15,7 +15,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'kaminari'
 
 gem 'sorcery', '~> 0.9.0'
-gem 'draper' # Decorators
+gem 'draper', '~> 3.0.0.pre1' # Decorators
 gem 'non-stupid-digest-assets'
 gem 'prawn' # PDF Generator
 gem 'prawn-table' # Tables for Prawn

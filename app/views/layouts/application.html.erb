@@ -1,14 +1,33 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Dante</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="es">
+  <head><%= render 'application/head' %></head>
 
-<%= yield %>
+  <body class="skin-black sidebar-mini fixed <%= "#{controller_name} #{action_name}" %> <%= sidebar_state %>">
 
-</body>
+    <div class="wrapper">
+
+      <%= render 'application/navbar' %>
+
+      <%= render 'application/aside' %>
+
+      <article class="content-wrapper">
+        <%= yield %>
+        <section id="snackbar-container">
+          <%= flash_messages if flash %>
+        </section>
+      </article>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="js-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+        </div>
+      </div>
+    </div>
+
+    <%= yield(:modals) %>
+    
+  </body>
 </html>
