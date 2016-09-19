@@ -31,16 +31,17 @@ group :development do
   gem 'web-console', '~> 3.0'
   gem 'spring'
   gem 'annotate' # Muestra los campos de la BD en los modelos
-  gem 'hirb' # Mejora la visualización de consulas desde consola
+  gem 'hirb' # Mejora la visualización de consultas desde consola
   gem 'letter_opener'
 end
 
 group :test do
+  gem 'pry'
   gem 'minitest-reporters'
+  gem 'rails-controller-testing'
 end
 
 group :production do
-  gem 'rails_12factor'
   gem 'rack-cache', require: 'rack/cache'
 end
 

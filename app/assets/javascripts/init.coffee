@@ -96,9 +96,6 @@ App.initTooltips = (parent) ->
   elements.tooltip()
 
 App.init = ->
-  # Turbolinks progress bar
-  Turbolinks.enableProgressBar()
-
   # Snackbar
   App.initSnackbar()
 
@@ -107,6 +104,8 @@ App.init = ->
 
   # Ajax Modals
   App.initModals()
+
+  $("a, span, i, div, td, h5").tooltip()
 
   # Sidebar
   $('[data-controlsidebar]').on 'click', ->
@@ -129,14 +128,13 @@ App.init = ->
 
   $('.sidebar li.active').closest('.treeview').addClass('active')
 
-$(document).on "page:load", ->
+$(document).on "turbolinks:load", ->
   App.init()
 
-$(document).on "page:change", ->
+$(document).on "turbolinks:request-end", ->
   App.initSnackbar()
   App.initModals()
   App.initDatepicker()
-  App.checkAll()
   $("select").normalSelect()
 
 $(document).on 'flash:send', (e, flashMessages) ->

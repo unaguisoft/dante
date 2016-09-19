@@ -2,7 +2,8 @@
 <html lang="es">
   <head><%= render 'application/head' %></head>
 
-  <body class="skin-black sidebar-mini fixed <%= "#{controller_name} #{action_name}" %> <%= sidebar_state %>">
+  <% skin = (Rails.env.production?) ? 'skin-black' : 'skin-red' %>
+  <body class="<%= skin %> sidebar-mini fixed <%= "#{controller_name} #{action_name}" %> <%= sidebar_state %>">
 
     <div class="wrapper">
 
@@ -28,6 +29,6 @@
     </div>
 
     <%= yield(:modals) %>
-    
+
   </body>
 </html>

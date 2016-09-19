@@ -9,6 +9,18 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
+  def sign_in_as(user)
+    post user_sessions_path, params: { email: user.email, password: 'friends' }
+  end
+
+  def sign_out
+    post logout_path
+  end
+
+  def logged_in?
+    !session[:user_id].nil?
+  end
+
   # Verifica que los campos de record coincidan con los de attributes después
   # de ejecutar el bloque
   def assert_record_differences(record, attributes, message = nil, &block)

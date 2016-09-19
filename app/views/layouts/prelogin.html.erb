@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head><%= render 'head' %></head>
+  <body class="hold-transition login-page">
+    <article class="login-box">
+
+      <section class="login-box-body">
+        <%= yield %>
+        <section id="snackbar-container">
+          <%= flash_messages if flash %>
+        </section>
+      </section>
+
+    </article>
+
+  </body>
+</html>
+
