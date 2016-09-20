@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+joey:
+  first_name: Joey
+  last_name: Tribbiani
+  phones: 02214703639
+  cellphone: 155624435
+  email: joey@friends.com
+  user: ross
+
+monica:
+  first_name: Monica
+  last_name: Geller
+  phones: 0221-4432140
+  cellphone: 154678901
+  email: monica@friends.com
+  user: ross

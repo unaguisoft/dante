@@ -1,0 +1,83 @@
+<%= form_for @owner do |f| %>
+
+<article>
+  <section>
+
+    <div class="row">
+
+      <div class="col-md-8">
+        <div class="box box-primary">
+
+          <div class="box-body">
+
+            <div class="row">
+
+              <div class="col-md-6">
+                  <%= f.label :first_name %>
+                  <%= f.text_field :first_name, class: 'form-control',
+                          placeholder: 'Ingrese el nombre' %>
+              </div>
+              
+              <div class="col-md-6">
+                  <%= f.label :last_name %>
+                  <%= f.text_field :last_name, class: 'form-control',
+                          placeholder: 'Ingrese el apellido' %>
+              </div>
+
+            </div>
+            
+            <div class="row">
+
+              <div class="col-md-6">
+                  <%= f.label :cellphone %>
+                  <%= f.text_field :cellphone, class: 'form-control',
+                          placeholder: 'Ingrese el celular' %>
+              </div>
+              
+              <div class="col-md-6">
+                  <%= f.label :phones %>
+                  <%= f.text_field :phones, class: 'form-control',
+                          placeholder: 'Ingrese un teléfono fijo' %>
+              </div>
+
+            </div>
+            
+            <div class="row">
+
+              <div class="col-md-12">
+                  <%= f.label :email %>
+                  <%= f.text_field :email, class: 'form-control',
+                          placeholder: 'Ingrese el correo electrónico' %>
+              </div>
+
+            </div>
+            
+            <div class="row">
+
+              <div class="col-md-12">
+                  <%= f.label :user %>
+                  <%= f.text_field :user, class: 'form-control',
+                          placeholder: 'Seleccione el agente a cargo' %>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      </div>
+  </section>
+</article>
+
+<div class="row">
+  <div class="col-md-12">
+    <fieldset class="form-group">
+      <%= f.submit 'Guardar propietario', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+    </fieldset>
+  </div>
+</div>
+
+<% end %>
+

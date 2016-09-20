@@ -1,0 +1,27 @@
+<header class="content-header">
+  <%= link_to 'Nueva característica', [:new, :feature], class: 'btn btn-primary pull-right' %>
+  <h1>Característica</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @features %>
+        </tbody>
+      </table>
+
+    </section>
+  </article>
+
+</section>

@@ -1,0 +1,27 @@
+<header class="content-header">
+  <%= link_to 'Nueva ciudad', [:new, :city], class: 'btn btn-primary pull-right' %>
+  <h1>Ciudades</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Ciudad</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @cities %>
+        </tbody>
+      </table>
+
+    </section>
+  </article>
+
+</section>
