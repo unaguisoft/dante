@@ -1,28 +1,29 @@
-<%= form_for @presenter.filter, url: :owners, method: :get do |f| %>
+<%= form_for @presenter.filter, url: :property, method: :get do |f| %>
 
   <div class="row">
     <div class="col-md-12">
 
       <fieldset class="form-group">
+        
+        <div class="col-md-3">
+          <%= f.label :id %>
+          <%= f.search_field :id, class: 'form-control',
+                placeholder: 'Ingrese el identificador',
+                autofocus: true
+          %>
+        </div>
 
         <div class="col-md-3">
-          <%= f.label :name %>
-          <%= f.search_field :name, class: 'form-control',
-                placeholder: 'Ingrese el nombre o apellido a buscar',
+          <%= f.label :city_id %>
+          <%= f.search_field :city_id, class: 'form-control',
+                placeholder: 'Ingrese la ciudad',
                 autofocus: true
           %>
         </div>
         
         <div class="col-md-3">
-          <%= f.label :email %>
-          <%= f.search_field :email, class: 'form-control',
-                placeholder: 'Ingrese el email a buscar'
-          %>
-        </div>
-        
-        <div class="col-md-3">
-          <%= f.label :agent_id %>
-          <%= f.search_field :agent_id, class: 'form-control',
+          <%= f.label :user_id %>
+          <%= f.search_field :user_id, class: 'form-control',
                 placeholder: 'Seleccione el agente a buscar'
           %>
         </div>
