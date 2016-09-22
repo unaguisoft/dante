@@ -9,3 +9,7 @@ es:
   submit: 'Guardar'
   "true": 'Si'
   "false": 'No'
+
+  user_roles:
+    admin: Administrador
+    agent: Agente

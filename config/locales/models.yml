@@ -2,12 +2,18 @@ es:
   dictionary:
     description: &description 'Descripción'
     email: &email 'Correo'
+    name: &name 'Nombre'
     filter: &filter 'Filtrar'
 
   activerecord:
     models:
       # Example -> property: "propiedad"
     attributes:
-      # Example -> user:
-      #              password: Clave
-      
+      user:
+        name: *name
+        email: *email
+        password: Clave
+        password_confirmation: Confirmación
+        current_password: Clave Actual
+        role: Rol
+

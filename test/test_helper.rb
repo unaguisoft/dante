@@ -49,10 +49,17 @@ class ActiveSupport::TestCase
   end
 
 end
-module LoggedUserTestable
+module AgentUserTestable
+  def setup
+    @user = users(:rachel)
+    login_user(@user)
+    super
+  end
+end
+module AdminUserTestable
   def setup
     @user = users(:ross)
-    login_user(@user)
+    sign_in_as(@user)
     super
   end
 end

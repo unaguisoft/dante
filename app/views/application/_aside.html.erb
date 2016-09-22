@@ -5,6 +5,17 @@
 
         <%= side_link text: 'Inicio', path: root_path, icon_class: 'home' %>
 
+        <% if is?(:admin) %>
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-fw fa-lock"></i> <span>Administración</span> <i class="fa fa-fw fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu menu-open">
+              <%= side_link text: 'Usuarios', path: users_path %>
+            </ul>                                                                                                                 |~
+          </li>
+        <% end %>
+
     </ul>
 
   </section>
