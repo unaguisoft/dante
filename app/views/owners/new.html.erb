@@ -5,6 +5,7 @@
 </header>
 
 <section class="content">
-  <%= render 'form' %>
+  <%= render 'form', form_format: (@modal_form ? :json : ''),
+        form_remote: @modal_form ? true : false %>
 </section>
 

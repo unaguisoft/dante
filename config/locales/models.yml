@@ -14,6 +14,33 @@ es:
         name: *name
       city:
         name: *name
-      # Example -> user:
-      #              password: Clave
+      property:
+        kind: Categoría
+        status: Estado de la transacción
+        property_status: Estado de la propiedad
+        property_kind: Tipo
+        has_parking: Con estacionamiento
+        year: Año de construcción
+        price: Precio
+        currency: Moneda
+        expenses_cost: Costo de expensas
+        built_area: Sup. cubierta (m2)
+        semi_built_area: Sup. semicubierta (m2)
+        total_area: Sup. total
+        perimeter: Perímetro
+        address: Dirección
+        city_id: Ciudad
+        number_of_floors: Cantidad de plantas
+        number_of_rooms: Cantidad de ambientes
+        number_of_bedrooms: Cantidad de habitaciones
+        number_of_bathrooms: Cantidad de baños
+        number_of_toilets: Cantidad de toilettes
+        should_display_price: Mostrar precio
+        should_display_on_web: Mostrar en la web
+        should_highlight_on_web: Destacar en la web
+        description: Descripción
+        title: Título para la web
+        owner_id: Dueño
+        agent_id: Agente
+        user_id: Agente
       

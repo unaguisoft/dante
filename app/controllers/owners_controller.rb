@@ -7,7 +7,13 @@ class OwnersController < ApplicationController
   end
   
   def new
+    @modal_form = params[:modal] || false
     @owner = Owner.new(agent: current_user)
+    if @modal_form
+      render :new, layout: nil
+    else
+      render :new
+    end
   end
   
   def edit
@@ -56,10 +62,16 @@ class OwnersController < ApplicationController
     end
   end
   
+  def search
+    block = ->(owner) { { id: owner.id, name: owner.to_s } }
+    records = RecordSearcher.call(Owner.all, params, &block)
+    render json: records.to_json, callback: params[:callback]
+  end
+  
   private
   
   def owner_params
-    params.require(:owner).permit(:first_name, :last_name, :email, :agent, :phones, :cellphone)
+    params.require(:owner).permit(:first_name, :last_name, :email, :agent_id, :phones, :cellphone)
   end
   
   def set_owner

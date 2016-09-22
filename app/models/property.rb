@@ -4,8 +4,9 @@ class Property < ApplicationRecord
   enum kind: { commercial: 0, residential: 1 }
   enum status: { active: 0, reserved: 1, sold: 2, negotiating: 3 }
   enum property_status: { unbuilt: 0, building: 1, not_enabled: 2, enabled: 3 }
+  enum currency: { ars: 0, usd: 1 }
   enum property_kind: { 
-    store: 0, # Local/Negocio
+    shop: 0, # Local/Negocio
     office: 1, # Oficina
     floor: 2, # Piso
     house: 3, # Casa
@@ -43,4 +44,13 @@ class Property < ApplicationRecord
   validates :city, presence: true
   validates :owner, presence: true
   validates :user, presence: true
+  
+  
+  
+  # Para usar field_in_cents, etc.
+  def self.attributes_in_cents
+    ['price', 'expenses_cost']
+  end
+
+  include IntegerInCents
 end

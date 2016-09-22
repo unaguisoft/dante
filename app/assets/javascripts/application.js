@@ -23,3 +23,6 @@
 //= require bootstrap-datetimepicker
 
 //= require init
+
+//= require properties
+//= require owners
