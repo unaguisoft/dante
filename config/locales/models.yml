@@ -14,6 +14,14 @@ es:
         name: *name
       city:
         name: *name
+      owner:
+        first_name: *name
+        last_name: Apellido
+        phones: Teléfonos
+        cellphone: Celular
+        email: Correo electrónico
+        agent_id: Agente
+        user: Agente
       property:
         kind: Categoría
         status: Estado de la transacción

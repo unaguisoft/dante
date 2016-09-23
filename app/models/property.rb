@@ -29,10 +29,10 @@ class Property < ApplicationRecord
   # -- Validations
   validates :kind, presence: true
   validates :status, presence: true
-  validates :price_in_cents, presence: true
-  validates :currency,  presence: true
   validates :property_status, presence: true
   validates :property_kind, presence: true
+  validates :price, presence: true
+  validates :currency,  presence: true
   validates :built_area, presence: true
   validates :semi_built_area, presence: true
   validates :perimeter, presence: true

@@ -3,7 +3,7 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: [:edit, :update, :destroy]
   
   def index
-    @properties = PropertyPresenter.new(params)
+    @presenter = PropertyPresenter.new(params)
   end
   
   def new
@@ -15,6 +15,7 @@ class PropertiesController < ApplicationController
   
   def create
     @property = Property.new(property_params)
+    @property.total_area = @property.built_area + @property.semi_built_area
     
     if @property.save
       redirect_to :properties, notice: 'La propiedad ha sido creada correctamente.' 

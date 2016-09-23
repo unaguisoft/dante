@@ -1,20 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  kind: 1
-  status: 1
-  price_in_cents: 1
-  currency: 1
+casa_de_barbie:
+  kind: 1 # Residential
+  status: 0 # Active
+  price_in_cents: 99_000_000 
+  currency: 0 # ARS
   should_display_price: false
-  expenses_cost_in_cents: 1
-  property_status: 1
-  property_kind: 1
-  year: 1
+  expenses_cost_in_cents: 1000000
+  property_status: 3 # Enabled
+  property_kind: 3 # House
+  year: 2004
   number_of_floors: 1
-  built_area: 1
-  semi_built_area: 1
-  total_area: 1
-  perimeter: 1
+  built_area: 100
+  semi_built_area: 100
+  total_area: 200
+  perimeter: 250
   has_parking: false
   address: MyString
   description: MyText
@@ -25,25 +25,25 @@ one:
   number_of_toilets: 1
   should_display_on_web: false
   should_highlight_on_web: false
-  city: one
-  owner: one
-  user: one
+  city: la_plata
+  owner: joey
+  user: ross
 
-two:
-  kind: 1
-  status: 1
-  price_in_cents: 1
-  currency: 1
+casa_de_ken:
+  kind: 1 # Residential
+  status: 0 # Active
+  price_in_cents: 99_000_000 
+  currency: 0 # ARS
   should_display_price: false
-  expenses_cost_in_cents: 1
-  property_status: 1
-  property_kind: 1
-  year: 1
+  expenses_cost_in_cents: 1000000
+  property_status: 3 # Enabled
+  property_kind: 3 # House
+  year: 2004
   number_of_floors: 1
-  built_area: 1
-  semi_built_area: 1
-  total_area: 1
-  perimeter: 1
+  built_area: 100
+  semi_built_area: 100
+  total_area: 200
+  perimeter: 250
   has_parking: false
   address: MyString
   description: MyText
@@ -54,6 +54,6 @@ two:
   number_of_toilets: 1
   should_display_on_web: false
   should_highlight_on_web: false
-  city: two
-  owner: two
-  user: two
+  city: tolosa
+  owner: monica
+  user: ross
