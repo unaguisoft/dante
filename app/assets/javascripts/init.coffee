@@ -136,6 +136,7 @@ $(document).on "turbolinks:request-end", ->
   App.initModals()
   App.initDatepicker()
   $("select").normalSelect()
+  $.AdminLTE.layout.activate()
 
 $(document).on 'flash:send', (e, flashMessages) ->
   App.flash_snackbar_render flashMessages

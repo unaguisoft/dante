@@ -8,20 +8,20 @@
   </div>
 
   <div class="box-body">
-    
+
     <div class="row">
       <div class="col-md-4">
         <fieldset class="form-group">
           <%= optional_label f, :number_of_floors %>
-          <%= f.text_field :number_of_floors, class: 'form-control',
+          <%= f.number_field :number_of_floors, class: 'form-control',
                 placeholder: 'Cant. Plantas' %>
         </fieldset>
       </div>
-      
+
       <div class="col-md-4">
         <fieldset class="form-group">
           <%= optional_label f, :number_of_rooms %>
-          <%= f.text_field :number_of_rooms, class: 'form-control',
+          <%= f.number_field :number_of_rooms, class: 'form-control',
                 placeholder: 'Cant. Ambientes' %>
         </fieldset>
       </div>
@@ -29,17 +29,17 @@
       <div class="col-md-4">
         <fieldset class="form-group">
           <%= f.label :number_of_bedrooms %>
-          <%= f.number_field :number_of_bedrooms, class: 'form-control', 
+          <%= f.number_field :number_of_bedrooms, class: 'form-control',
             required: true, placeholder: 'Cant. Habitaciones'  %>
         </fieldset>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-md-6">
         <fieldset class="form-group">
           <%= f.label :number_of_bathrooms %>
-          <%= f.number_field :number_of_bathrooms, class: 'form-control', 
+          <%= f.number_field :number_of_bathrooms, class: 'form-control',
             required: true, placeholder: 'Cant. Baños'  %>
         </fieldset>
       </div>
@@ -47,7 +47,7 @@
       <div class="col-md-6">
         <fieldset class="form-group">
           <%= f.label :number_of_toilets %>
-          <%= f.number_field :number_of_toilets, class: 'form-control', 
+          <%= f.number_field :number_of_toilets, class: 'form-control',
             placeholder: 'Cant. Toilettes'  %>
         </fieldset>
       </div>

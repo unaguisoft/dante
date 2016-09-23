@@ -41,10 +41,6 @@ module ApplicationHelper
     end
   end
 
-  def sidebar_state
-    'sidebar-mini sidebar-collapse' if content_for :hide_sidebar
-  end
-
   def sub_menu(klass = '', &block)
     klass += ' ' if klass.present?
     klass += 'treeview-menu'

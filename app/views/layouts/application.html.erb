@@ -3,8 +3,7 @@
   <head><%= render 'application/head' %></head>
 
   <% skin = (Rails.env.production?) ? 'skin-black' : 'skin-purple' %>
-  <body class="<%= skin %> sidebar-mini fixed <%= "#{controller_name} #{action_name}" %> <%= sidebar_state %>">
-
+  <body class="<%= skin %> sidebar-mini sidebar-collapse <%= "#{controller_name} #{action_name}" %>">
     <div class="wrapper">
 
       <%= render 'application/navbar' %>
