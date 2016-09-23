@@ -71,3 +71,8 @@ tr.is-selected td {
   color: #888;
   font-weight: 600;
 }
+
+/* Útil para usar con multiples checkboxes */
+.form-checkboxes {
+  label { margin: 10px 10px 10px 5px; }
+}

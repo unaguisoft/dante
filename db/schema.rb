@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922125435) do
+ActiveRecord::Schema.define(version: 20160923225615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,13 @@ ActiveRecord::Schema.define(version: 20160922125435) do
     t.index ["user_id"], name: "index_properties_on_user_id", using: :btree
   end
 
+  create_table "property_features", force: :cascade do |t|
+    t.integer "property_id", null: false
+    t.integer "feature_id",  null: false
+    t.index ["feature_id"], name: "index_property_features_on_feature_id", using: :btree
+    t.index ["property_id"], name: "index_property_features_on_property_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                        null: false
     t.string   "name",                         null: false
@@ -89,4 +96,6 @@ ActiveRecord::Schema.define(version: 20160922125435) do
   add_foreign_key "properties", "cities"
   add_foreign_key "properties", "owners"
   add_foreign_key "properties", "users"
+  add_foreign_key "property_features", "features"
+  add_foreign_key "property_features", "properties"
 end
