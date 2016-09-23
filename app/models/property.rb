@@ -1,24 +1,24 @@
 class Property < ApplicationRecord
   
   # -- Enum
-  enum kind: { commercial: 0, residential: 1 }
-  enum status: { active: 0, reserved: 1, sold: 2, negotiating: 3 }
-  enum property_status: { unbuilt: 0, building: 1, not_enabled: 2, enabled: 3 }
+  enum kind: { 'comercial': 0, 'residencial': 1 }
+  enum status: { 'activo': 0, 'reservado': 1, 'vendido': 2, 'negociando': 3 }
+  enum property_status: { 'sin_construir': 0, 'construyendo': 1, 'inhabilitado': 2, 'habilitado': 3 }
   enum currency: { ars: 0, usd: 1 }
   enum property_kind: { 
-    shop: 0, # Local/Negocio
-    office: 1, # Oficina
-    floor: 2, # Piso
-    house: 3, # Casa
-    apartment: 4, # Departamento
-    countryside_farm: 5, # Campo/Quinta
-    land: 6, # Terreno
-    loft: 7, # Loft
-    duplex: 8, # PH/Dúplex
-    bungalow: 9, # Cabaña
-    deposit: 10, # Depósito
-    garage: 11, # Cochera
-    other: 12 # Otro
+    'local': 0, # Local/Negocio
+    'oficina': 1, # Oficina
+    'piso': 2, # Piso
+    'casa': 3, # Casa
+    'departamento': 4, # Departamento
+    'campo/quinta': 5, # Campo/Quinta
+    'terreno': 6, # Terreno
+    'loft': 7, # Loft
+    'PH/dúplex': 8, # PH/Dúplex
+    'cabaña': 9, # Cabaña
+    'depósito': 10, # Depósito
+    'cochera': 11, # Cochera
+    'otro': 12 # Otro
   }
   
   # -- Associations
