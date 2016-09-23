@@ -7,6 +7,7 @@ class App.OwnerModalForm
   bindEvents: () ->
     that = @
     $(@modal).on 'show.bs.modal', (e) ->
+      $("#js-modal select").normalSelect()
       $(this).find('form').on 'ajax:success', (event, data, status, xhr) =>
         that.processReceivedData(this, data, status, xhr)
 
