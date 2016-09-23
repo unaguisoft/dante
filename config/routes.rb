@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :owners do
     get :search, on: :collection
   end
+  resources :users
 
   get 'login', to: 'user_sessions#new', as: :login
   post 'logout', to: 'user_sessions#destroy', as: :logout

@@ -30,4 +30,20 @@ class ApplicationController < ActionController::Base
     flash[:notice] = 'Por favor inicia sesión'
     redirect_to login_path
   end
+
+  # Verifica si el usuario está logueado y tiene el rol
+  def is?(role)
+    logged_in? && current_user.is?(role)
+  end
+  # Verifica si el usuario es admin
+  def only_authorize_admin!
+    authorize!(is?(:admin))
+  end
+
+  def authorize!(condition,
+                 msg = 'No tenés los permisos necesarios para acceder a esta página.')
+    unless condition
+      raise NotAuthorized, msg
+    end
+  end
 end

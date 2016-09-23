@@ -3,12 +3,16 @@ es:
     name: &name 'Nombre'
     description: &description 'Descripción'
     email: &email 'Correo'
+    name: &name 'Nombre'
     filter: &filter 'Filtrar'
 
   activerecord:
     models:
       feature: 'Característica'
       city: 'Ciudad'
+      user: 'Usuario'
+      property: 'Propiedad'
+      owner: 'Dueño'
     attributes:
       feature:
         name: *name
@@ -19,7 +23,7 @@ es:
         last_name: Apellido
         phones: Teléfonos
         cellphone: Celular
-        email: Correo electrónico
+        email: *email
         agent_id: Agente
         user: Agente
       property:
@@ -51,4 +55,10 @@ es:
         owner_id: Dueño
         agent_id: Agente
         user_id: Agente
-      
+      user:
+        name: *name
+        email: *email
+        password: Clave
+        password_confirmation: Confirmación
+        current_password: Clave Actual
+        role: Rol
