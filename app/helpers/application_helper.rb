@@ -31,7 +31,6 @@ module ApplicationHelper
   def side_link(text:'', path:'', icon_class:'', klass:'', html_options:{}, extra:'')
     link_class = html_options[:class]
     html_options[:class] = link_class
-    html_options[:title] = text
     klass += current_page?(path) ? 'active' : url_for(path)
     content_tag(:li, class: klass) do
       (link_to path, html_options do
