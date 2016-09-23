@@ -71,6 +71,7 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create property" do
+    # TODO Falta testear que agregue features
     assert_difference('Property.count', 1) do
       post properties_path, params: { property: @property_new_data }
     end
