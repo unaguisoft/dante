@@ -1,0 +1,44 @@
+<%= form_for @presenter.filter, url: [:properties], method: :get do |f| %>
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <fieldset class="form-group">
+        
+        <div class="col-md-3">
+          <%= f.label :id %>
+          <%= f.search_field :id, class: 'form-control',
+                placeholder: 'Ingrese el identificador',
+                autofocus: true
+          %>
+        </div>
+
+        <div class="col-md-3">
+          <%= f.label :city_id %>
+          <%= f.search_field :city_id, class: 'form-control',
+                placeholder: 'Ingrese la ciudad',
+                autofocus: true
+          %>
+        </div>
+        
+        <div class="col-md-3">
+          <%= f.label :user_id %>
+          <%= f.search_field :user_id, class: 'form-control',
+                placeholder: 'Seleccione el agente a buscar'
+          %>
+        </div>
+
+        <div class="col-md-3">
+          <div class="fake-label"></div>
+          <%= f.submit 'Filtrar', class: 'btn btn-primary',
+                  'data-disable-with' => 'Filtrando...' %>
+          <%= link_to 'Limpiar', [:properties], class: 'btn btn-default',
+                'data-disable-with' => 'Espere...' %>
+        </div>
+
+      </fieldset>
+
+    </div>
+  </div>
+
+<% end %>

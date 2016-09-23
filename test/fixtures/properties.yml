@@ -1,0 +1,59 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+casa_de_barbie:
+  kind: 1 # Residential
+  status: 0 # Active
+  price_in_cents: 99_000_000 
+  currency: 0 # ARS
+  should_display_price: false
+  expenses_cost_in_cents: 1000000
+  property_status: 3 # Enabled
+  property_kind: 3 # House
+  year: 2004
+  number_of_floors: 1
+  built_area: 100
+  semi_built_area: 100
+  total_area: 200
+  perimeter: 250
+  has_parking: false
+  address: MyString
+  description: MyText
+  title: MyString
+  number_of_rooms: 1
+  number_of_bedrooms: 1
+  number_of_bathrooms: 1
+  number_of_toilets: 1
+  should_display_on_web: false
+  should_highlight_on_web: false
+  city: la_plata
+  owner: joey
+  user: ross
+
+casa_de_ken:
+  kind: 1 # Residential
+  status: 0 # Active
+  price_in_cents: 99_000_000 
+  currency: 0 # ARS
+  should_display_price: false
+  expenses_cost_in_cents: 1000000
+  property_status: 3 # Enabled
+  property_kind: 3 # House
+  year: 2004
+  number_of_floors: 1
+  built_area: 100
+  semi_built_area: 100
+  total_area: 200
+  perimeter: 250
+  has_parking: false
+  address: MyString
+  description: MyText
+  title: MyString
+  number_of_rooms: 1
+  number_of_bedrooms: 1
+  number_of_bathrooms: 1
+  number_of_toilets: 1
+  should_display_on_web: false
+  should_highlight_on_web: false
+  city: tolosa
+  owner: monica
+  user: ross

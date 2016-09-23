@@ -1,0 +1,10 @@
+<tr id="<%= dom_id(city) %>">
+  <td> <%= link_to city.name, [:edit, city] %> </td>
+  <td>
+    <%= link_to 'Editar', [:edit, city], class: 'btn btn-xs btn-primary' %>
+    <%= link_to 'Eliminar', city, method: :delete,
+        data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+  </td>
+
+</tr>
+

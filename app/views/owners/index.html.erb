@@ -1,0 +1,35 @@
+<header class="content-header">
+  <%= link_to 'Nuevo propietario', [:new, :owner], class: 'btn btn-primary pull-right' %>
+  <h1>Propietario</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+      
+      <%= render 'filter' %>
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Apellido y Nombre</th>
+            <th>Teléfonos</th>
+            <th>Email</th>
+            <th>Agente</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @presenter.owners %>
+        </tbody>
+      </table>
+      
+      <%= paginate @presenter.owners %>
+      
+      <%= content_tag :p, 'No se encontraron propietarios', class: 'text-center' unless @presenter.owners.any? %>
+
+    </section>
+  </article>
+
+</section>

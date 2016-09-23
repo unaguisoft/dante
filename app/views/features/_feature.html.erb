@@ -1,0 +1,10 @@
+<tr id="<%= dom_id(feature) %>">
+  <td> <%= link_to feature.name, [:edit, feature] %> </td>
+  <td>
+    <%= link_to 'Editar', [:edit, feature], class: 'btn btn-xs btn-primary' %>
+    <%= link_to 'Eliminar', feature, method: :delete,
+        data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+  </td>
+
+</tr>
+
