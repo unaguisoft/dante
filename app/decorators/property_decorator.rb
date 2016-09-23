@@ -4,25 +4,25 @@ class PropertyDecorator < Draper::Decorator
   def identification
     "##{property.id}"
   end
-  
+
   def address
     "#{property.address.capitalize}"
   end
-  
+
   def built_area
     "#{property.built_area} m2"
   end
-  
+
   def total_area
     "#{property.total_area} m2"
   end
-  
+
   def agent
-    property.user.email
+    property.user
   end
 
   private
-  
+
   def property
     object
   end

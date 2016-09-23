@@ -4,7 +4,7 @@
   <td> <%= property.city %> </td>
   <td> <%= property.built_area %> </td>
   <td> <%= property.total_area %> </td>
-  <td> <%= property.agent.full_name %> </td>
+  <td> <%= property.agent.name %> </td>
   <td>
     <%= link_to 'Editar', [:edit, property], class: 'btn btn-xs btn-primary' %>
     <%= link_to 'Eliminar', property, method: :delete,

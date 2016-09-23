@@ -3,7 +3,7 @@
 casa_de_barbie:
   kind: 1 # Residential
   status: 0 # Active
-  price_in_cents: 99_000_000 
+  price_in_cents: 99_000_000
   currency: 0 # ARS
   should_display_price: false
   expenses_cost_in_cents: 1000000
@@ -32,7 +32,7 @@ casa_de_barbie:
 casa_de_ken:
   kind: 1 # Residential
   status: 0 # Active
-  price_in_cents: 99_000_000 
+  price_in_cents: 99_000_000
   currency: 0 # ARS
   should_display_price: false
   expenses_cost_in_cents: 1000000
@@ -56,4 +56,4 @@ casa_de_ken:
   should_highlight_on_web: false
   city: tolosa
   owner: monica
-  user: ross
+  user: rachel

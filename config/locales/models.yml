@@ -8,11 +8,11 @@ es:
 
   activerecord:
     models:
-      feature: 'Característica'
-      city: 'Ciudad'
-      user: 'Usuario'
-      property: 'Propiedad'
-      owner: 'Dueño'
+      feature: Característica
+      city: Ciudad
+      user: Usuario
+      property: Propiedad
+      owner: Dueño
     attributes:
       feature:
         name: *name
@@ -37,16 +37,16 @@ es:
         currency: Moneda
         expenses_cost: Costo de expensas
         built_area: Sup. cubierta (m2)
-        semi_built_area: Sup. semicubierta (m2)
+        semi_built_area: Sup. semicub. (m2)
         total_area: Sup. total
         perimeter: Perímetro
         address: Dirección
         city_id: Ciudad
-        number_of_floors: Cantidad de plantas
-        number_of_rooms: Cantidad de ambientes
-        number_of_bedrooms: Cantidad de habitaciones
-        number_of_bathrooms: Cantidad de baños
-        number_of_toilets: Cantidad de toilettes
+        number_of_floors: Cant. de plantas
+        number_of_rooms: Cant. de ambientes
+        number_of_bedrooms: Cant. de habitaciones
+        number_of_bathrooms: Cant. de baños
+        number_of_toilets: Cant. de toilettes
         should_display_price: Mostrar precio
         should_display_on_web: Mostrar en la web
         should_highlight_on_web: Destacar en la web
