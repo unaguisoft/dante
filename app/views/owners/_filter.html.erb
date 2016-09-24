@@ -22,9 +22,9 @@
         
         <div class="col-md-3">
           <%= f.label :agent_id %>
-          <%= f.search_field :agent_id, class: 'form-control',
-                placeholder: 'Seleccione el agente a buscar'
-          %>
+          <%= f.select :agent_id,
+            options_for_select(User.all.map { |u| [u.name, u.id]}, f.object.agent_id), 
+              class: 'form-control', prompt: 'Seleccione un agente' %>
         </div>
 
         <div class="col-md-3">

@@ -27,7 +27,7 @@
         <fieldset class="form-group">
           <%= f.label :currency %>
           <%= f.select :currency,
-            options_for_select(Property.currencies.map { |k, v| [k.humanize.upcase, k]}),
+            options_for_select(Property.currencies.map { |k, v| [k.humanize.upcase, k]}, f.object.currency),
                   class: 'form-control' %>
         </fieldset>
       </div>

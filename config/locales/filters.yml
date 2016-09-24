@@ -1,4 +1,19 @@
 es:
   activemodel:
     attributes:
+      property_filter:
+        id: Identificador
+        city_id: Ciudad
+        title: Título
+        user_id: Agente
+        property_kind: Tipo
+        kind: Rubro
+        price_from: Precio desde
+        price_to: Precio hasta 
+      owner_filter:
+        name: Nombre
+        email: Correo electrónico
+        agent_id: Agente
+        
+      
       

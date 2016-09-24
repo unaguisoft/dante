@@ -14,7 +14,8 @@ class PropertiesController < ApplicationController
   end
   
   def create
-    @property = Property.new(property_params)
+    @property            = Property.new(property_params)
+    @property.user       = current_user
     @property.total_area = @property.built_area + @property.semi_built_area
     
     if @property.save

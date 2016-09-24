@@ -44,12 +44,14 @@
                   locals: { f: f, property: @property }%>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <%= render partial: 'properties/form/public_data',
-                  locals: { f: f, property: @property }%>
+        <% if is?('admin')%>
+          <div class="row">
+            <div class="col-md-12">
+              <%= render partial: 'properties/form/public_data',
+                    locals: { f: f, property: @property }%>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </section>

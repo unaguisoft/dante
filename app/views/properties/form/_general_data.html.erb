@@ -14,8 +14,8 @@
         <fieldset class="form-group">
           <%= f.label :kind %>
           <%= f.select :kind,
-            options_for_select(Property.kinds.map { |k, v| [k.humanize.capitalize, k]}),
-                  class: 'form-control', required: true, autofocus: true %>
+            options_for_select(Property.kinds.map { |k, v| [k.humanize.capitalize, k]}, f.object.kind),
+                  class: 'form-control', prompt: 'Seleccione rubro', required: true, autofocus: true %>
         </fieldset>
       </div>
       
@@ -23,8 +23,8 @@
         <fieldset class="form-group">
           <%= f.label :property_kind %>
           <%= f.select :property_kind,
-            options_for_select(Property.property_kinds.map { |k, v| [k.humanize.capitalize, k]}),
-                  class: 'form-control', required: true %>
+            options_for_select(Property.property_kinds.map { |k, v| [k.humanize.capitalize, k]}, f.object.property_kind),
+                  class: 'form-control', prompt: 'Seleccione tipo', required: true %>
         </fieldset>
       </div>
     </div>
@@ -34,8 +34,8 @@
         <fieldset class="form-group">
           <%= f.label :status %>
           <%= f.select :status,
-            options_for_select(Property.statuses.map { |k, v| [k.humanize.capitalize, k]}),
-                  class: 'form-control', required: true %>
+            options_for_select(Property.statuses.map { |k, v| [k.humanize.capitalize, k]}, f.object.status),
+                  class: 'form-control', prompt: 'Seleccione un estado de la transacción', required: true %>
         </fieldset>
       </div>
 
@@ -43,8 +43,8 @@
         <fieldset class="form-group">
           <%= f.label :property_status %>
           <%= f.select :property_status,
-            options_for_select(Property.property_statuses.map { |k, v| [k.humanize.capitalize, k]}),
-                  class: 'form-control', required: true %>
+            options_for_select(Property.property_statuses.map { |k, v| [k.humanize.capitalize, k]}, f.object.property_status),
+                  class: 'form-control', prompt: 'Seleccione un estado de la propiedad', required: true %>
         </fieldset>
       </div>
     </div>
@@ -83,8 +83,8 @@
         <fieldset class="form-group">
           <%= f.label :city_id %>
           <%= f.select :city_id,
-            options_for_select(City.all.map { |c| [c.name, c.id]}),
-                  class: 'form-control', required: true %>
+            options_for_select(City.all.map { |c| [c.name, c.id]}, f.object.city_id),
+                  class: 'form-control', prompt: 'Seleccione ciudad', required: true %>
         </fieldset>
       </div>
     </div>

@@ -1,9 +1,14 @@
 class Property < ApplicationRecord
 
   # -- Enum
-  enum kind: { 'comercial': 0, 'residencial': 1 }
+  enum kind: { 'comercial': 0, 'residencial': 1 } # Categoría
   enum status: { 'activo': 0, 'reservado': 1, 'vendido': 2, 'negociando': 3 }
-  enum property_status: { 'sin_construir': 0, 'construyendo': 1, 'inhabilitado': 2, 'habilitado': 3 }
+  enum property_status: { 
+    'sin_construir': 0, 
+    'construyendo': 1, 
+    'inhabilitado': 2, 
+    'habilitado': 3 
+  }
   enum currency: { ars: 0, usd: 1 }
   enum property_kind: {
     'local': 0, # Local/Negocio
