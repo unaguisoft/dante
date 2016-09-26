@@ -74,4 +74,3 @@ jQuery.fn.normalSelect = (options) ->
 
   settings = $.extend(defaults, options)
   $(this).select2 settings
-

@@ -8,9 +8,28 @@
   </div>
 
   <div class="box-body">
-    <fieldset class="form-group form-checkboxes">
-      <%= f.collection_check_boxes(:feature_ids, Feature.all, :id, :name) %>
-    </fieldset>
+    <div class="row">      
+      <div class="col-md-offset-1 col-md-11">
+        <fieldset class="form-group">
+          <%= f.check_box :has_parking, {class: 'inline-check-box'}, true, false %> 
+          <%= f.label :has_parking, 'Posee estacionamiento' %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <fieldset class="form-group">
+          <select class="select form-control" multiple="multiple" name="property[property_feature_ids][]">
+            <option value=""></option>
+            <% for feature in Feature.all %>
+              <% selected = (f.object.property_features.include?(feature) ? "selected='selected'" : '') %>
+              <option value="<%= feature.id %>"  <%= selected %> ><%= feature.name %> </option>
+            <% end %>
+          </select>
+        </fieldset>
+      </div>
+    </div>
   </div>
 </div>
 
