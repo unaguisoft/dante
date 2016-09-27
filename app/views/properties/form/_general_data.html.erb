@@ -57,7 +57,7 @@
             <%= f.hidden_field :owner_id, class: 'select2', required: true,
               data: { behavior: 'searchOwner', url: search_owners_path, 
                       'record-id' => f.object.owner.try(:id),
-                      'record-text' => f.object.try(:to_s) } %>
+                      'record-text' => f.object.owner.try(:to_s) } %>
           </fieldset>
         </div>
         <div class="col-md-2">
