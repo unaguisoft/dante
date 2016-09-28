@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20160923225615) do
     t.bigint   "semi_built_area",                                   null: false
     t.bigint   "total_area"
     t.bigint   "perimeter",                                         null: false
-    t.boolean  "has_parking",                       default: false, null: false
     t.string   "address",                                           null: false
     t.text     "description"
     t.string   "title",                                             null: false
@@ -66,7 +65,7 @@ ActiveRecord::Schema.define(version: 20160923225615) do
     t.boolean  "should_highlight_on_web",           default: false, null: false
     t.integer  "city_id",                                           null: false
     t.integer  "owner_id",                                          null: false
-    t.integer  "user_id",                                           null: false
+    t.integer  "user_id"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.index ["city_id"], name: "index_properties_on_city_id", using: :btree

@@ -5,7 +5,7 @@ class PropertyFeature < ApplicationRecord
   belongs_to :feature
 
   # -- Validations
-  validates :property_id, presence: true
-  validates :feature_id, presence: true
+  validates :property, presence: true
+  validates :feature, presence: true
 
 end

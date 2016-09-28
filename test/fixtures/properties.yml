@@ -15,7 +15,6 @@ casa_de_barbie:
   semi_built_area: 100
   total_area: 200
   perimeter: 250
-  has_parking: false
   address: MyString
   description: MyText
   title: MyString
@@ -44,7 +43,6 @@ casa_de_ken:
   semi_built_area: 100
   total_area: 200
   perimeter: 250
-  has_parking: false
   address: MyString
   description: MyText
   title: MyString

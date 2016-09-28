@@ -7,19 +7,19 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
     sign_in_as(users(:ross))
     @property_new_data = {
         kind: 'comercial',
+        status: 'reservado',
+        property_kind: 'local',
         price: 100000,
-        currency: Property.currencies[:usd],
+        currency: 'usd',
         should_display_price: true,
-        expenses_cost_in_cents: 2000000,
-        property_status: Property.statuses[:reservado],
-        property_kind: Property.property_kinds[:local],
+        expenses_cost: 2000000,
+        property_status: 'construyendo',
         year: 2005,
         number_of_floors: 2,
         built_area: 200,
         semi_built_area: 200,
         total_area: 400,
         perimeter: 350,
-        has_parking: true,
         address: '12 Nro 1231',
         description: 'Esta es la descripción',
         title: 'Este es el título',
@@ -30,7 +30,8 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
         should_display_on_web: true,
         should_highlight_on_web: true,
         city_id: cities(:tolosa).id,
-        owner_id: owners(:monica).id
+        owner_id: owners(:monica).id,
+        feature_ids: [features(:garage).id, features(:quincho).id]
     }
   end
 
@@ -71,10 +72,10 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create property" do
-    # TODO Falta testear que agregue features
     assert_difference('Property.count', 1) do
       post properties_path, params: { property: @property_new_data }
     end
+
     assert_redirected_to properties_path
 
     property = Property.unscoped.last
@@ -83,6 +84,7 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
           "No guardó correctamente #{key}" if @property_new_data.key?(key.to_sym)
     end
     assert_equal @property.user_id, users(:ross).id
+    assert_equal @property_new_data[:feature_ids].count, property.features.count
   end
 
   test 'should get edit property' do
@@ -91,10 +93,14 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update property" do
+    # Dejo una sola feature
+    @property_new_data[:feature_ids]  = [features(:quincho).id]
+
     assert_record_differences(@property, @property_new_data) do
       put property_path(@property), params: { id: @property.id, property: @property_new_data }
     end
 
+    assert_equal 1, @property.property_features.count
     assert_redirected_to properties_path
   end
 

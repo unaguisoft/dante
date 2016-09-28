@@ -15,7 +15,6 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.integer :semi_built_area, limit: 8, null: false
       t.integer :total_area, limit: 8
       t.integer :perimeter, limit: 8, null: false
-      t.boolean :has_parking, default: false, null: false
       t.string :address, null: false
       t.text :description
       t.string :title, null: false
@@ -27,7 +26,7 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.boolean :should_highlight_on_web, default: false, null: false
       t.references :city, null: false, foreign_key: true, index: true
       t.references :owner, null: false, foreign_key: true, index: true
-      t.references :user, null: false, foreign_key: true, index: true
+      t.references :user, foreign_key: true, index: true
 
       t.timestamps
     end

@@ -6,6 +6,9 @@ class User < ApplicationRecord
   # -- Scopes
   scope :by_name, -> { order(:name) }
 
+  # -- Associations
+  has_many :properties, dependent: :nullify
+
   # -- Validations
   validates :password, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password, length: { minimum: 4 }, if: -> { new_record? || changes[:crypted_password] }
