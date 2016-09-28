@@ -1,0 +1,64 @@
+es:
+  dictionary:
+    name: &name 'Nombre'
+    description: &description 'Descripción'
+    email: &email 'Correo'
+    name: &name 'Nombre'
+    filter: &filter 'Filtrar'
+
+  activerecord:
+    models:
+      feature: Característica
+      city: Ciudad
+      user: Usuario
+      property: Propiedad
+      owner: Dueño
+    attributes:
+      feature:
+        name: *name
+      city:
+        name: *name
+      owner:
+        first_name: *name
+        last_name: Apellido
+        phones: Teléfonos
+        cellphone: Celular
+        email: *email
+        agent_id: Agente
+        user: Agente
+      property:
+        kind: Categoría
+        status: Estado de la transacción
+        property_status: Estado de la propiedad
+        property_kind: Tipo
+        has_parking: Con estacionamiento
+        year: Año de construcción
+        price: Precio
+        currency: Moneda
+        expenses_cost: Costo de expensas
+        built_area: Sup. cubierta (m2)
+        semi_built_area: Sup. semicub. (m2)
+        total_area: Sup. total
+        perimeter: Perímetro
+        address: Dirección
+        city_id: Ciudad
+        number_of_floors: Cant. de plantas
+        number_of_rooms: Cant. de ambientes
+        number_of_bedrooms: Cant. de habitaciones
+        number_of_bathrooms: Cant. de baños
+        number_of_toilets: Cant. de toilettes
+        should_display_price: Mostrar precio
+        should_display_on_web: Mostrar en la web
+        should_highlight_on_web: Destacar en la web
+        description: Descripción
+        title: Título para la web
+        owner_id: Dueño
+        agent_id: Agente
+        user_id: Agente
+      user:
+        name: *name
+        email: *email
+        password: Clave
+        password_confirmation: Confirmación
+        current_password: Clave Actual
+        role: Rol

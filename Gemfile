@@ -15,7 +15,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'kaminari'
 
 gem 'sorcery', '~> 0.9.0'
-gem 'draper' # Decorators
+gem 'draper', '~> 3.0.0.pre1' # Decorators
 gem 'non-stupid-digest-assets'
 gem 'prawn' # PDF Generator
 gem 'prawn-table' # Tables for Prawn
@@ -31,16 +31,16 @@ group :development do
   gem 'web-console', '~> 3.0'
   gem 'spring'
   gem 'annotate' # Muestra los campos de la BD en los modelos
-  gem 'hirb' # Mejora la visualización de consulas desde consola
+  gem 'hirb' # Mejora la visualización de consultas desde consola
   gem 'letter_opener'
 end
 
 group :test do
   gem 'minitest-reporters'
+  gem 'rails-controller-testing'
 end
 
 group :production do
-  gem 'rails_12factor'
   gem 'rack-cache', require: 'rack/cache'
 end
 

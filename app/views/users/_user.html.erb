@@ -1,0 +1,15 @@
+<tr id="<%= dom_id(user) %>">
+  <td> <%= link_to user.name, edit_user_path(user) %> </td>
+  <td class="text-center"> <%= user.email %> </td>
+  <td class="text-center">
+    <% klass = user.is?(:admin) ? 'text-danger' : '' %>
+    <%= content_tag :span, t("user_roles.#{user.role}"), class: klass %>
+  </td>
+  <td>
+    <%= link_to 'Editar', edit_user_path(user), class: 'btn btn-xs btn-primary' %>
+    <% unless user == current_user %>
+      <%= link_to 'Eliminar', user, method: :delete,
+        data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+    <% end %>
+  </td>
+</tr>

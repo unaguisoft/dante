@@ -1,0 +1,78 @@
+.fake-label {
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.inline-check-box {
+  margin-right: 5px !important;
+}
+
+.sidebar-toggle h3 {
+  display: inline-block;
+  margin: 0 0 0 10px;
+  font-size: 18px;
+}
+
+.table > thead > tr > th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Usado en tabla de listado de registros, sirve para alinear el contenido
+   de la última columna a la derecha */
+.table-custom > tbody > tr > td:last-child {
+   text-align: right;
+}
+.table-custom > tbody > tr > td:last-child.text-center {
+   text-align: center;
+}
+
+.table-custom > thead > tr > th:last-child {
+   text-align: right;
+}
+
+td.truncate {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+tr.is-selected td {
+  background-color: rgba(255,255,0, 0.3);
+}
+
+/* Estilo de link para volver atrás */
+.return-back {
+  font-size: 13px;
+
+  a, a:hover {
+    color: #777;
+  }
+}
+
+/* Carousel */
+.carousel-inner > .item > img {
+  margin: 0 auto;
+}
+.carousel-actions > a {
+  margin-top: -75px;
+}
+
+/* Mensaje de ayuda en formularios */
+.help-message {
+  color: #777;
+  font-weight: 200;
+  font-style: italic;
+}
+
+/* Mensaje de Opcional en los labels */
+.optional-input {
+  color: #888;
+  font-weight: 600;
+}
+
+/* Útil para usar con multiples checkboxes */
+.form-checkboxes {
+  label { margin: 10px 10px 10px 5px; }
+}

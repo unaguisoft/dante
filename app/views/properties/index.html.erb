@@ -1,0 +1,37 @@
+<header class="content-header">
+  <%= link_to 'Nueva propiedad', [:new, :property], class: 'btn btn-primary pull-right' %>
+  <h1>Propiedad</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+      
+      <%= render 'filter' %>
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Identificador</th>
+            <th>Dirección</th>
+            <th>Ciudad</th>
+            <th>Superficie Cubierta</th>
+            <th>Superficie Total</th>
+            <th>Agente</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @presenter.properties %>
+        </tbody>
+      </table>
+      
+      <%= paginate @presenter.properties %>
+      
+      <%= content_tag :p, 'No se encontraron propiedades', class: 'text-center' unless @presenter.properties.any? %>
+
+    </section>
+  </article>
+
+</section>

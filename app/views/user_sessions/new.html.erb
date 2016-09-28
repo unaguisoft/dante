@@ -1,0 +1,38 @@
+<header class="content-header">
+  <% if logged_in? %>
+    <h1>¿Estás perdido?</h1>
+  <% else %>
+    <h1>Iniciar sesión</h1>
+  <% end %>
+</header>
+
+<section class="content">
+
+  <% if logged_in? %>
+    Iniciaste sesión como <strong><%= current_user.name %></strong>
+    <br /><br />
+    <br />
+    <%= link_to 'Continuar usando la aplicación', root_path, class: 'btn btn-block btn-lg btn-success' %>
+    <%= link_to 'Cerrar sesión', logout_path, method: :delete, class: 'btn btn-block btn-lg btn-danger' %>
+  <% else %>
+    <%= form_tag user_sessions_path, :method => :post do %>
+      <fieldset class="form-group has-feedback">
+        <%= label_tag :email, 'Correo' %><br />
+        <%= text_field_tag :email, nil, class: 'form-control', placeholder: 'Ingrese su email',
+              required: true %>
+        <%= icon :user, class: "fa-fw form-control-feedback" %>
+      </fieldset>
+      <fieldset class="form-group has-feedback">
+        <%= label_tag :password, 'Clave' %><br />
+        <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Ingrese su contraseña',
+              required: true %>
+        <%= icon :lock, class: "fa-fw form-control-feedback" %>
+      </fieldset>
+      <div class="actions">
+        <%= submit_tag "Iniciar Sesión", class: 'btn btn-primary btn-block btn-flat', data: {'disable-with' => 'Espere...'} %>
+      </div>
+    <% end %>
+  <% end %>
+
+</section>
+

@@ -1,0 +1,17 @@
+<header class="content-header">
+  <h1>Crear un nuevo propietario
+    <% if @modal_form %>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    <% else %>
+      <%= back_to_link 'Volver', [:owners], 'pull-right' %>
+    <% end %>
+  </h1>
+</header>
+
+<section class="content">
+  <%= render 'form', form_format: (@modal_form ? :json : ''),
+        form_remote: @modal_form ? true : false %>
+</section>
+

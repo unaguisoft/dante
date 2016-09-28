@@ -1,0 +1,13 @@
+<tr id="<%= dom_id(owner) %>">
+  <td> <%= link_to owner.full_name, [:edit, owner] %> </td>
+  <td> <%= owner.telephones %> </td>
+  <td> <%= owner.email %> </td>
+  <td> <%= owner.agent %> </td>
+  <td>
+    <%= link_to 'Editar', [:edit, owner], class: 'btn btn-xs btn-primary' %>
+    <%= link_to 'Eliminar', owner, method: :delete,
+        data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+  </td>
+
+</tr>
+

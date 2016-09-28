@@ -1,0 +1,43 @@
+<%= form_for @presenter.filter, url: :owners, method: :get do |f| %>
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <fieldset class="form-group">
+
+        <div class="col-md-3">
+          <%= f.label :name %>
+          <%= f.search_field :name, class: 'form-control',
+                placeholder: 'Ingrese el nombre o apellido a buscar',
+                autofocus: true
+          %>
+        </div>
+        
+        <div class="col-md-3">
+          <%= f.label :email %>
+          <%= f.search_field :email, class: 'form-control',
+                placeholder: 'Ingrese el email a buscar'
+          %>
+        </div>
+        
+        <div class="col-md-3">
+          <%= f.label :agent_id %>
+          <%= f.select :agent_id,
+            options_for_select(User.all.map { |u| [u.name, u.id]}, f.object.agent_id), 
+              class: 'form-control', prompt: 'Seleccione un agente' %>
+        </div>
+
+        <div class="col-md-3">
+          <div class="fake-label"></div>
+          <%= f.submit 'Filtrar', class: 'btn btn-primary',
+                  'data-disable-with' => 'Filtrando...' %>
+          <%= link_to 'Limpiar', [:owners], class: 'btn btn-default',
+                'data-disable-with' => 'Espere...' %>
+        </div>
+
+      </fieldset>
+
+    </div>
+  </div>
+
+<% end %>

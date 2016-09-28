@@ -1,0 +1,13 @@
+<header class="content-header">
+  <h1>
+    <% if is_me?(@user) %>
+      Modificación de Perfil
+    <% else %>
+      Modificación de Usuario
+    <% end %>
+  </h1>
+</header>
+
+<section class="content">
+  <%= render 'form' %>
+</section>
