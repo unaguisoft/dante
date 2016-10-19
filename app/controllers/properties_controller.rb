@@ -20,6 +20,7 @@ class PropertiesController < ApplicationController
     if @property.save
       redirect_to :properties, notice: 'La propiedad ha sido creada correctamente.'
     else
+      binding.pry
       flash[:error] = 'Ups, ocurrió un error al intentar guardar la propiedad.'
       render :new
     end

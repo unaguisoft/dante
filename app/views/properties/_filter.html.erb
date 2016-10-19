@@ -72,8 +72,9 @@
       <div class="fake-label"></div>
       <%= link_to 'Limpiar', [:properties], class: 'btn btn-default',
             'data-disable-with' => 'Espere...' %>
-      <%= link_to 'Filtrar', [:properties], class: 'btn btn-primary',
-            'data-disable-with' => 'Espere...' %>
+      <%= f.submit 'Filtrar', class: 'btn btn-primary',
+            'data-disable-with' => 'Filtrando...' %>
+
     </div>
   </div>
 
