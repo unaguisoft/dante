@@ -16,7 +16,6 @@ class PropertiesController < ApplicationController
   def create
     @property            = Property.new(property_params)
     @property.user       = current_user
-    @property.total_area = @property.built_area + @property.semi_built_area
 
     if @property.save
       redirect_to :properties, notice: 'La propiedad ha sido creada correctamente.'
@@ -52,7 +51,7 @@ class PropertiesController < ApplicationController
     params.require(:property).permit(:kind, :status, :price, :currency,
             :should_display_price, :expenses_cost, :property_status,
             :property_kind, :year, :number_of_floors, :built_area,
-            :semi_built_area, :total_area, :perimeter,
+            :semi_built_area, :total_area, :perimeter, :open_area,
             :address, :description, :title, :number_of_rooms,
             :number_of_bedrooms, :number_of_bathrooms, :number_of_toilets,
             :should_display_on_web, :should_highlight_on_web, :city_id,

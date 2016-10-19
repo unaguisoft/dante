@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923225615) do
+ActiveRecord::Schema.define(version: 20161017215118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 20160923225615) do
     t.integer  "property_kind",           limit: 2,                 null: false
     t.integer  "year"
     t.integer  "number_of_floors",        limit: 2
-    t.bigint   "built_area",                                        null: false
-    t.bigint   "semi_built_area",                                   null: false
+    t.bigint   "built_area"
+    t.bigint   "semi_built_area"
     t.bigint   "total_area"
-    t.bigint   "perimeter",                                         null: false
+    t.bigint   "perimeter"
     t.string   "address",                                           null: false
     t.text     "description"
     t.string   "title",                                             null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20160923225615) do
     t.integer  "user_id"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
+    t.bigint   "open_area"
     t.index ["city_id"], name: "index_properties_on_city_id", using: :btree
     t.index ["owner_id"], name: "index_properties_on_owner_id", using: :btree
     t.index ["user_id"], name: "index_properties_on_user_id", using: :btree

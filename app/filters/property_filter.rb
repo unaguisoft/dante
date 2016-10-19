@@ -3,7 +3,7 @@ class PropertyFilter
   include ActiveModel::Model
 
   attr_accessor :id, :kind, :price_from, :price_to, :property_kind, :city_id,
-                :user_id, :title
+                :user_id, :title, :description
 
   def call
     properties = Property.all
@@ -16,13 +16,13 @@ class PropertyFilter
 
     properties
   end
-  
+
   private
-  
+
   def _price_from
     @price_from || 0
   end
-  
+
   def _price_to
     @price_to || 10_000_000
   end

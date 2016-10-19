@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head> <%= render 'application/public/head' %> </head>
+
+  <body class="<%= "#{controller_name} #{action_name}" %>">
+    <%= render 'application/public/navbar' %>
+
+    <article class="content-wrapper">
+      <%= yield %>
+
+      <div class="spacer-60"></div>
+      <%= render "main/footer" %>
+
+      <section id="snackbar-container">
+        <%= flash_messages if flash %>
+      </section>
+    </article>
+  </body>
+
+</html>
+

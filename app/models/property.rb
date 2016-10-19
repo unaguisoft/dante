@@ -6,8 +6,8 @@ class Property < ApplicationRecord
   enum property_status: {
     'sin_construir': 0,
     'construyendo': 1,
-    'inhabilitado': 2,
-    'habilitado': 3
+    'habitado': 2,
+    'inhabitado': 3
   }
   enum currency: { ars: 0, usd: 1 }
   enum property_kind: {
@@ -41,9 +41,6 @@ class Property < ApplicationRecord
   validates :property_kind, presence: true
   validates :price, presence: true
   validates :currency,  presence: true
-  validates :built_area, presence: true
-  validates :semi_built_area, presence: true
-  validates :perimeter, presence: true
   validates :address, presence: true
   validates :title, presence: true
   validates :number_of_bedrooms, presence: true

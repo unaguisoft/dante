@@ -1,5 +1,9 @@
 class Feature < ApplicationRecord
 
+  # -- Scopes
+  default_scope -> { order(:name) }
+
+  # -- Associations
   has_many :property_features
   has_many :properties, through: :property_features
 
