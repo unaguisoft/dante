@@ -1,0 +1,45 @@
+<div class="col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-image">
+            <img class="img-responsive img-hover" src="http://placehold.it/370x240" alt="">
+            <div class="img_hov_eff">
+                <a class="btn btn-default btn_trans" href="property_details.html">Ver más detalles</a>
+            </div>
+
+        </div>
+        <div class="sal_labl">
+            <%= property.kind.capitalize %>
+        </div>
+
+        <div class="panel-body">
+            <div class="prop_feat">
+              <p class="area">
+                <i class="fa fa-home"></i> <%= property.total_area %> mts2
+              </p>
+              <p class="bedrom">
+                <i class="fa fa-bed"></i> <%= property.number_of_bedrooms %> Dormitorios
+              </p>
+              <p class="bedrom">
+                <i class="fa fa-car"></i> <%= property.number_of_bathrooms %> Baños
+              </p>
+            </div>
+            <h3 class="sec_titl">
+              <%= property.title.truncate(35) %>
+            </h3>
+
+            <p class="sec_desc">
+              <%= property.description.truncate(85) %>
+            </p>
+            <div class="panel_bottom">
+                <div class="col-md-6">
+                  <p class="price text-left">
+                    <%= number_to_currency property.price, unit: property.currency.upcase %>
+                  </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="readmore text-right"> <a href="property_details.html">Ver más</a> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

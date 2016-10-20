@@ -26,7 +26,7 @@
             </div>
              <!-- Slider -->
             <div class="col-md-8 slide_sec">
-                <%= render "main/slider" %>
+                <%= render "main/slider", presenter: @presenter %>
             </div>
         </div>
         <!-- /.row -->
@@ -38,7 +38,7 @@
 
 <div class="spacer-60"></div>
 
-<%= render "main/featured" %>
+<%= render "main/highlighted", presenter: @presenter %>
 
 <div class="spacer-60"></div>
 

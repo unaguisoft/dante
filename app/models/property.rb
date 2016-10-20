@@ -1,5 +1,9 @@
 class Property < ApplicationRecord
 
+  # -- Scope
+  scope :highlighted, -> { where(should_highlight_on_web: true) }
+  scope :for_web, -> { where(should_display_on_web: true) }
+
   # -- Enum
   enum kind: { 'comercial': 0, 'residencial': 1 } # Categoría
   enum status: { 'activo': 0, 'reservado': 1, 'vendido': 2, 'negociando': 3 }

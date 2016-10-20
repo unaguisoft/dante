@@ -6,4 +6,8 @@ class MainController < ApplicationController
     @presenter = HomePresenter.new(params)
   end
 
+  def properties
+    @presenter = PropertiesForWebPresenter.new(params)
+  end
+
 end

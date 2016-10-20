@@ -5,8 +5,8 @@ class PropertyFilter
   attr_accessor :id, :title, :kind, :city_id, :price_from, :price_to,
                 :property_kind, :kind, :user_id, :description
 
-  def call
-    properties = Property.all
+  def call(context=nil)
+    properties = (context.nil?) ? Property.all : context
     properties = properties.where(id: @id) if @id.present?
     properties = properties.where('title ILIKE ?', "%#{@title}%") if @title.present?
     properties = properties.where(property_kind: @property_kind) if @property_kind.present?
