@@ -4,12 +4,18 @@ Rails.application.routes.draw do
 
   scope '/admin' do
     resources :user_sessions, only: [:new, :create]
-    resources :properties
+
+    resources :properties do
+      patch 'photos', to: 'photos#create' # Al estar en un form manda con patch
+    end
+    
     resources :features, only: [:new, :edit, :create, :index, :update, :destroy]
     resources :cities, only: [:new, :edit, :create, :index, :update, :destroy]
     resources :owners do
       get :search, on: :collection
     end
+    
+    resources :photos, only: [:destroy]
     resources :users
   end
 
