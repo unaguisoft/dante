@@ -1,7 +1,8 @@
+<% property = property.decorate %>
 <div class="col-md-4">
     <div class="panel panel-default">
         <div class="panel-image">
-            <img class="img-responsive img-hover" src="http://placehold.it/370x240" alt="">
+            <%= image_tag property.first_photo_url('370x240'), class: 'img-responsive img-hover' %>
             <div class="img_hov_eff">
                 <a class="btn btn-default btn_trans" href="property_details.html">Ver más detalles</a>
             </div>

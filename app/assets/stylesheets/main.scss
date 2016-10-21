@@ -92,3 +92,7 @@ tr.is-selected td {
 .form-checkboxes {
   label { margin: 10px 10px 10px 5px; }
 }
+
+.features.form-checkboxes label {
+  width: 42%;
+}

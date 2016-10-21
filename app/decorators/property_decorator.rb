@@ -21,6 +21,14 @@ class PropertyDecorator < Draper::Decorator
     property.user
   end
 
+  def first_photo_url(size='100x100')
+    if photos.empty?
+      "http://placehold.it/#{size}"
+    else
+      photos.first.file.thumb("#{size}#").url
+    end
+  end
+
   private
 
   def property

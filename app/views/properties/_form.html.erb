@@ -26,8 +26,15 @@
         <!-- Photos -->
         <div class="row">
           <div class="col-md-12">
-            <%= render partial: "properties/form/photos", 
+            <%= render partial: "properties/form/photos",
                   locals: { property: @property } %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <fieldset class="form-group">
+              <%= f.submit 'Guardar propiedad', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+            </fieldset>
           </div>
         </div>
       </div>
@@ -61,16 +68,9 @@
         </div>
       </div>
     </div>
-    
+
   </section>
 </article>
 
-<div class="row">
-  <div class="col-md-12">
-    <fieldset class="form-group">
-      <%= f.submit 'Guardar propiedad', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
-    </fieldset>
-  </div>
-</div>
 
 <% end %>
