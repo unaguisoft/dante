@@ -75,10 +75,10 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Property.count', 1) do
       post properties_path, params: { property: @property_new_data }
     end
+    
+    property = Property.unscoped.last    
+    assert_redirected_to upload_photos_property_path(property)
 
-    assert_redirected_to properties_path
-
-    property = Property.unscoped.last
     property.as_json.each do |key, value|
       assert_equal @property_new_data[key.to_sym], value,
           "No guardó correctamente #{key}" if @property_new_data.key?(key.to_sym)
