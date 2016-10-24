@@ -1,13 +1,17 @@
 class Property < ApplicationRecord
 
+  # -- Scope
+  scope :highlighted, -> { where(should_highlight_on_web: true) }
+  scope :for_web, -> { where(should_display_on_web: true) }
+
   # -- Enum
   enum kind: { 'comercial': 0, 'residencial': 1 } # Categoría
   enum status: { 'activo': 0, 'reservado': 1, 'vendido': 2, 'negociando': 3 }
   enum property_status: {
     'sin_construir': 0,
     'construyendo': 1,
-    'inhabilitado': 2,
-    'habilitado': 3
+    'habitado': 2,
+    'inhabitado': 3
   }
   enum currency: { ars: 0, usd: 1 }
   enum property_kind: {
@@ -30,7 +34,8 @@ class Property < ApplicationRecord
   belongs_to :city
   belongs_to :owner
   belongs_to :user
-  has_many :property_features
+  has_many :photos, dependent: :destroy
+  has_many :property_features, dependent: :destroy
   has_many :features, through: :property_features
   accepts_nested_attributes_for :features, allow_destroy: true
 
@@ -41,9 +46,6 @@ class Property < ApplicationRecord
   validates :property_kind, presence: true
   validates :price, presence: true
   validates :currency,  presence: true
-  validates :built_area, presence: true
-  validates :semi_built_area, presence: true
-  validates :perimeter, presence: true
   validates :address, presence: true
   validates :title, presence: true
   validates :number_of_bedrooms, presence: true

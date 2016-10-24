@@ -1,3 +1,9 @@
+0.2
+- Primera versión del front
+- Carga de imágenes a una propiedad
+- Bug al eliminar propiedad que tiene features asociadas
+- Información catastral no es obligatoria
+
 0.1
 - Iniciar Sesión
 - Cerrar Sesión

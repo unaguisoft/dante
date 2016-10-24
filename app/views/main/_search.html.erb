@@ -1,0 +1,79 @@
+<div class="srch_frm">
+    <h3>Búsqueda de Propiedades</h3>
+    <%= form_for @presenter.filter, url: properties_path, method: :get do |f| %>
+        <div class="control-group form-group">
+            <div class="controls">
+                <label>Descripción</label>
+                <%= f.text_field :description, class: 'form-control',
+                  placeholder: 'Ingresa la descripción a buscar' %>
+                <p class="help-block"></p>
+            </div>
+        </div>
+        <div class="control-group form-group">
+            <div class="controls">
+                <label>Ubicación </label>
+                <%= f.select :city_id, options_from_collection_for_select(@presenter.cities, "id", "name"),
+                  {prompt: 'Todas'}, class: 'form-control'  %>
+            </div>
+        </div>
+        <div class="control-group form-group">
+            <div class="controls col-md-6 first">
+                <label>Rubro </label>
+                <%= f.select :property_kind,
+                  options_for_select(Property.property_kinds.map { |k, v| [k.humanize.capitalize, k]}),
+                  {}, class: 'form-control' %>
+            </div>
+            <div class="controls col-md-6">
+                <label>Categoría </label>
+                <%= f.select :kind,
+                  options_for_select(Property.kinds.map { |k, v| [k.humanize.capitalize, k]}),
+                  {}, class: 'form-control' %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="control-group form-group">
+            <div class="controls col-md-6 first">
+                <label>Precio Min. </label>
+                <select name="min-price" class="form-control" required data-validation-required-message="Please select a Min. Price.">
+                    <option value="" selected="selected">$50</option>
+                    <option value="2">$00</option>
+                    <option value="3">$200</option>
+                    <option value="3">$300</option>
+                    <option value="3">$400</option>
+                    <option value="3">$500</option>
+                    <option value="3">$700</option>
+                    <option value="3">$800</option>
+                    <option value="3">$900</option>
+                    <option value="3">$000</option>
+                    <option value="3">$500</option>
+                    <option value="3">$2000</option>
+                    <option value="3">$2500</option>
+                </select>
+            </div>
+            <div class="controls col-md-6">
+                <label> Precio Max. </label>
+                <select name="max-price" class="form-control" required data-validation-required-message="Please select a Max. Price.">
+                    <option value="" selected="selected">$200</option>
+                    <option value="2">$300</option>
+                    <option value="3">$400</option>
+                    <option value="3">$500</option>
+                    <option value="3">$600</option>
+                    <option value="3">$700</option>
+                    <option value="3">$800</option>
+                    <option value="3">$900</option>
+                    <option value="3">$1000</option>
+                    <option value="3">$1500</option>
+                    <option value="3">$2000</option>
+                    <option value="3">$2500</option>
+                    <option value="3">$3000</option>
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div id="success"></div>
+        <!-- For success/fail messages -->
+        <button type="submit" class="btn btn-primary">Buscar</button>
+      <% end %>
+</div>

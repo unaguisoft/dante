@@ -37,28 +37,6 @@ class PropertyTest < ActiveSupport::TestCase
     assert_includes property.errors[:currency], 'no puede estar en blanco'
   end
 
-  test "should not save property without built_area" do
-    property = Property.new()
-    property.built_area = nil
-    property.valid?
-    assert_includes property.errors[:built_area], 'no puede estar en blanco'
-  end
-
-  test "should not save property without semi_built_area" do
-    property = Property.new()
-    property.semi_built_area = nil
-    property.valid?
-    assert_includes property.errors[:semi_built_area], 'no puede estar en blanco'
-  end
-
-  test "should not save property without perimeter" do
-    property = Property.new()
-    property.perimeter = nil
-    property.valid?
-    assert_includes property.errors[:perimeter], 'no puede estar en blanco'
-  end
-
-
   test "should not save property without address" do
     property = Property.new()
     property.address = nil

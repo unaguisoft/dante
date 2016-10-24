@@ -22,6 +22,11 @@ gem 'prawn-table' # Tables for Prawn
 gem 'momentjs-rails', '>= 2.9.0' # Datetimepicker dependency
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37' # Datetimepicker
 
+# File uploader
+gem "jquery-fileupload-rails"
+gem 'dragonfly', '~> 1.0', '>= 1.0.12'
+gem 'dragonfly-s3_data_store' # For using amazon in production
+
 group :development, :test do
   gem 'pry'
   gem 'byebug'

@@ -3,10 +3,10 @@
 casa_de_barbie:
   kind: 1 # Residential
   status: 0 # Active
-  price_in_cents: 99_000_000
+  price_in_cents: 1200_000_000
   currency: 0 # ARS
   should_display_price: false
-  expenses_cost_in_cents: 1000000
+  expenses_cost_in_cents: 1_000_000
   property_status: 3 # Enabled
   property_kind: 3 # House
   year: 2004
@@ -17,7 +17,7 @@ casa_de_barbie:
   perimeter: 250
   address: MyString
   description: MyText
-  title: MyString
+  title: Casa de barbie
   number_of_rooms: 1
   number_of_bedrooms: 1
   number_of_bathrooms: 1
@@ -29,14 +29,14 @@ casa_de_barbie:
   user: ross
 
 casa_de_ken:
-  kind: 1 # Residential
+  kind: 0 # Commercial
   status: 0 # Active
-  price_in_cents: 99_000_000
+  price_in_cents: 1500_000_000
   currency: 0 # ARS
   should_display_price: false
-  expenses_cost_in_cents: 1000000
+  expenses_cost_in_cents: 1_000_000
   property_status: 3 # Enabled
-  property_kind: 3 # House
+  property_kind: 4 # Depto
   year: 2004
   number_of_floors: 1
   built_area: 100
@@ -45,7 +45,7 @@ casa_de_ken:
   perimeter: 250
   address: MyString
   description: MyText
-  title: MyString
+  title: Casa de ken
   number_of_rooms: 1
   number_of_bedrooms: 1
   number_of_bathrooms: 1
