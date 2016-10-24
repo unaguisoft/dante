@@ -23,13 +23,17 @@
                     locals: { f: f, property: @property }%>
           </div>
         </div>
-        <!-- Photos -->
-        <div class="row">
-          <div class="col-md-12">
-            <%= render partial: "properties/form/photos",
-                  locals: { property: @property } %>
+        
+        <% if @property.persisted? %>
+          <!-- Photos -->
+          <div class="row">
+            <div class="col-md-12">
+              <%= render partial: "properties/form/photos",
+                    locals: { property: @property } %>
+            </div>
           </div>
-        </div>
+        <% end %>
+        
         <div class="row">
           <div class="col-md-12">
             <fieldset class="form-group">

@@ -35,7 +35,7 @@ class Property < ApplicationRecord
   belongs_to :owner
   belongs_to :user
   has_many :photos, dependent: :destroy
-  has_many :property_features
+  has_many :property_features, dependent: :destroy
   has_many :features, through: :property_features
   accepts_nested_attributes_for :features, allow_destroy: true
 

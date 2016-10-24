@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     resources :user_sessions, only: [:new, :create]
 
     resources :properties do
-      patch 'photos', to: 'photos#create' # Al estar en un form manda con patch
+      get 'upload_photos', to: 'properties#upload_photos', on: :member
+      match 'photos', via: [:post, :patch], to: 'photos#create'
     end
     
     resources :features, only: [:new, :edit, :create, :index, :update, :destroy]

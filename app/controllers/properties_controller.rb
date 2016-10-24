@@ -1,7 +1,7 @@
 class PropertiesController < ApplicationController
 
-  before_action :set_property, only: [:edit, :update, :destroy]
-
+  before_action :set_property, only: [:edit, :update, :destroy, :upload_photos]
+  
   def index
     @presenter = PropertyPresenter.new(params)
   end
@@ -18,7 +18,7 @@ class PropertiesController < ApplicationController
     @property.user       = current_user
 
     if @property.save
-      redirect_to :properties, notice: 'La propiedad ha sido creada correctamente.'
+      redirect_to upload_photos_property_path(@property), notice: 'La propiedad ha sido creada correctamente. Seleccione las imágenes.'
     else
       flash[:error] = 'Ups, ocurrió un error al intentar guardar la propiedad.'
       render :new
@@ -43,6 +43,12 @@ class PropertiesController < ApplicationController
       flash[:error] = 'Ocurrió un error al eliminar la propiedad'
       redirect_to :properties
     end
+  end
+  
+  def upload_photos
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = 'La propiedad buscada no existe'
+      redirect_to properties_path
   end
 
   private

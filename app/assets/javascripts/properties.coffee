@@ -39,4 +39,4 @@ class App.PropertyForm
 # --------------------------------
 # --------------------------------
 $(document).on "turbolinks:load page:change", ->
-  App.property_form = new App.PropertyForm() unless $(".properties.new, .properties.edit, .properties.create, .properties.update").length == 0
+  App.property_form = new App.PropertyForm() unless $(".properties.new, .properties.edit, .properties.create, .properties.update, .properties.upload_photos").length == 0
