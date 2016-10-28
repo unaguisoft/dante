@@ -13,6 +13,10 @@ class PropertyPresenter
     @filter ||= PropertyFilter.new(filter_params)
   end
 
+  def highlighted_properties(limit=3)
+    Property.highlighted.sample(limit)
+  end
+
   private
 
   def filter_params

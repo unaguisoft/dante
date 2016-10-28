@@ -4,7 +4,7 @@
         <div class="panel-image">
             <%= image_tag property.first_photo_url('370x240'), class: 'img-responsive img-hover' %>
             <div class="img_hov_eff">
-                <a class="btn btn-default btn_trans" href="property_details.html">Ver más detalles</a>
+              <%= link_to 'Ver más detalles', property_details_path(id: property.id), class: 'btn btn-default btn_trans' %>
             </div>
 
         </div>
@@ -15,13 +15,13 @@
         <div class="panel-body">
             <div class="prop_feat">
               <p class="area">
-                <i class="fa fa-home"></i> <%= property.total_area %> mts2
+                <i class="fa fa-home"></i> <%= property.total_area %>
               </p>
               <p class="bedrom">
                 <i class="fa fa-bed"></i> <%= property.number_of_bedrooms %> Dormitorios
               </p>
               <p class="bedrom">
-                <i class="fa fa-car"></i> <%= property.number_of_bathrooms %> Baños
+                <i class="fa fa-child"></i> <%= property.number_of_bathrooms %> Baños
               </p>
             </div>
             <h3 class="sec_titl">

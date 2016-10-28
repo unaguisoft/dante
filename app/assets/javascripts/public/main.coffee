@@ -90,6 +90,19 @@ class PublicApp.Home
 			slideshow: false
 
 # --------------------------------
+# PROPERTY DETAIL
+# --------------------------------
+class PublicApp.PropertyDetails
+	constructor: () ->
+		@bindEvents()
+
+	bindEvents: () ->
+    $('#prop_slid').bxSlider
+      pagerCustom: '#slid_nav'
+
+
+# --------------------------------
 # --------------------------------
 $(document).on "turbolinks:load page:change", ->
  new PublicApp.Home() unless $(".main.home").length == 0
+ new PublicApp.PropertyDetails() unless $(".main.property_details") == 0

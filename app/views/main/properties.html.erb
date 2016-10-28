@@ -29,7 +29,7 @@
     <!-- Properties Section -->
     <section id="feat_propty">
         <div class="container">
-          <% @presenter.properties.each_slice(3) do |properties| %>
+          <% @properties.each_slice(3) do |properties| %>
             <div class="row">
               <% properties.each do |property| %>
                 <%= render "main/property", property: property %>

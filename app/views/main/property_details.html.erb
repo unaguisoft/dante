@@ -1,0 +1,423 @@
+<!-- Header bradcrumb -->
+<header class="bread_crumb">
+    <div class="pag_titl_sec">
+        <h1 class="pag_titl"><%= @presenter.property.title %></h1>
+        <h4 class="sub_titl">
+          <%= @presenter.property.kind.titleize %> -
+          <%= @presenter.property.complete_address %>
+        </h4>
+    </div>
+    <div class="pg_links">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <p class="lnk_pag">
+                    <%= link_to 'Inicio', root_path  %>
+                  </p>
+                  <p class="lnk_pag"> / </p>
+                  <p class="lnk_pag">Detalle de Propiedad</p>
+                </div>
+                <div class="col-md-6 text-right">
+                  <p class="lnk_pag">
+                    <%= link_to 'Volver al Inicio', root_path  %>
+                  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="spacer-60"></div>
+<div class="container">
+    <div class="row">
+        <!-- Proerty Details Section -->
+        <section id="prop_detal" class="col-md-8">
+            <div class="row">
+                <div class="panel panel-default">
+                   <!-- Proerty Slider Images -->
+                    <div class="panel-image">
+                        <ul id="prop_slid">
+                          <% @presenter.property.photos.each do |photo| %>
+                            <%= content_tag :li, image_tag(photo.file.thumb('800x450#').url, class: 'img-responsive') %>
+                          <% end %>
+                        </ul>
+                    <!-- Proerty Slider Thumbnails -->
+                        <div class="col-md-12 rel_img">
+                            <ul id="slid_nav">
+                              <% @presenter.property.photos.each_with_index do |photo, index| %>
+                                <li>
+                                  <%= link_to '', 'data-slide-index' => index do %>
+                                    <%= image_tag photo.file.thumb('132x80#').url, class: 'img-responsive img-hover' %>
+                                  <% end %>
+                                </li>
+                              <% end %>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="prop_feat">
+                            <p class="area"><i class="fa fa-home"></i> <%= @presenter.property.total_area %></p>
+                            <p class="bedrom"><i class="fa fa-bed"></i> <%= @presenter.property.number_of_bedrooms %> Dormitorios </p>
+                            <p class="bedrom"><i class="fa fa-child"></i> <%= @presenter.property.number_of_bathrooms %> Baños</p>
+                        </div>
+
+                        <h3 class="sec_titl"> <%= @presenter.property.title %> </h3>
+
+                        <div class="col_labls larg_labl">
+
+                            <p class="or_labl"><%= @presenter.property.kind.titleize %></p>
+                            <p class="blu_labl"> <%= number_to_currency @presenter.property.price %></p>
+
+                        </div>
+
+                        <p class="sec_desc">
+                          <%= @presenter.property.description %>
+                        </p>
+
+                        <!-- Proerty Additional Info -->
+                        <div class="prop_addinfo">
+                            <h2 class="add_titl"> Datos Adicionales </h2>
+                                <div class="info_sec first">
+                                    <div class="col-md-5">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                    <p class="infos"> Precio: <span> <%= number_to_currency @presenter.property.price %> </span> </p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                    <p class="infos"> Categoría: <span> <%= @presenter.property.kind.titleize %> </span> </p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                    <p class="infos"> Dirección: <span> <%= @presenter.property.address %> </span> </p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                    <p class="infos"> Ciudad: <span> <%= @presenter.property.city.name.titleize %> </span> </p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                    <p class="infos"> Tipo: <span> <%= @presenter.property.property_kind.titleize %> </span> </p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                    <p class="infos">Dormitorios: <span> <%= @presenter.property.number_of_bedrooms %> </span> </p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                    <p class="infos">Baños: <span> <%= @presenter.property.number_of_bathrooms %> </span> </p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                    <p class="infos">Toilettes: <span> <%= @presenter.property.number_of_toilets %> </span> </p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                    <p class="infos">Plantas: <span> <%= @presenter.property.number_of_floors %> </span> </p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                    <p class="infos">Cant. Ambientes: <span> <%= @presenter.property.number_of_rooms %> </span> </p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                    <p class="infos">Costo Expensas: <span> <%= number_to_currency @presenter.property.expenses_cost %> </span> </p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="spacer-30"></div>
+
+            <!-- Agent Info -->
+            <div class="row">
+                <div class="agen_info">
+
+                    <div class="col-md-4">
+                        <a href="agents_single.html"><img class="img-responsive img-hover" src="http://placehold.it/270x260" alt="">
+                        </a>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="panel panel-default">
+
+                            <div class="panel-body">
+                                <div class="row agen_desc">
+                                    <div class="col-sm-8">
+                                        <h3 class="sec_titl">
+                        <a href="agents_single.html">Alejo Dante</a>                                   </h3>
+                                        <p class="sec_desc">
+                                          Agente Inmobiliario
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <p class="sec_desc">
+                                    Single origin coffee crucifix tousled freegan lo-fi wayfare flexitaria Marfa deepbanh mi church-key direct trad street American Apparel Pinterest pop-up banh mi you probably.
+                                </p>
+                                <div class="panel_bottom">
+                                    <div class="agen_feat">
+                                        <p class="area">
+                                            <a href="tel:910-213-7890"> <i class="fa fa-phone"></i> 910-213-7890 </a>
+                                        </p>
+                                        <p class="bedrom">
+                                            <a href="mailto:scott@berends.com?Subject=Agent%20enquiry"> <i class="fa fa-envelope"></i> scott@berends.com </a>
+                                        </p>
+                                        <p class="bedrom"><a href="skype:-scottberends1-?chat"><i class="fa fa-skype"></i> scottberends1 </a> </p>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="spacer-30"></div>
+
+            <!-- Proerty Map -->
+
+            <div class="row">
+                <div class="titl_sec">
+                    <div class="col-lg-12">
+
+                        <h3 class="main_titl text-left">
+                Property Map
+            </h3>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="prop_map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3023.0855969237605!2d-73.99038!3d40.738141999999996!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a238556ce7%3A0x3445b7afb4f445e3!2sTaz+Studios!5e0!3m2!1sen!2sin!4v1432831471606" width="600" height="350"></iframe>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.row -->
+
+
+        </section>
+
+        <!-- Sidebar Section -->
+        <section id="sidebar" class="col-md-4">
+            <!-- Search Form -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="srch_frm">
+                        <h3>Consultar</h3>
+                        <form name="sentMessage" id="contactForm" novalidate>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label> Tu Nombre </label>
+                                    <input type="text" class="form-control" id="keyword" required data-validation-required-message="Please enter a keyword." placeholder="Ingresa tu nombre">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label> Tu Correo </label>
+                                    <input type="email" class="form-control" id="keyword" required data-validation-required-message="Please enter a keyword." placeholder="Ingresa tu nombre">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label> Tu Mensaje </label>
+                                    <textarea class="form-control" placeholder="Escribe tu mensaje" rows="8"></textarea>
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+
+                            <div id="success"></div>
+                            <!-- For success/fail messages -->
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="spacer-30"></div>
+            <!-- Tags -->
+            <div class="row">
+              <div class="titl_sec">
+                <div class="col-lg-12">
+                  <h3 class="main_titl text-left"> Características </h3>
+                </div>
+                <div class="clearfix"></div>
+                </div>
+
+                <div class="tags_sec">
+                    <% @presenter.property.features.each_with_index do |feature, index| %>
+                      <div class="tags_box">
+                        <%= link_to feature.name, '#' %>
+                      </div>
+                    <% end %>
+                </div>
+
+
+            </div>
+
+            <div class="spacer-30"></div>
+            <!-- Categories -->
+            <div class="row">
+                <div class="titl_sec">
+                    <div class="col-lg-12">
+                      <h3 class="main_titl text-left"> Información Catastral </h3>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="categ_info">
+
+                    <div class="info_sec first">
+                        <div class="col-md-6">
+                            <a href="#">
+                                <i class="fa fa-long-arrow-right"></i>
+                                <p class="infos">Cubierto (<%= @presenter.property.built_area %>) </p>
+                            </a>
+                        </div>
+                        <div class="col-md-6 text-left">
+                            <a href="#">
+                                <i class="fa fa-long-arrow-right"></i>
+                                <p class="infos">Semicub. (<%= @presenter.property.semi_built_area %>) </p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="info_sec">
+                        <div class="col-md-6">
+                            <a href="#">
+                                <i class="fa fa-long-arrow-right"></i>
+                                <p class="infos">Descubierto (<%= @presenter.property.open_area %>) </p>
+                            </a>
+                        </div>
+                        <div class="col-md-6 text-left">
+                            <a href="#">
+                                <i class="fa fa-long-arrow-right"></i>
+                                <p class="infos">Total (<%= @presenter.property.total_area %>) </p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="info_sec">
+                        <div class="col-md-6">
+                            <a href="#">
+                                <i class="fa fa-long-arrow-right"></i>
+                                <p class="infos">Perímetro (<%= @presenter.property.perimeter %>) </p>
+                            </a>
+                        </div>
+                        <div class="col-md-6 text-left">
+                            <a href="#">
+                                <i class="fa fa-long-arrow-right"></i>
+                                <p class="infos">Año Constr. (<%= @presenter.property.year %>) </p>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- /.row -->
+
+
+            <div class="spacer-30"></div>
+            <!-- Featured Properties -->
+            <div class="row">
+                <div class="titl_sec">
+                    <div class="col-lg-12">
+
+                        <h3 class="main_titl text-left">
+                          Propiedades Destacadas
+                        </h3>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="side_feat">
+                    <% @presenter.highlighted_properties(3).each do |property| %>
+                      <% property = property.decorate %>
+                      <div class="panel panel-default">
+                          <div class="panel-image col-md-3">
+                              <%= link_to property_details_path(id: property.id), class: 'btn btn-default btn_trans' do %>
+                                <%= image_tag property.first_photo_url('100x100'), class: 'img-responsive img-hover' %>
+                              <% end %>
+                          </div>
+
+                          <div class="panel-body col-md-9">
+                              <h3 class="sec_titl">
+                                <%= link_to property.title, property_details_path(id: property.id) %>
+                              </h3>
+
+                              <div class="prop_feat">
+                                  <p class="area"><i class="fa fa-home"></i> <%= property.total_area %></p>
+                                  <p class="bedrom"> <i class="fa fa-bed"></i> <%= property.number_of_bedrooms %> Dormitorios</p>
+                              </div>
+                          </div>
+                      </div>
+                    <% end %>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <!-- /.row -->
+
+            <div class="spacer-30"></div>
+
+        </section>
+
+        <div class="spacer-60"></div>
+
+    </div>
+</div>

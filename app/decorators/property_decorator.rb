@@ -9,12 +9,28 @@ class PropertyDecorator < Draper::Decorator
     "#{property.address.capitalize}"
   end
 
+  def complete_address
+    "#{property.address.capitalize}, #{property.city.name.titleize}"
+  end
+
   def built_area
     "#{property.built_area} m2"
   end
 
+  def semi_built_area
+    "#{property.semi_built_area} m2"
+  end
+
   def total_area
     "#{property.total_area} m2"
+  end
+
+  def open_area
+    "#{property.total_area} m2"
+  end
+
+  def perimeter
+    "#{property.perimeter} m"
   end
 
   def agent
