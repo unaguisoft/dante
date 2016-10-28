@@ -11,7 +11,7 @@ class Property < ApplicationRecord
     'sin_construir': 0,
     'construyendo': 1,
     'habitado': 2,
-    'inhabitado': 3
+    'sin_habitar': 3
   }
   enum currency: { ars: 0, usd: 1 }
   enum property_kind: {

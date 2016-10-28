@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161021193416) do
+ActiveRecord::Schema.define(version: 20161028221625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,12 +57,12 @@ ActiveRecord::Schema.define(version: 20161021193416) do
     t.bigint   "expenses_cost_in_cents"
     t.integer  "property_status",         limit: 2,                 null: false
     t.integer  "property_kind",           limit: 2,                 null: false
-    t.integer  "year"
+    t.string   "year"
     t.integer  "number_of_floors",        limit: 2
     t.bigint   "built_area"
     t.bigint   "semi_built_area"
     t.bigint   "total_area"
-    t.bigint   "perimeter"
+    t.string   "perimeter"
     t.string   "address",                                           null: false
     t.text     "description"
     t.string   "title",                                             null: false
