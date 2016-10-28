@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   # PUBLIC
   get 'propiedades', to: 'main#properties', as: :properties_for_web
   get 'propiedad/:id', to: 'main#property_details', as: :property_details
+  get 'contacto', to: 'main#contact', as: :contact
 
   get 'login', to: 'user_sessions#new', as: :login
   post 'logout', to: 'user_sessions#destroy', as: :logout
