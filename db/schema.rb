@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028221625) do
+ActiveRecord::Schema.define(version: 20161031205711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,24 @@ ActiveRecord::Schema.define(version: 20161028221625) do
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "investment_photos", force: :cascade do |t|
+    t.string   "file_uid"
+    t.string   "file_name"
+    t.integer  "investment_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["investment_id"], name: "index_investment_photos_on_investment_id", using: :btree
+  end
+
+  create_table "investments", force: :cascade do |t|
+    t.string   "title",                                 null: false
+    t.text     "details",                               null: false
+    t.string   "address",                               null: false
+    t.boolean  "should_display_on_web", default: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "owners", force: :cascade do |t|
@@ -101,6 +119,7 @@ ActiveRecord::Schema.define(version: 20161028221625) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "investment_photos", "investments"
   add_foreign_key "owners", "users"
   add_foreign_key "photos", "properties"
   add_foreign_key "properties", "cities"

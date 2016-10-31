@@ -1,0 +1,36 @@
+<header class="content-header">
+  <%= link_to 'Nueva inversión', [:new, :investment], class: 'btn btn-primary pull-right' %>
+  <h1>Inversión</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+
+      <%= render 'filter' %>
+
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Identificador</th>
+            <th>Título</th>
+            <th>Dirección</th>
+            <th>Visible en la web</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @presenter.investments %>
+        </tbody>
+      </table>
+
+      <%= paginate @presenter.investments %>
+
+      <%= content_tag :p, 'No se encontraron inversiones', class: 'text-center' unless @presenter.investments.any? %>
+
+    </section>
+  </article>
+
+</section>
