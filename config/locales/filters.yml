@@ -14,6 +14,10 @@ es:
         name: Nombre
         email: Correo electrónico
         agent_id: Agente
+      investment_filter:
+        id: Identificador
+        title: Título
+        address: Dirección
         
       
       

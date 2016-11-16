@@ -1,0 +1,40 @@
+<%= form_for @investment do |f| %>
+
+<div class="row">
+  <div class="col-md-12">
+    <fieldset class="form-group">
+      <%= f.submit 'Guardar inversión', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+    </fieldset>
+  </div>
+</div>
+
+<article>
+  <section>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render partial: 'investments/form/general_data', locals: { f: f } %>
+      </div>
+    </div>
+    
+    <% if @investment.persisted? %>
+      <!-- Photos -->
+      <div class="row">
+        <div class="col-md-12">
+          <%= render partial: "investments/investment_photos",
+                locals: { investment: @investment } %>
+        </div>
+      </div>
+    <% end %>
+        
+    <div class="row">
+      <div class="col-md-12">
+        <fieldset class="form-group">
+          <%= f.submit 'Guardar inversión', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+        </fieldset>
+      </div>
+    </div>
+      
+  </section>
+</article>
+
+<% end %>

@@ -25,4 +25,5 @@
 //= require init
 
 //= require properties
+//= require investments
 //= require owners

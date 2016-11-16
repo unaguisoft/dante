@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+samsung_store:
+  title: Samsung Store
+  details: Black building
+  address: Florida 131
+  should_display_on_web: false
+
+apple_store:
+  title: Apple Store 
+  details: White building
+  address: Cupertino 123
+  should_display_on_web: false
