@@ -10,11 +10,11 @@ class HomePresenter
   end
 
   def cities
-    City.all
+    City.by_name
   end
 
   def highlighted_properties(limit=3)
-    Property.highlighted.sample(limit)
+    Property.for_web.highlighted.sample(limit)
   end
 
   private

@@ -14,12 +14,12 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
         should_display_price: true,
         expenses_cost: 2000000,
         property_status: 'construyendo',
-        year: 2005,
+        year: '2005',
         number_of_floors: 2,
         built_area: 200,
         semi_built_area: 200,
         total_area: 400,
-        perimeter: 350,
+        perimeter: '350',
         address: '12 Nro 1231',
         description: 'Esta es la descripción',
         title: 'Este es el título',
@@ -27,8 +27,8 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
         number_of_bedrooms: 2,
         number_of_bathrooms: 2,
         number_of_toilets: 2,
-        should_display_on_web: true,
-        should_highlight_on_web: true,
+        should_display_on_web: false,
+        should_highlight_on_web: false,
         city_id: cities(:tolosa).id,
         owner_id: owners(:monica).id,
         feature_ids: [features(:garage).id, features(:quincho).id]
@@ -62,7 +62,7 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
     get properties_path, params: { property_filter: {user_id: @property.user_id } }
     assert_response :success
 
-    assert_equal 1, assigns(:presenter).send(:properties).send(:count)
+    assert_equal 2, assigns(:presenter).send(:properties).send(:count)
     assert_includes assigns(:presenter).send(:properties), @property.decorate
   end
 
@@ -75,8 +75,8 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Property.count', 1) do
       post properties_path, params: { property: @property_new_data }
     end
-    
-    property = Property.unscoped.last    
+
+    property = Property.unscoped.last
     assert_redirected_to upload_photos_property_path(property)
 
     property.as_json.each do |key, value|

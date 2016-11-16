@@ -22,9 +22,37 @@ casa_de_barbie:
   number_of_bedrooms: 1
   number_of_bathrooms: 1
   number_of_toilets: 1
-  should_display_on_web: false
-  should_highlight_on_web: false
+  should_display_on_web: true
+  should_highlight_on_web: true
   city: la_plata
+  owner: joey
+  user: ross
+
+casa_de_mickey:
+  kind: 0 # Commercial
+  status: 0 # Active
+  price_in_cents: 1000_000_000
+  currency: 0 # ARS
+  should_display_price: false
+  expenses_cost_in_cents: 1_000_000
+  property_status: 3 # Enabled
+  property_kind: 4 # Dto
+  year: 2010
+  number_of_floors: 2
+  built_area: 200
+  semi_built_area: 200
+  total_area: 400
+  perimeter: 350
+  address: Disney
+  description: La casa de Mickey Mouse
+  title: Casa de Mickey
+  number_of_rooms: 2
+  number_of_bedrooms: 2
+  number_of_bathrooms: 2
+  number_of_toilets: 2
+  should_display_on_web: true
+  should_highlight_on_web: false
+  city: tolosa
   owner: joey
   user: ross
 

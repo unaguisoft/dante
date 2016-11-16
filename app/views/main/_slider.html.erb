@@ -6,7 +6,9 @@
             <%= image_tag property.first_photo_url('770x460') %>
               <div class="slide-info">
                   <p class="sli_price"> <%= number_to_currency property.price, unit: property.currency.upcase %> </p>
-                  <p class="sli_titl"><%= property.title %></p>
+                  <p class="sli_titl">
+                    <%= link_to property.title, property_details_path(id: property.id) %>
+                  </p>
                   <p class="sli_desc"><%= property.description.truncate(50) %></p>
               </div>
           </li>

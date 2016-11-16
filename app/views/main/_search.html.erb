@@ -1,6 +1,6 @@
 <div class="srch_frm">
     <h3>Búsqueda de Propiedades</h3>
-    <%= form_for @presenter.filter, url: properties_path, method: :get do |f| %>
+    <%= form_for @presenter.filter, url: properties_for_web_path, method: :get do |f| %>
         <div class="control-group form-group">
             <div class="controls">
                 <label>Descripción</label>
@@ -21,13 +21,13 @@
                 <label>Rubro </label>
                 <%= f.select :property_kind,
                   options_for_select(Property.property_kinds.map { |k, v| [k.humanize.capitalize, k]}),
-                  {}, class: 'form-control' %>
+                  {prompt: 'Todos'}, class: 'form-control' %>
             </div>
             <div class="controls col-md-6">
                 <label>Categoría </label>
                 <%= f.select :kind,
                   options_for_select(Property.kinds.map { |k, v| [k.humanize.capitalize, k]}),
-                  {}, class: 'form-control' %>
+                  {prompt: 'Todos'}, class: 'form-control' %>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -35,39 +35,11 @@
         <div class="control-group form-group">
             <div class="controls col-md-6 first">
                 <label>Precio Min. </label>
-                <select name="min-price" class="form-control" required data-validation-required-message="Please select a Min. Price.">
-                    <option value="" selected="selected">$50</option>
-                    <option value="2">$00</option>
-                    <option value="3">$200</option>
-                    <option value="3">$300</option>
-                    <option value="3">$400</option>
-                    <option value="3">$500</option>
-                    <option value="3">$700</option>
-                    <option value="3">$800</option>
-                    <option value="3">$900</option>
-                    <option value="3">$000</option>
-                    <option value="3">$500</option>
-                    <option value="3">$2000</option>
-                    <option value="3">$2500</option>
-                </select>
+                <%= f.number_field :price_from, class: 'form-control', placeholder: 'Precio mín.' %>
             </div>
             <div class="controls col-md-6">
                 <label> Precio Max. </label>
-                <select name="max-price" class="form-control" required data-validation-required-message="Please select a Max. Price.">
-                    <option value="" selected="selected">$200</option>
-                    <option value="2">$300</option>
-                    <option value="3">$400</option>
-                    <option value="3">$500</option>
-                    <option value="3">$600</option>
-                    <option value="3">$700</option>
-                    <option value="3">$800</option>
-                    <option value="3">$900</option>
-                    <option value="3">$1000</option>
-                    <option value="3">$1500</option>
-                    <option value="3">$2000</option>
-                    <option value="3">$2500</option>
-                    <option value="3">$3000</option>
-                </select>
+                <%= f.number_field :price_to, class: 'form-control', placeholder: 'Precio max.' %>
             </div>
             <div class="clearfix"></div>
         </div>
