@@ -1339,20 +1339,24 @@ a.btn.btn_trans {
     text-decoration: none;
 }
 
-section#feat_propty .panel.panel-default:hover .img_hov_eff {
+section#feat_propty .panel.panel-default:hover .img_hov_eff,
+section#investments .panel.panel-default:hover .img_hov_eff {
     opacity: 1;
     visibility: visible;
 }
 
-section#feat_propty .panel.panel-default:hover a.btn.btn_trans {
+section#feat_propty .panel.panel-default:hover a.btn.btn_trans,
+section#investments .panel.panel-default:hover a.btn.btn_trans {
     top: 50%;
 }
 
-section#feat_propty .panel.panel-default:hover .panel-image {
+section#feat_propty .panel.panel-default:hover .panel-image,
+section#investments .panel.panel-default:hover .panel-image {
     border-bottom: 2px solid #ef7351;
 }
 
-section#feat_propty .panel.panel-default:hover h3.sec_titl {
+section#feat_propty .panel.panel-default:hover h3.sec_titl,
+section#investments .panel.panel-default:hover h3.sec_titl {
     color: #ef7351;
 }
 

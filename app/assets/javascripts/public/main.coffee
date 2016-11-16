@@ -100,9 +100,20 @@ class PublicApp.PropertyDetails
     $('#prop_slid').bxSlider
       pagerCustom: '#slid_nav'
 
+# --------------------------------
+# INVESTMENT DETAIL
+# --------------------------------
+class PublicApp.InvestmentDetails
+	constructor: () ->
+		@bindEvents()
+
+	bindEvents: () ->
+    $('#prop_slid').bxSlider
+      pagerCustom: '#slid_nav'
 
 # --------------------------------
 # --------------------------------
 $(document).on "turbolinks:load page:change", ->
  new PublicApp.Home() unless $(".main.home").length == 0
  new PublicApp.PropertyDetails() unless $(".main.property_details") == 0
+ new PublicApp.InvestmentDetails() unless $(".main.investment_details") == 0

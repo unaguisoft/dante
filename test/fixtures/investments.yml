@@ -7,7 +7,7 @@ samsung_store:
   should_display_on_web: false
 
 apple_store:
-  title: Apple Store 
+  title: Apple Store
   details: White building
   address: Cupertino 123
-  should_display_on_web: false
+  should_display_on_web: true

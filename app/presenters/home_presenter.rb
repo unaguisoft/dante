@@ -17,6 +17,10 @@ class HomePresenter
     Property.for_web.highlighted.sample(limit)
   end
 
+  def investments(limit=3)
+    Investment.for_web.sample(limit)
+  end
+
   private
 
   def filter_params
