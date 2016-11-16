@@ -17,12 +17,12 @@
                       <div class="panel-image">
                         <%= image_tag investment.first_photo_url('370x255'), class: 'img-responsive img-hover' %>
                         <div class="img_hov_eff">
-                          <%= link_to 'Ver más detalles', '#', class: 'btn btn-default btn_trans' %>
+                          <%= link_to 'Ver más detalles', investment_details_path(id: investment.id), class: 'btn btn-default btn_trans' %>
                         </div>
                       </div>
                       <div class="panel-body">
                         <h3 class="sec_titl text-center">
-                          <%= link_to investment.title, '#' %>
+                          <%= link_to investment.title, investment_details_path(id: investment.id) %>
                         </h3>
 
                         <p class="sec_desc text-center" style="min-height: 0">

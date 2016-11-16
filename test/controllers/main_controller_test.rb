@@ -27,6 +27,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not_includes assigns(:presenter).highlighted_properties, non_public_property
   end
 
+  test 'should display property details' do
+    get property_details_path(id: @barbie.id)
+    assert_response :success
+  end
+
   test 'should search by description' do
     get properties_for_web_path, params: { property_filter: { description: @barbie.description } }
     assert_includes assigns(:properties), @barbie.decorate
@@ -67,6 +72,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get root_path
     assert_includes assigns(:presenter).investments, @apple_store
     assert_not_includes assigns(:presenter).investments, @samsung_store
+  end
+
+  test 'should display investment details' do
+    get investment_details_path(id: @apple_store.id)
+    assert_response :success
   end
 
 end

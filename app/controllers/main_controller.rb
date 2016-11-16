@@ -20,6 +20,11 @@ class MainController < ApplicationController
     @presenter = PropertyForWebPresenter.new(params[:id])
   end
 
+  # GET /inversion/:id
+  def investment_details
+    @investment = Investment.find(params[:id])
+  end
+
 
   private
 
