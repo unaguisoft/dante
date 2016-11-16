@@ -1,6 +1,6 @@
 class InvestmentsController < ApplicationController
 
-  before_action :set_investment, only: [:edit, :update, :destroy, :upload_photos]
+  before_action :set_investment, only: [:edit, :update, :destroy, :upload_investment_photos]
   
   def index
     @presenter = InvestmentPresenter.new(params)
