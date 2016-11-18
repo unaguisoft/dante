@@ -1,0 +1,31 @@
+<div class="box box-primary">
+
+  <div class="box-header with-border">
+    <h3 class="box-title">
+      <span class="fa fa-photo"></span>
+      Imágenes <span class="text-muted" style="font-size: 13px;"> (Arrastrá las fotos o elegilas manualmente)</span>
+    </h3>
+  </div>
+
+  <div class="box-body">
+
+    <input id="fileupload" type="file" name="investment_photo[file]"
+        data-url="<%= url_for([:investment, :investment_photos, investment_id: investment]) %>" multiple>
+    <br />
+
+    <div id="js-progress-bar" class="progress xs">
+      <div class="progress-bar progress-bar-aqua"></div>
+    </div>
+
+    <br />
+
+    <ul class="row photos" id="js-investment-photos">
+      <%= render investment.investment_photos %>
+    </ul>
+
+  </div>
+</div>
+
+
+
+

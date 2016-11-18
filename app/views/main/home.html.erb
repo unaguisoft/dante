@@ -1,3 +1,46 @@
-<div class="content">
-  <h3> Hola <%= current_user.name %>, hoy puede ser un gran día :) </h3>
-</div>
+<!-- Header Stat Banner -->
+<header id="banner" class="stat_bann">
+  <div class="bannr_sec">
+    <%= image_tag 'banner_5.jpg', alt: 'banner' %>
+    <h1 class="main_titl">
+      Dante Inmobiliaria
+    </h1>
+    <h4 class="sub_titl">
+      Un hogar por descubrir
+    </h4>
+
+  </div>
+</header>
+
+
+<!-- Page Content -->
+<section id="srch_slide">
+
+    <div class="container">
+
+        <!-- Search & Slider -->
+        <div class="row">
+            <!-- Search Form -->
+            <div class="col-md-4">
+                <%= render 'search' %>
+            </div>
+             <!-- Slider -->
+            <div class="col-md-8 slide_sec">
+                <%= render "main/slider", presenter: @presenter %>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+</section>
+
+<div class="spacer-60"></div>
+
+<%= render "main/highlighted", presenter: @presenter %>
+
+<div class="spacer-60"></div>
+
+<%= render "main/investments", presenter: @presenter %>
+

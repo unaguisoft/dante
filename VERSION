@@ -1,3 +1,19 @@
+0.3
+- Detalle de propiedad en versión pública
+- Contacto
+- Alta de inversión
+- Baja de inversión
+- Modificación de inversión
+- Listado de inversión
+- Búqueda en versión pública
+- Inversiones en versión pública
+
+0.2
+- Primera versión del front
+- Carga de imágenes a una propiedad
+- Bug al eliminar propiedad que tiene features asociadas
+- Información catastral no es obligatoria
+
 0.1
 - Iniciar Sesión
 - Cerrar Sesión

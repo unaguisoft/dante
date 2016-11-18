@@ -1,0 +1,43 @@
+<header class="bread_crumb">
+    <div class="pag_titl_sec">
+        <h1 class="pag_titl">Listado de Propiedades</h1>
+        <h4 class="sub_titl">Encuentra tu hogar</h4>
+    </div>
+    <div class="pg_links">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <p class="lnk_pag">
+                    <%= link_to 'Inicio', root_path %>
+                  </p>
+                  <p class="lnk_pag"> / </p>
+                  <p class="lnk_pag">Listado de propiedades</p>
+                </div>
+                <div class="col-md-6 text-right">
+                  <p class="lnk_pag">
+                    <%= link_to 'Volver al Inicio', root_path %>
+                  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="spacer-60"></div>
+<div class="container">
+  <div class="row">
+    <!-- Properties Section -->
+    <section id="feat_propty">
+        <div class="container">
+          <% @properties.each_slice(3) do |properties| %>
+            <div class="row">
+              <% properties.each do |property| %>
+                <%= render "main/property", property: property %>
+              <% end %>
+            </div>
+            <div class="spacer-30"> </div>
+          <% end %>
+        </div>
+    </section>
+  </div>
+</div>

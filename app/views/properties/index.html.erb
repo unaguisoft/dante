@@ -7,13 +7,14 @@
 
   <article class="box box-primary">
     <section class="box-body">
-      
+
       <%= render 'filter' %>
 
       <table class="table table-custom table-hover">
         <thead>
           <tr>
             <th>Identificador</th>
+            <th>Título</th>
             <th>Dirección</th>
             <th>Ciudad</th>
             <th>Superficie Cubierta</th>
@@ -26,9 +27,9 @@
           <%= render @presenter.properties %>
         </tbody>
       </table>
-      
+
       <%= paginate @presenter.properties %>
-      
+
       <%= content_tag :p, 'No se encontraron propiedades', class: 'text-center' unless @presenter.properties.any? %>
 
     </section>

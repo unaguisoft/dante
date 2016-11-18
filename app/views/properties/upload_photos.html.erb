@@ -1,0 +1,23 @@
+<header class="content-header">
+  <h1>Cargar imágenes de la propiedad
+    <%= back_to_link 'Volver', '', 'pull-right' %>
+  </h1>
+</header>
+
+<section class="content">
+  <!-- Photos -->
+  <div class="row">
+    <div class="col-md-12">
+      <%= render partial: "properties/form/photos",
+            locals: { property: @property } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <fieldset class="form-group">
+        <%= link_to 'Cargar imágenes', [:properties], class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+      </fieldset>
+    </div>
+  </div>
+</section>
+

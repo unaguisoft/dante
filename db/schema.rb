@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923225615) do
+ActiveRecord::Schema.define(version: 20161031205711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,24 @@ ActiveRecord::Schema.define(version: 20160923225615) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "investment_photos", force: :cascade do |t|
+    t.string   "file_uid"
+    t.string   "file_name"
+    t.integer  "investment_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["investment_id"], name: "index_investment_photos_on_investment_id", using: :btree
+  end
+
+  create_table "investments", force: :cascade do |t|
+    t.string   "title",                                 null: false
+    t.text     "details",                               null: false
+    t.string   "address",                               null: false
+    t.boolean  "should_display_on_web", default: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
   create_table "owners", force: :cascade do |t|
     t.string   "first_name", null: false
     t.string   "last_name",  null: false
@@ -39,6 +57,15 @@ ActiveRecord::Schema.define(version: 20160923225615) do
     t.index ["user_id"], name: "index_owners_on_user_id", using: :btree
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string   "file_uid"
+    t.string   "file_name"
+    t.integer  "property_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["property_id"], name: "index_photos_on_property_id", using: :btree
+  end
+
   create_table "properties", force: :cascade do |t|
     t.integer  "kind",                    limit: 2,                 null: false
     t.integer  "status",                  limit: 2,                 null: false
@@ -48,12 +75,12 @@ ActiveRecord::Schema.define(version: 20160923225615) do
     t.bigint   "expenses_cost_in_cents"
     t.integer  "property_status",         limit: 2,                 null: false
     t.integer  "property_kind",           limit: 2,                 null: false
-    t.integer  "year"
+    t.string   "year"
     t.integer  "number_of_floors",        limit: 2
-    t.bigint   "built_area",                                        null: false
-    t.bigint   "semi_built_area",                                   null: false
+    t.bigint   "built_area"
+    t.bigint   "semi_built_area"
     t.bigint   "total_area"
-    t.bigint   "perimeter",                                         null: false
+    t.string   "perimeter"
     t.string   "address",                                           null: false
     t.text     "description"
     t.string   "title",                                             null: false
@@ -68,6 +95,7 @@ ActiveRecord::Schema.define(version: 20160923225615) do
     t.integer  "user_id"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
+    t.bigint   "open_area"
     t.index ["city_id"], name: "index_properties_on_city_id", using: :btree
     t.index ["owner_id"], name: "index_properties_on_owner_id", using: :btree
     t.index ["user_id"], name: "index_properties_on_user_id", using: :btree
@@ -91,7 +119,9 @@ ActiveRecord::Schema.define(version: 20160923225615) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "investment_photos", "investments"
   add_foreign_key "owners", "users"
+  add_foreign_key "photos", "properties"
   add_foreign_key "properties", "cities"
   add_foreign_key "properties", "owners"
   add_foreign_key "properties", "users"

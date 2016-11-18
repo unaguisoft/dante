@@ -1,0 +1,13 @@
+<tr id="<%= dom_id(investment) %>">
+  <td class="text-center"> <%= link_to investment.id, [:edit, investment] %> </td>
+  <td class="text-center"> <%= investment.title %> </td>
+  <td class="text-center"> <%= investment.address %> </td>
+  <td class="text-center"> <%= investment.public? %>
+  <td>
+    <%= link_to 'Editar', [:edit, investment], class: 'btn btn-xs btn-primary' %>
+    <%= link_to 'Eliminar', investment, method: :delete,
+        data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+  </td>
+
+</tr>
+

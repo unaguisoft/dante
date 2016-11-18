@@ -1,0 +1,117 @@
+<!-- Header bradcrumb -->
+<header class="bread_crumb">
+    <div class="pag_titl_sec">
+        <h1 class="pag_titl"><%= @investment.title %></h1>
+        <h4 class="sub_titl">
+          <%= @investment.address %>
+        </h4>
+    </div>
+    <div class="pg_links">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <p class="lnk_pag">
+                    <%= link_to 'Inicio', root_path  %>
+                  </p>
+                  <p class="lnk_pag"> / </p>
+                  <p class="lnk_pag">Detalle de Inversión</p>
+                </div>
+                <div class="col-md-6 text-right">
+                  <p class="lnk_pag">
+                    <%= link_to 'Volver al Inicio', root_path  %>
+                  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="spacer-60"></div>
+<div class="container">
+    <div class="row">
+        <!-- Investment Details Section -->
+        <section id="prop_detal" class="col-md-8">
+            <div class="row">
+                <div class="panel panel-default">
+                   <!-- Investment Slider Images -->
+                    <div class="panel-image">
+                        <ul id="prop_slid">
+                          <% @investment.investment_photos.each do |photo| %>
+                            <%= content_tag :li, image_tag(photo.file.thumb('800x450#').url, class: 'img-responsive') %>
+                          <% end %>
+                        </ul>
+                    <!-- Investment Slider Thumbnails -->
+                        <div class="col-md-12 rel_img">
+                            <ul id="slid_nav">
+                              <% @investment.investment_photos.each_with_index do |photo, index| %>
+                                <li>
+                                  <%= link_to '', 'data-slide-index' => index do %>
+                                    <%= image_tag photo.file.thumb('132x80#').url, class: 'img-responsive img-hover' %>
+                                  <% end %>
+                                </li>
+                              <% end %>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="panel-body">
+                        <h3 class="sec_titl"> <%= @investment.title %> </h3>
+
+                        <p class="sec_desc">
+                          <%= @investment.details %>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </section>
+
+        <!-- Sidebar Section -->
+        <section id="sidebar" class="col-md-4">
+            <!-- Search Form -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="srch_frm">
+                        <h3>Consultar</h3>
+                        <form name="sentMessage" id="contactForm" novalidate>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label> Tu Nombre </label>
+                                    <input type="text" class="form-control" id="keyword" required data-validation-required-message="Please enter a keyword." placeholder="Ingresa tu nombre">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label> Tu Correo </label>
+                                    <input type="email" class="form-control" id="keyword" required data-validation-required-message="Please enter a keyword." placeholder="Ingresa tu nombre">
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label> Tu Mensaje </label>
+                                    <textarea class="form-control" placeholder="Escribe tu mensaje" rows="8"></textarea>
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+
+                            <div id="success"></div>
+                            <!-- For success/fail messages -->
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </section>
+
+    </div>
+</div>
