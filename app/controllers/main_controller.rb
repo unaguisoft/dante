@@ -29,9 +29,8 @@ class MainController < ApplicationController
   private
 
   def filter_params
-    params.require(:property_filter).permit(:title, :kind, :description, :city_id, :price_from, :price_to,
-                                            :property_kind, :kind)
-
+    parameters = params.require(:property_filter).permit(:title, :kind, 
+      :description, :city_id, :price_from, :price_to, :property_kind, :kind)
   end
 
 end

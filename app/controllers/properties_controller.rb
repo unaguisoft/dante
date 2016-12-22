@@ -3,7 +3,7 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: [:edit, :update, :destroy, :upload_photos]
   
   def index
-    @presenter = PropertyPresenter.new(params)
+    @presenter = PropertyPresenter.new(params, current_user)
   end
 
   def new
@@ -14,8 +14,8 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    @property            = Property.new(property_params)
-    @property.user       = current_user
+    @property      = Property.new(property_params)
+    @property.user = current_user
 
     if @property.save
       redirect_to upload_photos_property_path(@property), notice: 'La propiedad ha sido creada correctamente. Seleccione las imágenes.'

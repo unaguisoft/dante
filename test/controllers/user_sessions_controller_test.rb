@@ -15,7 +15,7 @@ class UserSessionsControllerTest < ActionDispatch::IntegrationTest
     post user_sessions_path, params: { email: @me.email, password: 'friends' }
     assert logged_in?
     assert_equal @me, assigns(:user)
-    assert_redirected_to root_path
+    assert_redirected_to properties_path
   end
 
   test 'should not create session' do
