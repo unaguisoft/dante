@@ -1,0 +1,18 @@
+<html>
+  <body>
+    Un usuario ha enviado una consulta desde la página
+    <dl>
+      <dt> Nombre </dt>
+      <dd> <%= @question['name'] %> </dd>
+
+      <dt> Teléfono </dt>
+      <dd> <%= @question['phone'] %> </dd>
+
+      <dt> Correo </dt>
+      <dd> <%= @question['email'] %> </dd>
+
+      <dt> Mensaje </dt>
+      <dd> <%= simple_format(@question['message'][0]) %> </dd>
+    </dl>
+  </body>
+</html>

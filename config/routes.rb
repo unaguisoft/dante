@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get 'propiedad/:id', to: 'main#property_details', as: :property_details
   get 'inversion/:id', to: 'main#investment_details', as: :investment_details
   get 'contacto', to: 'main#contact', as: :contact
+  post 'propiedad/:id/enviar_consulta', to: 'main#send_question', as: :send_question
+  post 'enviar_contacto', to: 'main#send_contact', as: :send_contact
 
   get 'login', to: 'user_sessions#new', as: :login
   post 'logout', to: 'user_sessions#destroy', as: :logout

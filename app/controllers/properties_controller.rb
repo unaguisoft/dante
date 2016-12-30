@@ -1,7 +1,7 @@
 class PropertiesController < ApplicationController
 
   before_action :set_property, only: [:edit, :update, :destroy, :upload_photos]
-  
+
   def index
     @presenter = PropertyPresenter.new(params, current_user)
   end
@@ -44,7 +44,7 @@ class PropertiesController < ApplicationController
       redirect_to :properties
     end
   end
-  
+
   def upload_photos
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'La propiedad buscada no existe'
