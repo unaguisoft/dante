@@ -29,7 +29,7 @@ class MainController < ApplicationController
 
   # POST /enviar_contacto
   def send_contact
-    # PropertyMailer.contact(params[:question]).deliver_now
+    PropertyMailer.contact(params[:question]).deliver_now
     redirect_to contact_path, notice: 'El correo ha sido enviado'
   end
 

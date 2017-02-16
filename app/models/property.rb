@@ -6,7 +6,7 @@ class Property < ApplicationRecord
 
   # -- Enum
   enum kind: { 'comercial': 0, 'residencial': 1 } # Categoría
-  enum status: { 'activo': 0, 'reservado': 1, 'vendido': 2, 'negociando': 3 }
+  enum status: { 'activo': 0, 'reservado': 1, 'vendido': 2, 'negociando': 3, 'cancelado': 4 }
   enum property_status: {
     'sin_construir': 0,
     'construyendo': 1,

@@ -126,5 +126,4 @@ ActiveRecord::Schema.define(version: 20161031205711) do
   add_foreign_key "properties", "owners"
   add_foreign_key "properties", "users"
   add_foreign_key "property_features", "features"
-  add_foreign_key "property_features", "properties"
 end
