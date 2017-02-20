@@ -1,9 +1,9 @@
 class PropertiesController < ApplicationController
 
   before_action :set_property, only: [:edit, :update, :destroy, :upload_photos]
-  
+
   def index
-    @presenter = PropertyPresenter.new(params)
+    @presenter = PropertyPresenter.new(params, current_user)
   end
 
   def new
@@ -14,8 +14,8 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    @property            = Property.new(property_params)
-    @property.user       = current_user
+    @property      = Property.new(property_params)
+    @property.user = current_user
 
     if @property.save
       redirect_to upload_photos_property_path(@property), notice: 'La propiedad ha sido creada correctamente. Seleccione las imágenes.'
@@ -44,7 +44,7 @@ class PropertiesController < ApplicationController
       redirect_to :properties
     end
   end
-  
+
   def upload_photos
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'La propiedad buscada no existe'
@@ -58,7 +58,7 @@ class PropertiesController < ApplicationController
             :should_display_price, :expenses_cost, :property_status,
             :property_kind, :year, :number_of_floors, :built_area,
             :semi_built_area, :total_area, :perimeter, :open_area,
-            :address, :description, :title, :number_of_rooms,
+            :address, :description, :title, :number_of_rooms, :bankable,
             :number_of_bedrooms, :number_of_bathrooms, :number_of_toilets,
             :should_display_on_web, :should_highlight_on_web, :city_id,
             :owner_id, :user_id, feature_ids: []) if params[:property].present?

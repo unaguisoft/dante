@@ -3,6 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
 
   setup do
+    @ross   = users(:ross)
     @barbie = properties(:casa_de_barbie)
     @mickey = properties(:casa_de_mickey)
     @apple_store = investments(:apple_store)
@@ -33,37 +34,37 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should search by description' do
-    get properties_for_web_path, params: { property_filter: { description: @barbie.description } }
+    get properties_for_web_path, params: { property_filter: { description: @barbie.description, current_user: @ross } }
     assert_includes assigns(:properties), @barbie.decorate
     assert_not_includes assigns(:properties), @mickey.decorate
   end
 
   test 'should search by city' do
-    get properties_for_web_path, params: { property_filter: { city_id: @barbie.city_id } }
+    get properties_for_web_path, params: { property_filter: { city_id: @barbie.city_id, current_user: @ross } }
     assert_includes assigns(:properties), @barbie.decorate
     assert_not_includes assigns(:properties), @mickey.decorate
   end
 
   test 'should search by property kind' do
-    get properties_for_web_path, params: { property_filter: { property_kind: @barbie.property_kind } }
+    get properties_for_web_path, params: { property_filter: { property_kind: @barbie.property_kind, current_user: @ross } }
     assert_includes assigns(:properties), @barbie.decorate
     assert_not_includes assigns(:properties), @mickey.decorate
   end
 
   test 'should search by kind' do
-    get properties_for_web_path, params: { property_filter: { kind: @barbie.kind } }
+    get properties_for_web_path, params: { property_filter: { kind: @barbie.kind, current_user: @ross } }
     assert_includes assigns(:properties), @barbie.decorate
     assert_not_includes assigns(:properties), @mickey.decorate
   end
 
   test 'should search by min price' do
-    get properties_for_web_path, params: { property_filter: { price_from: @barbie.price } }
+    get properties_for_web_path, params: { property_filter: { price_from: @barbie.price, current_user: @ross } }
     assert_includes assigns(:properties), @barbie.decorate
     assert_not_includes assigns(:properties), @mickey.decorate
   end
 
   test 'should search by max price' do
-    get properties_for_web_path, params: { property_filter: { price_to: @mickey.price } }
+    get properties_for_web_path, params: { property_filter: { price_to: @mickey.price, current_user: @ross } }
     assert_includes assigns(:properties), @mickey.decorate
     assert_not_includes assigns(:properties), @barbie.decorate
   end

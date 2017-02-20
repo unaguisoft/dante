@@ -25,7 +25,7 @@ class HomePresenter
 
   def filter_params
     if @params[:property_filter]
-      parameters = @params.require(:property_filter).permit(:description, :city_id, :kind, :property_kind, :price_from, :price_to)
+      parameters = @params.require(:property_filter).permit(:description, :city_id, :kind, :property_kind, :price_from, :price_to, :bankable)
     end
     parameters || {}
   end

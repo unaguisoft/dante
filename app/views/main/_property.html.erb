@@ -38,7 +38,9 @@
                   </p>
                 </div>
                 <div class="col-md-6">
-                    <p class="readmore text-right"> <a href="property_details.html">Ver más</a> </p>
+                  <p class="readmore text-right">
+                    <%= link_to 'Ver más detalles', property_details_path(id: property.id) %>
+                  </p>
                 </div>
             </div>
         </div>

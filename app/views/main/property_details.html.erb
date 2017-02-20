@@ -253,11 +253,13 @@
                 <div class="col-md-12">
                     <div class="srch_frm">
                         <h3>Consultar</h3>
-                        <form name="sentMessage" id="contactForm" novalidate>
+                        <%= form_tag send_question_path(@presenter.property) do %>
+                          <%= hidden_field_tag :property_id, @presenter.property.id %>
+
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label> Tu Nombre </label>
-                                    <input type="text" class="form-control" id="keyword" required data-validation-required-message="Please enter a keyword." placeholder="Ingresa tu nombre">
+                                    <%= text_field_tag 'question[name]', '', class: 'form-control', placeholder: 'Ingresa tu nombre', required: true  %>
                                     <p class="help-block"></p>
                                 </div>
                             </div>
@@ -265,7 +267,7 @@
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label> Tu Correo </label>
-                                    <input type="email" class="form-control" id="keyword" required data-validation-required-message="Please enter a keyword." placeholder="Ingresa tu nombre">
+                                    <%= email_field_tag 'question[email]', '', class: 'form-control', placeholder: 'Ingresa tu correo', required: true  %>
                                     <p class="help-block"></p>
                                 </div>
                             </div>
@@ -273,15 +275,17 @@
                             <div class="control-group form-group">
                                 <div class="controls">
                                     <label> Tu Mensaje </label>
-                                    <textarea class="form-control" placeholder="Escribe tu mensaje" rows="8"></textarea>
+                                    <%= text_area 'question[message]', '', class: 'form-control', placeholder: 'Escribe tu mensaje', rows: 8, required: true %>
                                     <p class="help-block"></p>
                                 </div>
                             </div>
 
-                            <div id="success"></div>
+                            <div id="success">
+                              <%= flash['notice'] if flash['notice'] %>
+                            </div>
                             <!-- For success/fail messages -->
-                            <button type="submit" class="btn btn-primary">Enviar</button>
-                        </form>
+                            <button type="submit" class="btn btn-primary" data-disable-with="Enviando...">Enviar</button>
+                          <% end %>
                     </div>
                 </div>
             </div>

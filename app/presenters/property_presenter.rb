@@ -1,8 +1,9 @@
 class PropertyPresenter
 
-  def initialize(params)
-    @params = params
-    @filter = filter
+  def initialize(params, current_user)
+    @params       = params
+    @current_user = current_user
+    @filter       = filter
   end
 
   def properties
@@ -22,10 +23,11 @@ class PropertyPresenter
   def filter_params
     if @params[:property_filter]
       parameters = @params.require(:property_filter).permit(:id, :title,
-        :city_id, :property_kind, :kind, :price_from, :price_to, :user_id)
+        :city_id, :property_kind, :kind, :price_from, :price_to, :user_id, :bankable)
+      parameters = parameters.merge({current_user: @current_user})
     end
 
-    parameters || {}
+    parameters || {current_user: @current_user}
   end
 
 end

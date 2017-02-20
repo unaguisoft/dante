@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      redirect_back_or_to(:root, notice: 'Ha iniciado sesión exitosamente')
+      redirect_back_or_to([:properties], notice: 'Ha iniciado sesión exitosamente')
     else
       flash[:error] = 'Combinación de usuario y clave incorrecta'
       render action: 'new'

@@ -39,10 +39,10 @@
                 </div>
                 <div class="col-md-12">
                     <div class="cont_frm">
-                        <form name="sentMessage" id="contactForm" novalidate>
+                        <%= form_tag send_contact_path do %>
                             <div class="control-group form-group col-md-6 first">
                                 <div class="controls">
-                                    <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name." placeholder="Tu Nombre">
+                                    <%= text_field_tag 'question[name]', '', id: 'name', class: 'form-control', placeholder: 'Tu nombre', required: true  %>
                                     <div class="in_ico">
                                         <i class="fa fa-user"></i>
                                     </div>
@@ -50,7 +50,7 @@
                                 </div>
 
                                 <div class="controls">
-                                    <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter an email address." placeholder="Correo Electrónico">
+                                    <%= email_field_tag 'question[email]', '', id: 'email', class: 'form-control', placeholder: 'Tu correo', required: true  %>
                                     <div class="in_ico">
                                         <i class="fa fa-envelope-o"></i>
                                     </div>
@@ -58,7 +58,7 @@
                                 </div>
 
                                 <div class="controls">
-                                    <input type="number" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number." placeholder="Tu teléfono">
+                                    <%= text_field_tag 'question[phone]', '', id: 'phone', class: 'form-control', placeholder: 'Tu teléfono', required: true  %>
                                     <div class="in_ico">
                                         <i class="fa fa-phone"></i>
                                     </div>
@@ -70,15 +70,18 @@
 
                             <div class="control-group form-group col-md-6">
                                 <div class="controls">
-                                    <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none" placeholder="Mensaje"></textarea>
+                                    <%= text_area_tag 'question[message]', '', id: 'message', class: 'form-control', placeholder: 'Mensaje', required: true, rows: 10, cols: 100 %>
                                     <div class="in_ico">
                                         <i class="fa fa-paper-plane-o"></i>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                                <button type="submit" class="btn btn-primary" data-disable-with="Enviando...">Enviar mensaje</button>
                             </div>
+                          <% end %>
                             <div class="clearfix"></div>
-                            <div id="success"></div>
+                            <div id="success">
+                              <%= flash['notice'] if flash['notice'] %>
+                            </div>
                             <!-- For success/fail messages -->
                         </form>
                     </div>
