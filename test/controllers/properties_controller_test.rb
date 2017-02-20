@@ -32,7 +32,8 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
         should_highlight_on_web: false,
         city_id: cities(:tolosa).id,
         owner_id: owners(:monica).id,
-        feature_ids: [features(:garage).id, features(:quincho).id]
+        feature_ids: [features(:garage).id, features(:quincho).id],
+        bankable: true
     }
   end
 
@@ -57,6 +58,15 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal 1, assigns(:presenter).send(:properties).send(:count)
     assert_includes assigns(:presenter).send(:properties), @property.decorate
+  end
+
+  test "should filter properties by bankable" do
+    get properties_path, params: { property_filter: {bankable: '1', current_user: @ross } }
+    assert_response :success
+
+    assert_equal Property.where(bankable: true).count, assigns(:presenter).send(:properties).send(:count)
+    assert_includes assigns(:presenter).send(:properties), Property.find_by(bankable: true)
+    assert_not_includes assigns(:presenter).send(:properties), Property.find_by(bankable: false)
   end
 
   test "should filter properties by user" do

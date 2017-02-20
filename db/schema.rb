@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031205711) do
+ActiveRecord::Schema.define(version: 20170216221333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20161031205711) do
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.bigint   "open_area"
+    t.boolean  "bankable",                          default: false
     t.index ["city_id"], name: "index_properties_on_city_id", using: :btree
     t.index ["owner_id"], name: "index_properties_on_owner_id", using: :btree
     t.index ["user_id"], name: "index_properties_on_user_id", using: :btree
@@ -126,4 +127,5 @@ ActiveRecord::Schema.define(version: 20161031205711) do
   add_foreign_key "properties", "owners"
   add_foreign_key "properties", "users"
   add_foreign_key "property_features", "features"
+  add_foreign_key "property_features", "properties"
 end

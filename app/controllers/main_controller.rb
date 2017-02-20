@@ -42,10 +42,13 @@ class MainController < ApplicationController
   private
 
   def filter_params
+    parameters = {}
     if params[:property_filter]
       parameters = params.require(:property_filter).permit(:title, :kind,
-        :description, :city_id, :price_from, :price_to, :property_kind, :kind)
+        :description, :city_id, :price_from, :price_to, :property_kind, :kind,
+        :bankable)
     end
+    parameters
   end
 
 end

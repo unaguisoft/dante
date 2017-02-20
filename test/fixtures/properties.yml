@@ -27,6 +27,7 @@ casa_de_barbie:
   city: la_plata
   owner: joey
   user: ross
+  bankable: false
 
 casa_de_mickey:
   kind: 0 # Commercial
@@ -83,3 +84,4 @@ casa_de_ken:
   city: tolosa
   owner: monica
   user: rachel
+  bankable: true

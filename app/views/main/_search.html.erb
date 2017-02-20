@@ -44,6 +44,16 @@
             <div class="clearfix"></div>
         </div>
 
+        <div class="control-group form-group">
+            <div class="controls col-md-6 first">
+                <label> Apto Banco </label>
+                <%= f.select :bankable,
+                  options_for_select([['Todos', '0'],['Solo apto banco', '1']]),
+                  {prompt: '--'}, class: 'form-control' %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
         <div id="success"></div>
         <!-- For success/fail messages -->
         <button type="submit" class="btn btn-primary">Buscar</button>

@@ -3,7 +3,8 @@ class PropertyFilter
   include ActiveModel::Model
 
   attr_accessor :id, :title, :kind, :city_id, :price_from, :price_to,
-                :property_kind, :kind, :user_id, :description, :current_user
+                :property_kind, :kind, :user_id, :description, :current_user,
+                :bankable
 
   def call(context=nil)
     properties = (context.nil?) ? Property.all : context
@@ -17,8 +18,9 @@ class PropertyFilter
     properties = properties.where(user: @current_user) if @current_user.present? && @current_user.role == 'agent'
     properties = properties.where('price_in_cents <= ?', (@price_to.to_d * 10_000)) if @price_to.present?
     properties = properties.where('price_in_cents >= ?', (@price_from.to_d * 10_000)) if @price_from.present?
+    properties = properties.where(bankable: true) if @bankable.present? && @bankable == '1'
 
-    properties
+    properties.order(:id)
   end
 
   private
