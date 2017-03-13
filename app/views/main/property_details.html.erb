@@ -171,54 +171,6 @@
 
             <div class="spacer-30"></div>
 
-            <!-- Agent Info -->
-            <div class="row">
-                <div class="agen_info">
-
-                    <div class="col-md-4">
-                        <a href="agents_single.html"><img class="img-responsive img-hover" src="http://placehold.it/270x260" alt="">
-                        </a>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="panel panel-default">
-
-                            <div class="panel-body">
-                                <div class="row agen_desc">
-                                    <div class="col-sm-8">
-                                        <h3 class="sec_titl">
-                        <a href="agents_single.html">Alejo Dante</a>                                   </h3>
-                                        <p class="sec_desc">
-                                          Agente Inmobiliario
-                                        </p>
-
-                                    </div>
-                                </div>
-                                <p class="sec_desc">
-                                    Single origin coffee crucifix tousled freegan lo-fi wayfare flexitaria Marfa deepbanh mi church-key direct trad street American Apparel Pinterest pop-up banh mi you probably.
-                                </p>
-                                <div class="panel_bottom">
-                                    <div class="agen_feat">
-                                        <p class="area">
-                                            <a href="tel:910-213-7890"> <i class="fa fa-phone"></i> 910-213-7890 </a>
-                                        </p>
-                                        <p class="bedrom">
-                                            <a href="mailto:scott@berends.com?Subject=Agent%20enquiry"> <i class="fa fa-envelope"></i> scott@berends.com </a>
-                                        </p>
-                                        <p class="bedrom"><a href="skype:-scottberends1-?chat"><i class="fa fa-skype"></i> scottberends1 </a> </p>
-                                    </div>
-
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <!-- /.row -->
-
             <div class="spacer-30"></div>
 
             <!-- Proerty Map -->
@@ -228,7 +180,7 @@
                     <div class="col-lg-12">
 
                         <h3 class="main_titl text-left">
-                Property Map
+                          Ubicación
             </h3>
 
                     </div>
@@ -236,7 +188,8 @@
                 </div>
                 <div class="col-md-12">
                     <div class="prop_map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3023.0855969237605!2d-73.99038!3d40.738141999999996!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a238556ce7%3A0x3445b7afb4f445e3!2sTaz+Studios!5e0!3m2!1sen!2sin!4v1432831471606" width="600" height="350"></iframe>
+                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3023.0855969237605!2d&#45;73.99038!3d40.738141999999996!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a238556ce7%3A0x3445b7afb4f445e3!2sTaz+Studios!5e0!3m2!1sen!2sin!4v1432831471606" width="600" height="350"></iframe> -->
+                        <iframe src="<%= @presenter.map_url %>" width="600" height="350"></iframe>
                     </div>
 
                 </div>
