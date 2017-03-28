@@ -4,7 +4,7 @@ class PropertyFilter
 
   attr_accessor :id, :title, :kind, :city_id, :price_from, :price_to,
                 :property_kind, :kind, :user_id, :description, :current_user,
-                :bankable
+                :bankable, :number_of_bedrooms
 
   def call(context=nil)
     properties = (context.nil?) ? Property.all : context
@@ -19,6 +19,8 @@ class PropertyFilter
     properties = properties.where('price_in_cents <= ?', (@price_to.to_d * 10_000)) if @price_to.present?
     properties = properties.where('price_in_cents >= ?', (@price_from.to_d * 10_000)) if @price_from.present?
     properties = properties.where(bankable: true) if @bankable.present? && @bankable == '1'
+    properties = properties.where('number_of_bedrooms >= ?', @number_of_bedrooms.to_i) if @number_of_bedrooms.present? && @number_of_bedrooms.to_i == 3
+    properties = properties.where(number_of_bedrooms: @number_of_bedrooms) if @number_of_bedrooms.present? && @number_of_bedrooms.to_i != 3
 
     properties.order(:id)
   end
