@@ -51,6 +51,12 @@
                   options_for_select([['Todos', '0'],['Solo apto banco', '1']]),
                   {prompt: '--'}, class: 'form-control' %>
             </div>
+            <div class="controls col-md-6">
+                <label> Cant. Ambientes </label>
+                <%= f.select :number_of_bedrooms,
+                  options_for_select([['Monoambiente', 1],['1 dormitorio', '1'], ['2 dormitorios', '2'],['Más de 2 dormitorios', '3']]),
+                  {prompt: '--'}, class: 'form-control' %>
+            </div>
             <div class="clearfix"></div>
         </div>
 

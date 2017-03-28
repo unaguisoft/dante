@@ -6,6 +6,7 @@ class PropertyFilterTest < ActiveSupport::TestCase
     @ross           = users(:ross)
     @casa_de_barbie = properties(:casa_de_barbie)
     @casa_de_ken    = properties(:casa_de_ken)
+    @casa_de_mickey = properties(:casa_de_mickey)
   end
 
 
@@ -124,6 +125,23 @@ class PropertyFilterTest < ActiveSupport::TestCase
     properties = PropertyFilter.new(current_user: rachel).call
     assert_not_includes properties, @casa_de_barbie
     assert_includes properties, @casa_de_ken
+  end
+
+  test "should filter by number_of_bedrooms" do
+    properties = PropertyFilter.new(number_of_bedrooms: 3).call
+    assert_includes properties, @casa_de_ken
+    assert_not_includes properties, @casa_de_barbie
+    assert_not_includes properties, @casa_de_mickey
+
+    properties = PropertyFilter.new(number_of_bedrooms: 2).call
+    assert_includes properties, @casa_de_mickey
+    assert_not_includes properties, @casa_de_barbie
+    assert_not_includes properties, @casa_de_ken
+
+    properties = PropertyFilter.new(number_of_bedrooms: 1).call
+    assert_includes properties, @casa_de_barbie
+    assert_not_includes properties, @casa_de_ken
+    assert_not_includes properties, @casa_de_mickey
   end
   
 end
