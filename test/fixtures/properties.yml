@@ -76,7 +76,7 @@ casa_de_ken:
   description: MyText
   title: Casa de ken
   number_of_rooms: 1
-  number_of_bedrooms: 1
+  number_of_bedrooms: 3
   number_of_bathrooms: 1
   number_of_toilets: 1
   should_display_on_web: false

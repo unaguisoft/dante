@@ -3,21 +3,23 @@
     <div class="footer_top">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 abt_sec">
-                    <h2 class="foot_title">
-                      Acerca de
-                    </h2>
+                <div id="about_us" class="col-md-4 abt_sec">
+                    <h2 class="foot_title"> Acerca de </h2>
                     <p>
-                        Ethical quinoa slow-carb squid, irony Pitchfork tousled hella art party PBR&amp;B cray dreamcatcher brunch.
+                    DANTE ESTUDIO INMOBILIARIO es un equipo de trabajo profesional y joven con el entusiasmo de poder marcar un nuevo formato dentro del rubro inmobiliario.
+                    <br>
+                    Hoy nos abocamos a las operaciones relacionadas con la compra y venta de inmuebles con muchísima seriedad, responsabilidad y profesionalismo.
                     </p>
 
                     <div class="spacer-20"></div>
 
                     <p>
-                        Bicycle rights jean shorts organic, street art PBR occupy flexitarian pour-over master cleanse farm-to-table.
-
+                    Estamos para acompañarte dentro del mundo inmobiliario en el proceso que conlleva cualquier operación, para eso es que nos preparamos y capacitamos constantemente.
+                    <br>
+                    Brindamos un servicio de calidad basado en la confianza y en el respeto a nuestros clientes, estamos preparados para ayudarte.
+                    <br>
+                    Somos un equipo capaz de cumplir con la satisfacción de todas las necesidades que se plantean dentro de las operaciones inmobiliarias.
                     </p>
-
                 </div>
                 <!-- Contact Info -->
                 <div class="col-md-4">
@@ -26,16 +28,20 @@
                     </h2>
                     <ul class="cont_info">
                         <li><i class="fa fa-map-marker"></i>
-                            <p>Diag. 74 #2083 e/56 y 57</p>
+                            <p>Diag. 74 #2083 e/16 y 56</p>
                         </li>
                         <li><i class="fa fa-phone"></i>
-                            <p> <a href="tel:2214230180"> Tel: (221) 4230180  </a> </p>
+                            <p> Tel: <a href="tel:2214230180"> (221) 4230180  </a> </p>
                         </li>
                         <li><i class="fa fa-mobile"></i>
-                            <p> <a href="tel:221156165842"> Tel: (221) 15 616 5842  </a> </p>
+                          <p> Cel:
+                            <a href="tel:221155730908"> (221) 15 573 0908  </a> |
+                            <a href="tel:221155059054"> (221) 15 504 9054  </a> |
+                            <a href="tel:221156165842"> (221) 15 616 5842  </a>
+                          </p>
                         </li>
                         <li><i class="fa fa-envelope"></i>
-                            <p> <a href="mailto:sebas.salim@gmail.com"> Correo: sebas.salim@gmail.com </a> </p>
+                            <p> Correo: <a href="mailto:destudioinmobiliario@gmail.com"> destudioinmobiliario@gmail.com </a> </p>
                         </li>
                     </ul>
 
@@ -45,11 +51,11 @@
                       Enlaces de Interés
                     </h2>
                     <ul class="foot_nav">
-                        <li> <a href="index.html">Home Search</a> </li>
-                        <li> <a href="property_listing.html">Properties Inspection</a> </li>
-                        <li> <a href="agents.html">Agents Consult</a> </li>
-                        <li> <a href="contact.html">Get in touch</a> </li>
-                        <li> <%= link_to 'Panel de administración', properties_path %> </li>
+                      <li> <%= link_to 'Home', root_path %> </li>
+                      <li> <%= link_to 'Propiedades', properties_for_web_path %> </li>
+                      <li> <%= link_to 'Inversiones', root_path(anchor: 'investments') %> </li>
+                      <li> <%= link_to 'Contacto', contact_path %> </li>
+                      <li> <%= link_to 'Panel de administración', properties_path %> </li>
                     </ul>
 
                 </div>
