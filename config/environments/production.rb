@@ -80,7 +80,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   ActionMailer::Base.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'danteinmobiliaria.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'danteestudioinmobiliario.com.ar' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   ActionMailer::Base.smtp_settings = {
