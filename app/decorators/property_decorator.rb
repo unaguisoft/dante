@@ -45,6 +45,18 @@ class PropertyDecorator < Draper::Decorator
     end
   end
 
+  def public_price
+    if property.should_display_price
+      h.number_to_currency property.price, unit: currency()
+    else
+      "Consultar"
+    end
+  end
+
+  def currency
+    property.currency.upcase
+  end
+
   private
 
   def property
