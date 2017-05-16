@@ -1,7 +1,8 @@
 class OwnerPresenter
   
-  def initialize(params)
+  def initialize(params:, current_user:)
     @params = params
+    @user   = current_user
     @filter = filter
   end
   
@@ -10,7 +11,7 @@ class OwnerPresenter
   end
   
   def filter
-    @filter ||= OwnerFilter.new(filter_params)
+    @filter ||= OwnerFilter.new(filter_params.merge({user: @user}))
   end
   
   private

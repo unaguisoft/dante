@@ -11,6 +11,7 @@ class Owner < ApplicationRecord
   scope :search, ->(term) {
     where('first_name ilike :term or last_name ilike :term', term: "%#{term}%")
   }
+  scope :all_from_user, ->(user_id) { where('user_id = ?', user_id) }
   
   # -- Validations
   validates :agent, presence: true

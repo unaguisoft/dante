@@ -3,7 +3,7 @@ class OwnersController < ApplicationController
   before_action :set_owner, only: [:edit, :update, :destroy]
   
   def index
-    @presenter = OwnerPresenter.new(params)
+    @presenter = OwnerPresenter.new(current_user: current_user, params: params)
   end
   
   def new
