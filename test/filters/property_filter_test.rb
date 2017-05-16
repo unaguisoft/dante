@@ -62,6 +62,24 @@ class PropertyFilterTest < ActiveSupport::TestCase
     properties = PropertyFilter.new(property_kind: 2, current_user: @ross).call
     assert_empty properties
   end
+
+  test "should filter by status" do
+    properties = PropertyFilter.new(status: nil, current_user: @ross).call
+    assert_includes properties, @casa_de_barbie
+    assert_includes properties, @casa_de_ken
+    assert_includes properties, @casa_de_mickey
+
+    properties = PropertyFilter.new(status: 0, current_user: @ross).call
+    assert_includes properties, @casa_de_barbie
+    assert_not_includes properties, @casa_de_ken
+    assert_not_includes properties, @casa_de_mickey
+
+    properties = PropertyFilter.new(status: 1, current_user: @ross).call
+    assert_includes properties, @casa_de_ken
+    assert_not_includes properties, @casa_de_barbie
+    assert_not_includes properties, @casa_de_mickey
+  end
+
   
   test "should filter by city" do
     properties = PropertyFilter.new(city_id: nil, current_user: @ross).call
