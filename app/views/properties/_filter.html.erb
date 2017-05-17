@@ -1,95 +1,103 @@
 <%= form_for @presenter.filter, url: [:properties], method: :get do |f| %>
 
   <div class="row">
-    <div class="col-md-10">
-      <div class="row">
-        <fieldset class="form-group">
-          <div class="col-md-3">
-            <%= f.label :id %>
-            <%= f.search_field :id, class: 'form-control',
-                  placeholder: 'Ingrese el id',
-                  autofocus: true %>
-          </div>
-
-          <div class="col-md-3">
-            <%= f.label :title %>
-            <%= f.search_field :title, class: 'form-control',
-                  placeholder: 'Ingrese un título' %>
-          </div>
-
-          <div class="col-md-3">
-            <%= f.label :city_id %>
-            <%= f.select :city_id,
-                  options_for_select(City.all.map { |c| [c.name, c.id]}, f.object.city_id),
-                    class: 'form-control', prompt: 'Seleccione ciudad'  %>
-          </div>
-
-          <div class="col-md-3">
-            <%= f.label :property_kind %>
-            <%= f.select :property_kind,
-              options_for_select(Property.property_kinds.map { |k, v| [k.humanize.capitalize, k]}, f.object.property_kind),
-                    class: 'form-control', prompt: 'Seleccione un tipo'  %>
-          </div>
-
-        </fieldset>
+    <fieldset class="form-group">
+      <div class="col-md-3">
+        <%= f.label :id %>
+        <%= f.search_field :id, class: 'form-control',
+          placeholder: 'Ingrese el id',
+          autofocus: true %>
       </div>
 
-      <div class="row">
-        <fieldset class="form-group">
-
-          <div class="col-md-3">
-            <%= f.label :kind %>
-            <%= f.select :kind,
-              options_for_select(Property.kinds.map { |k, v| [k.humanize.capitalize, k]}, f.object.kind),
-                    class: 'form-control', prompt: 'Seleccione un rubro'  %>
-          </div>
-
-          <div class="col-md-3">
-            <%= f.label :price_from %>
-            <%= f.search_field :price_from, class: 'form-control',
-                  placeholder: 'Ingrese un precio mínimo' %>
-          </div>
-
-          <div class="col-md-3">
-            <%= f.label :price_to %>
-            <%= f.search_field :price_to, class: 'form-control',
-                  placeholder: 'Ingrese un precio máximo' %>
-          </div>
-
-          <% if is?('admin') %>
-            <div class="col-md-3">
-              <%= f.label :user_id %>
-              <%= f.select :user_id,
-                options_for_select(User.all.map { |u| [u.name.capitalize, u.id]}, f.object.user_id),
-                      class: 'form-control', prompt: 'Seleccione un agente' %>
-            </div>
-          <% end %>
-        </fieldset>
+      <div class="col-md-3">
+        <%= f.label :title %>
+        <%= f.search_field :title, class: 'form-control',
+          placeholder: 'Ingrese un título' %>
       </div>
 
-      <div class="row">
-        <fieldset class="form-group">
-          <div class="col-md-3">
-            <div class="checkbox">
-              <label>
-                <%= f.check_box :bankable %>
-                Apto Banco
-              </label>
-            </div>
-          </div>
-        </fieldset>
+      <div class="col-md-3">
+        <%= f.label :city_id %>
+        <%= f.select :city_id,
+          options_for_select(City.all.map { |c| [c.name, c.id]}, f.object.city_id),
+          class: 'form-control', prompt: 'Seleccione ciudad'  %>
       </div>
 
-    </div>
+      <div class="col-md-3">
+        <%= f.label :property_kind %>
+        <%= f.select :property_kind,
+          options_for_select(Property.property_kinds.map { |k, v| [k.humanize.capitalize, k]}, f.object.property_kind),
+          class: 'form-control', prompt: 'Seleccione un tipo'  %>
+      </div>
+    </fieldset>
+  </div>
 
-    <div class="col-md-2" style="margin-top: 40px;">
-      <div class="fake-label"></div>
-      <%= link_to 'Limpiar', [:properties], class: 'btn btn-default',
-            'data-disable-with' => 'Espere...' %>
-      <%= f.submit 'Filtrar', class: 'btn btn-primary',
-            'data-disable-with' => 'Filtrando...' %>
+  <div class="row">
+    <fieldset class="form-group">
 
-    </div>
+      <div class="col-md-3">
+        <%= f.label :kind %>
+        <%= f.select :kind,
+          options_for_select(Property.kinds.map { |k, v| [k.humanize.capitalize, k]}, f.object.kind),
+                class: 'form-control', prompt: 'Seleccione un rubro'  %>
+      </div>
+
+      <div class="col-md-3">
+        <%= f.label :price_from %>
+        <%= f.search_field :price_from, class: 'form-control',
+              placeholder: 'Ingrese un precio mínimo' %>
+      </div>
+
+      <div class="col-md-3">
+        <%= f.label :price_to %>
+        <%= f.search_field :price_to, class: 'form-control',
+              placeholder: 'Ingrese un precio máximo' %>
+      </div>
+
+      <div class="col-md-3">
+        <%= f.label :status %>
+        <%= f.select :status,
+          options_for_select(Property.statuses.map { |k, v| [k.humanize.capitalize, k]}, f.object.status),
+                class: 'form-control', prompt: 'Seleccione un estado'  %>
+      </div>
+
+    </fieldset>
+  </div>
+
+  <div class="row">
+    <fieldset class="form-group">
+
+      <% if is?('admin') %>
+        <div class="col-md-3">
+          <%= f.label :user_id %>
+          <%= f.select :user_id,
+            options_for_select(User.all.map { |u| [u.name.capitalize, u.id]}, f.object.user_id),
+                  class: 'form-control', prompt: 'Seleccione un agente' %>
+        </div>
+      <% end %>
+
+      <div class="col-md-3">
+        <div class="fake-label"></div>
+        <div class="checkbox">
+          <label>
+            <%= f.check_box :bankable %>
+            Apto Banco
+          </label>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="fake-label"></div>
+        <%= link_to 'Limpiar', [:properties], class: 'btn btn-block btn-default',
+          'data-disable-with' => 'Espere...' %>
+      </div>
+
+      <div class="col-md-3">
+        <div class="fake-label"></div>
+        <%= f.submit 'Filtrar', class: 'btn btn-block btn-primary',
+          'data-disable-with' => 'Filtrando...' %>
+      </div>
+      
+    </fieldset>
   </div>
 
 <% end %>

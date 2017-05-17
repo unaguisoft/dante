@@ -14,23 +14,23 @@ class PropertyDecorator < Draper::Decorator
   end
 
   def built_area
-    "#{property.built_area} m2"
+    property.built_area ? "#{property.built_area} m2" : '-'
   end
 
   def semi_built_area
-    "#{property.semi_built_area} m2"
+    property.semi_built_area ? "#{property.semi_built_area} m2" : '-'
   end
 
   def total_area
-    "#{property.total_area} m2"
+    property.total_area ? "#{property.total_area} m2" : '-'
   end
 
   def open_area
-    "#{property.total_area} m2"
+    property.total_area ? "#{property.total_area} m2" : '-'
   end
 
   def perimeter
-    "#{property.perimeter} m"
+    property.perimeter ? "#{property.perimeter} m" : '-'
   end
 
   def agent
@@ -43,6 +43,18 @@ class PropertyDecorator < Draper::Decorator
     else
       photos.first.file.thumb("#{size}#").url
     end
+  end
+
+  def public_price
+    if property.should_display_price
+      h.number_to_currency property.price, unit: currency()
+    else
+      "Consultar"
+    end
+  end
+
+  def currency
+    property.currency.upcase
   end
 
   private

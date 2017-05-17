@@ -23,7 +23,7 @@ class PropertyPresenter
   def filter_params
     if @params[:property_filter]
       parameters = @params.require(:property_filter).permit(:id, :title,
-        :city_id, :property_kind, :kind, :price_from, :price_to, :user_id, :bankable)
+        :city_id, :property_kind, :kind, :price_from, :price_to, :user_id, :bankable, :status)
       parameters = parameters.merge({current_user: @current_user})
     end
 
