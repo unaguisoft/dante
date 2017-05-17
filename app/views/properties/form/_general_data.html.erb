@@ -97,6 +97,19 @@
         </fieldset>
       </div>
     </div>
+
+    <% if is?("admin") %> 
+      <div class="row">
+        <div class="col-md-12">
+          <fieldset class="form-group">
+            <%= f.label :user_id %>
+            <%= f.select :user_id,
+                  options_for_select(User.all.decorate.map { |c| [c.name_and_email, c.id]}, f.object.user_id),
+                    class: 'form-control', prompt: 'Seleccione usuario', required: true %>
+          </fieldset>
+        </div>
+      </div>
+    <% end %>
     
     <div class="row">
       <div class="col-md-12">
