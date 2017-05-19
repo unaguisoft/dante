@@ -23,9 +23,31 @@
       <%= render property.photos %>
     </ul>
 
+    <p class="text-muted" style="font-size: 13px;"> *Para ordenar las fotos, simplemente hay que arrastralas a una nueva posición </p>
+
   </div>
 </div>
 
 
-
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function() {
+    $("ul.photos").sortable({
+      revert      : true,
+      connectWith : "ul.photos",
+      stop: function(event, ui) {
+        var id    = ui.item.attr("data-id");
+        var index = ui.item.index();
+        $.ajax({
+          type: 'PUT',
+          contentType: "application/json",
+          url: '/admin/photos/'+id+'?index='+index,
+          success: function(msg) {
+            console.log('Nuevo ordenamiento');
+          }
+        });
+      }
+    });
+  });
+</script>
 
