@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   scope '/admin' do
     resources :user_sessions, only: [:new, :create]
 
+    put 'photos/:id', to: 'photos#update'
+
     resources :properties do
       get 'upload_photos', to: 'properties#upload_photos', on: :member
-      match 'photos', via: [:post, :patch], to: 'photos#create'
+      match 'photos', via: [:post, :patch], to: 'photos#create' 
     end
 
     resources :investments do

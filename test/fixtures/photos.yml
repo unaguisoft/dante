@@ -1,0 +1,25 @@
+# photos.yml
+
+photo_one:
+  file_uid: "photo_one_id"
+  file_name: "photo_one_name"
+  property: casa_de_barbie
+  sort_position: 0
+
+photo_two:
+  file_uid: "photo_two_id"
+  file_name: "photo_two_name"
+  property: casa_de_barbie
+  sort_position: 1
+
+photo_three:
+  file_uid: "photo_three_id"
+  file_name: "photo_three_name"
+  property: casa_de_barbie
+  sort_position: 2
+
+photo_four:
+  file_uid: "photo_four_id"
+  file_name: "photo_four_name"
+  property: casa_de_barbie
+  sort_position: 3
