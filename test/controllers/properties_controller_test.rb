@@ -99,6 +99,7 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get edit property' do
+    @property.photos.destroy_all # Sin esto falla porque intenta renderizar imagenes
     get edit_property_path(@property), params: { id: @property }
     assert_response :success
   end
