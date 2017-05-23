@@ -1,4 +1,4 @@
-<li id="<%= dom_id(photo) %>" class="col-xs-2 item text-center">
+<li id="<%= dom_id(photo) %>" data-id="<%= photo.id %>" class="col-xs-2 item text-center" style="cursor:move">
   <% if /image/ =~ photo.file.mime_type %>
     <%= image_tag(photo.file.thumb('200x200#').url, class: 'img-thumbnail') %>
   <% else %>
