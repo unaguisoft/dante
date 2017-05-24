@@ -47,7 +47,7 @@
                             <ul id="slid_nav">
                               <% @presenter.property.photos.each_with_index do |photo, index| %>
                                 <li>
-                                  <%= link_to '', 'data-slide-index' => index do %>
+                                  <%= link_to '', 'data-slide-index' => (index+1) do %>
                                     <%= image_tag photo.file.thumb('132x80#').url, class: 'img-responsive img-hover' %>
                                   <% end %>
                                 </li>
@@ -188,7 +188,6 @@
                 </div>
                 <div class="col-md-12">
                     <div class="prop_map">
-                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3023.0855969237605!2d&#45;73.99038!3d40.738141999999996!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a238556ce7%3A0x3445b7afb4f445e3!2sTaz+Studios!5e0!3m2!1sen!2sin!4v1432831471606" width="600" height="350"></iframe> -->
                         <iframe src="<%= @presenter.map_url %>" width="600" height="350"></iframe>
                     </div>
 
@@ -224,7 +223,7 @@
                                     <p class="help-block"></p>
                                 </div>
                             </div>
-                            
+
                             <div class="control-group form-group">
                               <div class="controls">
                                 <label> Tu Teléfono </label>

@@ -8,7 +8,7 @@ class Photo < ApplicationRecord
 
   # -- Scopes
   default_scope { order(sort_position: :asc) }
-  
+
   # # -- Validations
   # validates :file, presence: true
   # validates_size_of :file, maximum: 5120.kilobytes,

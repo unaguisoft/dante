@@ -3,6 +3,10 @@
   margin-bottom: 5px;
 }
 
+.highlight2 {
+  background: yellow;
+}
+
 .inline-check-box {
   margin-right: 5px !important;
 }
@@ -69,10 +73,29 @@ tr.is-selected td {
     padding: 0;
     margin: 0px 5px 0px 5px;
     text-align: center;
+    width: 150px;
+    height: 150px;
     img {
       margin-bottom: 10px;
+      float: left;
     }
   }
+}
+.photos li.ui-sortable-helper {
+  border: 2px solid #3498db;
+}
+
+.photos li.placeholder {
+  width: 150px;
+  height: 150px;
+  float: left;
+  background: #eee;
+  border: 2px dashed #bbb;
+  display: block;
+  opacity: 0.6;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
 }
 
 /* Mensaje de ayuda en formularios */

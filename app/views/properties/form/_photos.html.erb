@@ -33,8 +33,8 @@
 <script type="text/javascript">
   $(function() {
     $("ul.photos").sortable({
-      revert      : true,
-      connectWith : "ul.photos",
+      revert      : 100,
+      placeholder: 'placeholder',
       stop: function(event, ui) {
         var id    = ui.item.attr("data-id");
         var index = ui.item.index();
