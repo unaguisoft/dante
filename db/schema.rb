@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216221333) do
+ActiveRecord::Schema.define(version: 20170519190647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20170216221333) do
     t.string   "phones"
     t.string   "cellphone",  null: false
     t.string   "email",      null: false
-    t.integer  "user_id",    null: false
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_owners_on_user_id", using: :btree
@@ -61,8 +61,9 @@ ActiveRecord::Schema.define(version: 20170216221333) do
     t.string   "file_uid"
     t.string   "file_name"
     t.integer  "property_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "sort_position"
     t.index ["property_id"], name: "index_photos_on_property_id", using: :btree
   end
 

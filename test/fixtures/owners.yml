@@ -15,3 +15,12 @@ monica:
   cellphone: 154678901
   email: monica@friends.com
   user: ross
+
+chandler:
+  first_name: Chandler
+  last_name: Bing
+  phones: 0221-4432140
+  cellphone: 154678901
+  email: chandler@friends.com
+  user: rachel
+

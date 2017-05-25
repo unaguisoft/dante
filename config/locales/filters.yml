@@ -10,6 +10,7 @@ es:
         kind: Rubro
         price_from: Precio desde
         price_to: Precio hasta 
+        status: Estado Transacción
       owner_filter:
         name: Nombre
         email: Correo electrónico

@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   # -- Associations
   has_many :properties, dependent: :nullify
+  has_many :owners, dependent: :nullify
 
   # -- Validations
   validates :password, presence: true, if: -> { new_record? || changes[:crypted_password] }
