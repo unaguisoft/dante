@@ -1,3 +1,12 @@
+0.8
+- Cambiar orden de las fotos
+- Dejar que el amin cambie el agente de una propiedad
+- Falta campo teléfono en el formulario de consulta de una propieda
+- Qué hace el campo descripción en la búsqueda de propiedades?
+- Falla el envío de mail en producción
+- Filtrar propiedades por estado de la transacción
+- El agente debería ver solo los propietarios y propiedades que él cargó
+
 0.7
 - Cambio el texto del about us
 - Cambio del dominio de los mails
