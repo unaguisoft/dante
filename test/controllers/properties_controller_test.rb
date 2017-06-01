@@ -33,7 +33,7 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
         city_id: cities(:tolosa).id,
         owner_id: owners(:monica).id,
         feature_ids: [features(:garage).id, features(:quincho).id],
-        bankable: true
+        bankable: false
     }
   end
 
@@ -41,7 +41,7 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
     get properties_path
     assert_response :success
     assert_not_nil assigns(:presenter)
-    assert_equal Property.all.count, assigns(:presenter).send(:properties).send(:count)
+    assert_equal Property.where(status: 'activo').count, assigns(:presenter).send(:properties).send(:count)
   end
 
   test "should filter properties by id" do
@@ -61,19 +61,19 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should filter properties by bankable" do
-    get properties_path, params: { property_filter: {bankable: '1', current_user: @ross } }
+    get properties_path, params: { property_filter: {bankable: '1', status: 'activo', current_user: @ross } }
     assert_response :success
 
-    assert_equal Property.where(bankable: true).count, assigns(:presenter).send(:properties).send(:count)
-    assert_includes assigns(:presenter).send(:properties), Property.find_by(bankable: true)
+    assert_equal Property.where(bankable: true, status: 'activo').count, assigns(:presenter).send(:properties).send(:count)
+    assert_includes assigns(:presenter).send(:properties), Property.where(bankable: true, status: 'activo').first
     assert_not_includes assigns(:presenter).send(:properties), Property.find_by(bankable: false)
   end
 
   test "should filter properties by user" do
-    get properties_path, params: { property_filter: {user_id: @property.user_id, current_user: @ross } }
+    get properties_path, params: { property_filter: {user_id: @property.user_id, status: 'activo', current_user: @ross } }
     assert_response :success
 
-    assert_equal 2, assigns(:presenter).send(:properties).send(:count)
+    assert_equal Property.where(status: 'activo', user_id: @ross).count, assigns(:presenter).send(:properties).send(:count)
     assert_includes assigns(:presenter).send(:properties), @property.decorate
   end
 

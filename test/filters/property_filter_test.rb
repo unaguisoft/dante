@@ -9,17 +9,14 @@ class PropertyFilterTest < ActiveSupport::TestCase
     @casa_de_mickey = properties(:casa_de_mickey)
   end
 
-
   test "should filter by id" do
     properties = PropertyFilter.new(id: nil, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
-    assert_includes properties, @casa_de_ken
     
     properties = PropertyFilter.new(id: @casa_de_barbie.id, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
-    assert_not_includes properties, @casa_de_ken
     
-    properties = PropertyFilter.new(id: @casa_de_ken.id, current_user: @ross).call
+    properties = PropertyFilter.new(id: @casa_de_ken.id, status: 'reservado', current_user: @ross).call
     assert_includes properties, @casa_de_ken
     assert_not_includes properties, @casa_de_barbie
   end
@@ -36,7 +33,6 @@ class PropertyFilterTest < ActiveSupport::TestCase
   test "should filter by property_kind" do
     properties = PropertyFilter.new(property_kind: nil, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
-    assert_includes properties, @casa_de_ken
 
     properties = PropertyFilter.new(property_kind: 3, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
@@ -49,9 +45,8 @@ class PropertyFilterTest < ActiveSupport::TestCase
   test "should filter by kind" do
     properties = PropertyFilter.new(kind: nil, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
-    assert_includes properties, @casa_de_ken
 
-    properties = PropertyFilter.new(kind: 0, current_user: @ross).call
+    properties = PropertyFilter.new(kind: 0, status: 'reservado', current_user: @ross).call
     assert_includes properties, @casa_de_ken
     assert_not_includes properties, @casa_de_barbie
     
@@ -64,10 +59,11 @@ class PropertyFilterTest < ActiveSupport::TestCase
   end
 
   test "should filter by status" do
+    # Default status is 'active'
     properties = PropertyFilter.new(status: nil, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
-    assert_includes properties, @casa_de_ken
-    assert_includes properties, @casa_de_mickey
+    assert_not_includes properties, @casa_de_ken
+    assert_not_includes properties, @casa_de_mickey
 
     properties = PropertyFilter.new(status: 0, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
@@ -84,13 +80,12 @@ class PropertyFilterTest < ActiveSupport::TestCase
   test "should filter by city" do
     properties = PropertyFilter.new(city_id: nil, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
-    assert_includes properties, @casa_de_ken
 
     properties = PropertyFilter.new(city_id: cities(:la_plata), current_user: @ross).call
     assert_includes properties, @casa_de_barbie
     assert_not_includes properties, @casa_de_ken
     
-    properties = PropertyFilter.new(city_id: cities(:tolosa), current_user: @ross).call
+    properties = PropertyFilter.new(city_id: cities(:tolosa), status: 'reservado', current_user: @ross).call
     assert_includes properties, @casa_de_ken
     assert_not_includes properties, @casa_de_barbie
     
@@ -101,13 +96,12 @@ class PropertyFilterTest < ActiveSupport::TestCase
   test "should filter by user" do
     properties = PropertyFilter.new(user_id: nil, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
-    assert_includes properties, @casa_de_ken
 
     properties = PropertyFilter.new(user_id: users(:ross), current_user: @ross).call
     assert_includes properties, @casa_de_barbie
     assert_not_includes properties, @casa_de_ken
     
-    properties = PropertyFilter.new(user_id: users(:rachel), current_user: @ross).call
+    properties = PropertyFilter.new(user_id: users(:rachel), status: 'reservado', current_user: @ross).call
     assert_includes properties, @casa_de_ken
     assert_not_includes properties, @casa_de_barbie
         
@@ -118,13 +112,12 @@ class PropertyFilterTest < ActiveSupport::TestCase
   test "should filter by price" do
     properties = PropertyFilter.new(price_from: nil, price_to: nil, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
-    assert_includes properties, @casa_de_ken
 
     properties = PropertyFilter.new(price_from: @casa_de_barbie.price, price_to: @casa_de_barbie.price, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
     assert_not_includes properties, @casa_de_ken
     
-    properties = PropertyFilter.new(price_from: @casa_de_ken.price, price_to: @casa_de_ken.price, current_user: @ross).call
+    properties = PropertyFilter.new(price_from: @casa_de_ken.price, price_to: @casa_de_ken.price, status: 'reservado', current_user: @ross).call
     assert_includes properties, @casa_de_ken
     assert_not_includes properties, @casa_de_barbie
         
@@ -136,22 +129,21 @@ class PropertyFilterTest < ActiveSupport::TestCase
     # Un admin puede ver todas las propiedades
     properties = PropertyFilter.new(current_user: @ross).call
     assert_includes properties, @casa_de_barbie
-    assert_includes properties, @casa_de_ken
 
     # Un agente no puede ver más propiedades que las suyas
     rachel = users(:rachel)
-    properties = PropertyFilter.new(current_user: rachel).call
+    properties = PropertyFilter.new(status: 'reservado', current_user: rachel).call
     assert_not_includes properties, @casa_de_barbie
     assert_includes properties, @casa_de_ken
   end
 
   test "should filter by number_of_bedrooms" do
-    properties = PropertyFilter.new(number_of_bedrooms: 3).call
+    properties = PropertyFilter.new(number_of_bedrooms: 3, status: 'reservado').call
     assert_includes properties, @casa_de_ken
     assert_not_includes properties, @casa_de_barbie
     assert_not_includes properties, @casa_de_mickey
 
-    properties = PropertyFilter.new(number_of_bedrooms: 2).call
+    properties = PropertyFilter.new(number_of_bedrooms: 2, status: 'vendido').call
     assert_includes properties, @casa_de_mickey
     assert_not_includes properties, @casa_de_barbie
     assert_not_includes properties, @casa_de_ken

@@ -8,6 +8,8 @@ class PropertyFilter
 
   def call(context=nil)
     properties = (context.nil?) ? Property.all : context
+
+    properties = properties.where(status: status) unless context.present?
     properties = properties.where(id: @id) if @id.present?
     properties = properties.where('title ILIKE ?', "%#{@title}%") if @title.present?
     properties = properties.where('description ILIKE ?', "%#{@description}%") if @description.present?
@@ -21,9 +23,12 @@ class PropertyFilter
     properties = properties.where(bankable: true) if @bankable.present? && @bankable == '1'
     properties = properties.where('number_of_bedrooms >= ?', @number_of_bedrooms.to_i) if @number_of_bedrooms.present? && @number_of_bedrooms.to_i == 3
     properties = properties.where(number_of_bedrooms: @number_of_bedrooms) if @number_of_bedrooms.present? && @number_of_bedrooms.to_i != 3
-    properties = properties.where(status: @status) if @status.present?
 
     properties.order(:id)
+  end
+  
+  def status
+    @status ||= 'activo'
   end
 
   private

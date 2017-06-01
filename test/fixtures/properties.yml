@@ -27,7 +27,7 @@ casa_de_barbie:
   city: la_plata
   owner: joey
   user: ross
-  bankable: false
+  bankable: true
 
 casa_de_mickey:
   kind: 0 # Commercial
