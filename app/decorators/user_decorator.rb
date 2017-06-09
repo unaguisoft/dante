@@ -1,8 +1,12 @@
 class UserDecorator < Draper::Decorator
   delegate_all
 
+  def name
+    user.name.titleize
+  end
+
   def name_and_email
-    "#{user.name.humanize}  (#{user.email})"
+    "#{user.name}  (#{user.email})"
   end
 
   private

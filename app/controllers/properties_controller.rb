@@ -1,9 +1,21 @@
 class PropertiesController < ApplicationController
 
-  before_action :set_property, only: [:edit, :update, :destroy, :upload_photos]
+  before_action :set_property, only: [:edit, :show, :update, :destroy, :upload_photos]
 
   def index
     @presenter = PropertyPresenter.new(params, current_user)
+  end
+
+  def show
+    respond_to do |format|
+      format.pdf do
+        pdf = PropertyPdf.new(@property, view_context)
+        send_data pdf.render,
+          filename: "dante_estudio_inmobiliario_#{@property.id}.pdf",
+          type: "application/pdf",
+          disposition: "inline"
+      end
+    end
   end
 
   def new
