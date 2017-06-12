@@ -64,7 +64,10 @@
                             <p class="bedrom"><i class="fa fa-child"></i> <%= @presenter.property.number_of_bathrooms %> Baños</p>
                         </div>
 
-                        <h3 class="sec_titl"> <%= @presenter.property.title %> </h3>
+                        <h3 class="sec_titl">
+                          <%= @presenter.property.title %> •
+                          <small><%= @presenter.property.status %></small>
+                        </h3>
 
                         <div class="col_labls larg_labl">
 
