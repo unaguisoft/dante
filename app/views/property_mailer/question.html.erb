@@ -3,7 +3,7 @@
     Un usuario ha enviado una consulta sobre una propiedad
     <dl>
       <dt> Propiedad </dt>
-      <dd> <%= link_to @property.title, @property %> </dd>
+      <dd> <%= link_to @property.title, [:edit, @property] %> </dd>
 
       <dt> Nombre </dt>
       <dd> <%= @question['name'] %> </dd>
