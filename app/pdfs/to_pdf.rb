@@ -1,5 +1,7 @@
 class ToPdf < Prawn::Document
 
+  require 'prawn/icon'
+
   METADATA = {
     Title: "Datos de Propiedad",
     Author: "Dante Estudio Inmobiliario",
@@ -9,6 +11,7 @@ class ToPdf < Prawn::Document
 
   def initialize(view, page_layout = :portrait, page_size = 'A4')
     super(page_size: page_size, page_layout: page_layout, info: METADATA)
+    add_fonts()
     
     @view = view
     font 'Helvetica', size: 10
@@ -76,6 +79,14 @@ class ToPdf < Prawn::Document
     move_down 5
   end
 
+  def i(_icon, _text, *args)
+    options = args.extract_options!
+    options[:size]  ||= 13
+    options[:align] ||= :left
+    # No toma el options dentro del tag, quizás por las quotes
+    icon "<icon size='#{options[:size]}' color='A33234'>#{_icon}</icon> <font size='14'> #{_text}</font>", inline_format: true, align: options[:align]
+  end
+
   # ----------------------------------------------------------------------
   # TABLE
   # ----------------------------------------------------------------------
@@ -123,6 +134,16 @@ class ToPdf < Prawn::Document
 
   def image_path(name)
     File.join(Rails.root, 'app', 'assets', 'images', name)
+  end
+
+  private
+
+  def add_fonts
+    font_families.update("Serifa" => {
+      :normal => Rails.root.join("app/assets/fonts/SERIFAL.ttf"),
+      :italic => Rails.root.join("app/assets/fonts/SERIFAK.ttf"),
+      :bold => Rails.root.join("app/assets/fonts/SERIFAB.ttf")
+    })
   end
 
 end

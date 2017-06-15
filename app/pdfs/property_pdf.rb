@@ -7,7 +7,9 @@ class PropertyPdf < ToPdf
     @property = property.decorate
     @agent    = property.user.decorate 
     @view     = view
-   
+
+    stroke_axis
+    # font "Serifa"
     header
     move_down 20
     content
@@ -24,7 +26,7 @@ class PropertyPdf < ToPdf
   end
 
   def content
-    move_cursor_to 665
+    move_cursor_to 670
     property_title
     move_cursor_to 635
     property_images
@@ -44,32 +46,35 @@ class PropertyPdf < ToPdf
     fill_color "A33234"
     fill_rectangle [0, 85], 530, 5
     fill_color "000000"
-    move_cursor_to 70
+    move_cursor_to 73
 
     c = cursor
     bounding_box([0, c], width: 290) do
-      p 'www.danteestudioinmobiliario.com.ar', size: 9
+      p "Dante Estudio Imobiliario", size: 15
+      move_up 6
+      i 'fa-globe', 'www.danteestudioinmobiliario.com.ar'
+      move_up 1
+      i 'fa-map-marker', 'Diag 74 Nro 2083, La Plata (1900)'
       move_down 3
-      p "Dante Estudio Imobiliario", size: 9
-      move_down 3
-      p 'Diag 74 Nro 2083, La Plata (1900)', size: 9
-      move_down 3
-      p "Alejo Dante Col. 7254", size: 9
+      i 'fa-phone', '(0221) 423 0180'
+      move_down 8
+      # p "Alejo Dante Col. 7254", size: 9
     end
     bounding_box([325, c], width: 200) do
       p "#{@agent.name}", size: 16, align: :right
-      move_down 5
-      p 'Asesor Comercial', size: 10, align: :right
-      move_down 5
-      p 'Cel.: 221 5624435', size: 10, align: :right
-      move_down 5
-      p 'gonzagaldamez@gmail.com', size: 10, align: :right
+      move_down 2
+      p 'Asesor Comercial', size: 12, align: :right
+      move_up 6
+      i 'fa-mobile', '+54 (0221) 15 562 4435', size: 12, align: :right
+      move_up 2
+      i 'fa-envelope', 'gonzagaldamez@gmail.com', size: 12, align: :right
     end
+    move_cursor_to 10
   end
 
   # ----------------------------- CONTENT
   def property_title
-    h3 @property.title.truncate(50)
+    h3 @property.title.truncate(50), :bold
   end
 
   def property_images
