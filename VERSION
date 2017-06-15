@@ -1,3 +1,9 @@
+0.8.2
+- Modifica url que se envía en los emails porque estaba mal
+
+0.8.1
+- Corrige bug que mostraba el precio de las propiedades en la web
+
 0.8
 - Cambiar orden de las fotos
 - Dejar que el amin cambie el agente de una propiedad
