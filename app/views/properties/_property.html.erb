@@ -3,8 +3,9 @@
   <td> <%= property.title %> </td>
   <td> <%= property.address %> </td>
   <td> <%= property.city %> </td>
-  <td> <%= property.built_area %> </td>
-  <td> <%= property.total_area %> </td>
+  <td align="right"> <%= property.built_area %> </td>
+  <td align="right"> <%= property.total_area %> </td>
+  <td align="right"> <%= property.price %> </td>
   <td> <%= property.agent.name %> </td>
   <td>
     <%= link_to 'Editar', [:edit, property], class: 'btn btn-xs btn-primary' %>
