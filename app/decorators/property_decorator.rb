@@ -33,6 +33,10 @@ class PropertyDecorator < Draper::Decorator
     property.perimeter ? "#{property.perimeter} m" : '-'
   end
 
+  def features
+    property.features.collect(&:name)
+  end
+
   def agent
     property.user
   end
@@ -46,11 +50,12 @@ class PropertyDecorator < Draper::Decorator
   end
 
   def public_price
-    if property.should_display_price
-      h.number_to_currency property.price, unit: currency()
-    else
-      "Consultar"
-    end
+    return property.price if property.should_display_price
+    "Consultar"
+  end
+
+  def price
+    h.number_to_currency property.price, unit: currency()
   end
 
   def currency

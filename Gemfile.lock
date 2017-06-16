@@ -168,6 +168,8 @@ GEM
     prawn (2.1.0)
       pdf-core (~> 0.6.1)
       ttfunk (~> 1.4.0)
+    prawn-icon (1.3.0)
+      prawn (>= 1.1.0, < 3.0.0)
     prawn-table (0.2.2)
       prawn (>= 1.3.0, < 3.0.0)
     pry (0.10.4)
@@ -279,6 +281,7 @@ DEPENDENCIES
   non-stupid-digest-assets
   pg (~> 0.15)
   prawn
+  prawn-icon
   prawn-table
   pry
   rack-cache

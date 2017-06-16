@@ -19,6 +19,7 @@ gem 'draper', '~> 3.0.0.pre1' # Decorators
 gem 'non-stupid-digest-assets'
 gem 'prawn' # PDF Generator
 gem 'prawn-table' # Tables for Prawn
+gem 'prawn-icon' # Icons for Prawn
 gem 'momentjs-rails', '>= 2.9.0' # Datetimepicker dependency
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37' # Datetimepicker
 gem 'figaro'
