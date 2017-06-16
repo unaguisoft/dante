@@ -190,8 +190,12 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="col-md-12">
+
                     <div class="prop_map">
+                      <p> <%= @presenter.property.address %></p>
+                      <% if !@presenter.property.google_maps_address.empty? %>
                         <iframe src="<%= @presenter.map_url %>" width="600" height="350"></iframe>
+                      <% end %>
                     </div>
 
                 </div>

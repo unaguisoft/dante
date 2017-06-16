@@ -22,6 +22,7 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
         total_area: 400,
         perimeter: '350',
         address: '12 Nro 1231',
+        google_maps_address: 'Calle 12 1231',
         description: 'Esta es la descripción',
         title: 'Este es el título',
         number_of_rooms: 2,
@@ -123,4 +124,5 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to properties_path
   end
+
 end

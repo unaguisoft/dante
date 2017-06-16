@@ -71,5 +71,9 @@ module ApplicationHelper
   def is?(role)
     current_user.is?(role)
   end
+
+  def base_map_url
+    "https://www.google.com/maps/embed/v1/place?key=#{ENV['MAP_KEY']}&q="
+  end
 end
 

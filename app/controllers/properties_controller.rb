@@ -61,6 +61,7 @@ class PropertiesController < ApplicationController
             :address, :description, :title, :number_of_rooms, :bankable,
             :number_of_bedrooms, :number_of_bathrooms, :number_of_toilets,
             :should_display_on_web, :should_highlight_on_web, :city_id,
+            :google_maps_address,
             :owner_id, :user_id, feature_ids: []) if params[:property].present?
   end
 

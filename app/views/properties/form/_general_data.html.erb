@@ -8,8 +8,8 @@
   </div>
 
   <div class="box-body">
-    
-    <div class="row">      
+
+    <div class="row">
       <div class="col-md-12">
         <fieldset class="form-group">
           <%= f.label :title %>
@@ -27,7 +27,7 @@
                   class: 'form-control', prompt: 'Seleccione rubro', required: true, autofocus: true %>
         </fieldset>
       </div>
-      
+
       <div class="col-md-6">
         <fieldset class="form-group">
           <%= f.label :property_kind %>
@@ -37,7 +37,7 @@
         </fieldset>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-md-6">
         <fieldset class="form-group">
@@ -57,14 +57,14 @@
         </fieldset>
       </div>
     </div>
-    
+
     <!-- Datos del dueño -->
       <div class="row">
         <div class="col-md-10">
           <fieldset class="form-group">
             <%= f.label :owner_id %>
             <%= f.hidden_field :owner_id, class: 'select2', required: true,
-              data: { behavior: 'searchOwner', url: search_owners_path, 
+              data: { behavior: 'searchOwner', url: search_owners_path,
                       'record-id' => f.object.owner.try(:id),
                       'record-text' => f.object.owner.try(:to_s) } %>
           </fieldset>
@@ -81,24 +81,35 @@
 
     <!-- Ubicación -->
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-5">
         <fieldset class="form-group">
           <%= f.label :address %>
           <%= f.text_field :address, class: 'form-control', required: true %>
         </fieldset>
       </div>
-      
-      <div class="col-md-4">
+
+      <div class="col-md-3">
         <fieldset class="form-group">
           <%= f.label :city_id %>
           <%= f.select :city_id,
             options_for_select(City.all.map { |c| [c.name, c.id]}, f.object.city_id),
-                  class: 'form-control', prompt: 'Seleccione ciudad', required: true %>
+            {}, id: 'js-city', class: 'form-control', prompt: 'Seleccione ciudad', required: true %>
+        </fieldset>
+      </div>
+
+      <div class="col-md-4">
+        <fieldset class="form-group">
+          <%= optional_label f, :google_maps_address %>
+          <%= f.text_field :google_maps_address, id: 'js-map-address', class: 'form-control' %>
+          <%= link_to 'Probar en el mapa', '#', 'data-behavior' => 'mapTester' %>
+          <span class="label label-primary">
+            <i class="fa fa-info" title="Ej: 12 1356 La Plata / Calle 48 y Calle 23 La Plata"></i>
+          </span>
         </fieldset>
       </div>
     </div>
 
-    <% if is?("admin") %> 
+    <% if is?("admin") %>
       <div class="row">
         <div class="col-md-12">
           <fieldset class="form-group">
@@ -110,7 +121,7 @@
         </div>
       </div>
     <% end %>
-    
+
     <div class="row">
       <div class="col-md-12">
         <fieldset class="form-group">

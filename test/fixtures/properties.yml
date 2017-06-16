@@ -16,6 +16,7 @@ casa_de_barbie:
   total_area: 200
   perimeter: 250
   address: MyString
+  google_maps_address: MyString
   description: MyText
   title: Casa de barbie
   number_of_rooms: 1
@@ -31,7 +32,7 @@ casa_de_barbie:
 
 casa_de_mickey:
   kind: 0 # Commercial
-  status: 2 # Vendido 
+  status: 2 # Vendido
   price_in_cents: 1000_000_000
   currency: 0 # ARS
   should_display_price: false
@@ -45,6 +46,7 @@ casa_de_mickey:
   total_area: 400
   perimeter: 350
   address: Disney
+  google_maps_address: Disney
   description: La casa de Mickey Mouse
   title: Casa de Mickey
   number_of_rooms: 2
@@ -59,7 +61,7 @@ casa_de_mickey:
 
 casa_de_ken:
   kind: 0 # Commercial
-  status: 1 # Reservado 
+  status: 1 # Reservado
   price_in_cents: 1500_000_000
   currency: 0 # ARS
   should_display_price: false
@@ -73,6 +75,7 @@ casa_de_ken:
   total_area: 200
   perimeter: 250
   address: MyString
+  google_maps_address: MyString
   description: MyText
   title: Casa de ken
   number_of_rooms: 1
