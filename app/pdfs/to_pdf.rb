@@ -20,48 +20,54 @@ class ToPdf < Prawn::Document
   def h1(text, *args)
     options = args.extract_options!
     options[:align] ||= :center
+    options[:style] ||= :bold
 
-    text text, size: 30, style: :bold, align: options[:align]
+    text text, size: 30, style: options[:style], align: options[:align]
     move_down 10
   end
 
   def h2(text, *args)
     options = args.extract_options!
     options[:align] ||= :center
+    options[:style] ||= :bold
 
-    text text, size: 25, style: :bold, align: options[:align]
+    text text, size: 25, style: options[:style], align: options[:align]
     move_down 10
   end
 
   def h3(text, *args)
     options = args.extract_options!
     options[:align] ||= :center
+    options[:style] ||= :bold
 
-    text text, size: 20, style: :bold, align: options[:align]
+    text text, size: 20, style: options[:style], align: options[:align]
     move_down 10
   end
 
   def h4(text, *args)
     options = args.extract_options!
     options[:align] ||= :center
+    options[:style] ||= :bold
 
-    text text, size: 16, style: :bold, align: options[:align]
+    text text, size: 16, style: options[:style], align: options[:align]
     move_down 10
   end
 
   def h5(text, *args)
     options = args.extract_options!
     options[:align] ||= :center
+    options[:style] ||= :bold
 
-    text text, size: 14, style: :bold, align: options[:align]
+    text text, size: 14, style: options[:style], align: options[:align]
     move_down 10
   end
 
   def h6(text, *args)
     options = args.extract_options!
     options[:align] ||= :center
+    options[:style] ||= :bold
 
-    text text, size: 12, style: :bold, align: options[:align]
+    text text, size: 12, style: options[:style], align: options[:align]
     move_down 10
   end
 
@@ -70,12 +76,12 @@ class ToPdf < Prawn::Document
     options[:align] ||= :left
     options[:style] ||= :normal
     options[:size] ||= 11
-    options[:color] ||= '888888'
+    options[:color] ||= '000000'
     text text, size: options[:size], style: options[:style], align: options[:align], color: options[:color], inline_format: true
   end
 
   def field(label, content)
-    text "<b>#{label}: </b> #{content.presence || '--' }", inline_format: true
+    text "<b>#{label}: </b> #{content.presence || '--' }", inline_format: true, size: 12
     move_down 5
   end
 
@@ -84,8 +90,8 @@ class ToPdf < Prawn::Document
     options[:size]  ||= 13
     options[:align] ||= :left
     options[:style] ||= :normal
-    # No toma el options dentro del tag, quizás por las quotes
-    icon "<icon size='#{options[:size]}' color='A33234'>#{_icon}</icon> <font size='14'> #{_text}</font>", inline_format: true, align: options[:align], style: options[:style]
+    options[:color] ||= 'A33234'
+    icon "<icon size='#{options[:size]}' color='#{options[:color]}'>#{_icon}</icon> <font size='14'> #{_text}</font>", inline_format: true, align: options[:align], style: options[:style]
   end
 
   # ----------------------------------------------------------------------
@@ -143,7 +149,8 @@ class ToPdf < Prawn::Document
     font_families.update("Serifa" => {
       :normal => Rails.root.join("app/assets/fonts/SERIFAL.ttf"), #Light
       :italic => Rails.root.join("app/assets/fonts/SERIFAT.ttf"), #Thin
-      :bold => Rails.root.join("app/assets/fonts/SERIFAN.ttf") #Bold
+      :bold => Rails.root.join("app/assets/fonts/SERIFAN.ttf"), #Bold
+      :extra_bold => Rails.root.join("app/assets/fonts/SERIFAB.ttf") #Big Bold
     })
   end
 

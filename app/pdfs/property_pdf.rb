@@ -1,6 +1,6 @@
 class PropertyPdf < ToPdf
 
-  PHOTO_PATH = 'system/dragonfly/development/'
+  IMAGES_PATH = ENV['IMAGES_PATH']
 
   def initialize(property, view)
     super view, :portrait, 'A4'
@@ -8,7 +8,6 @@ class PropertyPdf < ToPdf
     @agent    = property.user.decorate 
     @view     = view
 
-    stroke_axis
     font "Serifa"
     header
     move_down 20
@@ -41,12 +40,12 @@ class PropertyPdf < ToPdf
   end
 
   def footer
-    move_cursor_to 125
+    move_cursor_to 130
     pad_top(5) { p "<b>Precio:</b> #{@property.price}", size: 16 }
     fill_color "A33234"
-    fill_rectangle [0, 100], 530, 5
+    fill_rectangle [0, 105], 530, 5
     fill_color "000000"
-    move_cursor_to 90
+    move_cursor_to 95
 
     c = cursor
     bounding_box([0, c], width: 290) do
@@ -67,15 +66,20 @@ class PropertyPdf < ToPdf
       move_up 6
       i 'fa-mobile', '+54 (0221) 15 562 4435', size: 15, align: :right, style: :bold
       move_up 2
-      i 'fa-envelope', 'gonzagaldamez@gmail.com', size: 12, align: :right, style: :bold
+      i 'fa-envelope', "#{@agent.email}", size: 12, align: :right, style: :bold
     end
-    move_down 18
-    p " ------- Prof. Responsable Alejo Dante Col. 7254 ------- ", align: :center, size: 11
+    move_cursor_to 13
+    c = cursor
+    stroke_color "AAAAAA"
+    stroke_horizontal_line 0, 160, at: c - 6
+    stroke_horizontal_line 365, 530, at: c - 6
+    move_cursor_to c
+    p " Prof. Responsable Alejo Dante Col. 7254 ", align: :center, size: 11
   end
 
   # ----------------------------- CONTENT
   def property_title
-    h3 @property.title.truncate(50), :bold
+    h3 @property.title.truncate(50), style: :extra_bold
   end
 
   def property_images
@@ -84,7 +88,7 @@ class PropertyPdf < ToPdf
 
     c = cursor
     if principal_photo
-      img uploaded_file_path("#{PHOTO_PATH}#{principal_photo.file_uid}"), left: 0, top: c, width: 190, height: 156
+      img uploaded_file_path("#{IMAGES_PATH}#{principal_photo.file_uid}"), left: 0, top: c, width: 190, height: 156
     end
 
     build_thumbnails(c, photos) if photos.present?
@@ -96,7 +100,7 @@ class PropertyPdf < ToPdf
 
     photos.first(3).each do |photo|
       photo = photos.delete(photo)
-      img uploaded_file_path("#{PHOTO_PATH}#{photo.file_uid}"), left: origin, top: cursor, width: 103, height: 75
+      img uploaded_file_path("#{IMAGES_PATH}#{photo.file_uid}"), left: origin, top: cursor, width: 103, height: 75
       origin += 110
     end
 
@@ -105,25 +109,28 @@ class PropertyPdf < ToPdf
     origin = 200
     photos.last(3).each do |photo|
       photo = photos.delete(photo)
-      img uploaded_file_path("#{PHOTO_PATH}#{photo.file_uid}"), left: origin, top: cursor - 80, width: 103, height: 75
+      img uploaded_file_path("#{IMAGES_PATH}#{photo.file_uid}"), left: origin, top: cursor - 80, width: 103, height: 75
       origin += 110
     end
   end
 
   def property_address
     display_separator
-    p "<b>Dirección:</b> #{@property.complete_address} "
+    field "Dirección", @property.complete_address
   end
 
   def property_information
     display_separator
-    p "<b>Dormitorios:</b> #{@property.number_of_bedrooms} "\
-      '                                                    '\
-      "<b>Baños:</b>  #{@property.number_of_bathrooms}"
-    move_down 5
-    p "<b>Sup. Total:</b> #{@property.total_area} "\
-      '                                             '\
-      "<b>Sup. Cubierta:</b>  #{@property.built_area} "
+    bounding_box([0, 435], width: 175, height: 55) do
+      move_down 10
+      field "Dormitorios", @property.number_of_bedrooms
+      field "Sup. Cubierta", @property.built_area
+    end
+    bounding_box([175, 435], width: 175, height: 55) do
+      move_down 10
+      field "Baños", @property.number_of_bathrooms
+      field "Sup. Total", @property.total_area
+    end
   end
 
   def property_description
@@ -134,14 +141,11 @@ class PropertyPdf < ToPdf
 
   def property_features
     display_separator
-    h5 "Características", align: :center
-    p "Cochera"\
-      '   |   '\
-      "Calefacción Central"\
-      '   |   '\
-      "Estufa hogar"\
-      '   |   '\
-      "Anafe"
+    features = @property.features.join("   |   ")
+    bounding_box([0, 230], width: 530, height: 100) do
+      h5 "Características", align: :center
+      p "#{features}"
+    end
   end
 
 end
