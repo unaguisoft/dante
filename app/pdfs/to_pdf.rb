@@ -70,8 +70,8 @@ class ToPdf < Prawn::Document
     options[:align] ||= :left
     options[:style] ||= :normal
     options[:size] ||= 11
-    text text, size: options[:size], style: options[:style], align: options[:align],
-      inline_format: true
+    options[:color] ||= '888888'
+    text text, size: options[:size], style: options[:style], align: options[:align], color: options[:color], inline_format: true
   end
 
   def field(label, content)
@@ -83,8 +83,9 @@ class ToPdf < Prawn::Document
     options = args.extract_options!
     options[:size]  ||= 13
     options[:align] ||= :left
+    options[:style] ||= :normal
     # No toma el options dentro del tag, quizás por las quotes
-    icon "<icon size='#{options[:size]}' color='A33234'>#{_icon}</icon> <font size='14'> #{_text}</font>", inline_format: true, align: options[:align]
+    icon "<icon size='#{options[:size]}' color='A33234'>#{_icon}</icon> <font size='14'> #{_text}</font>", inline_format: true, align: options[:align], style: options[:style]
   end
 
   # ----------------------------------------------------------------------
@@ -140,9 +141,9 @@ class ToPdf < Prawn::Document
 
   def add_fonts
     font_families.update("Serifa" => {
-      :normal => Rails.root.join("app/assets/fonts/SERIFAL.ttf"),
-      :italic => Rails.root.join("app/assets/fonts/SERIFAK.ttf"),
-      :bold => Rails.root.join("app/assets/fonts/SERIFAB.ttf")
+      :normal => Rails.root.join("app/assets/fonts/SERIFAL.ttf"), #Light
+      :italic => Rails.root.join("app/assets/fonts/SERIFAT.ttf"), #Thin
+      :bold => Rails.root.join("app/assets/fonts/SERIFAN.ttf") #Bold
     })
   end
 

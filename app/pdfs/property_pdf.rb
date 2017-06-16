@@ -9,7 +9,7 @@ class PropertyPdf < ToPdf
     @view     = view
 
     stroke_axis
-    # font "Serifa"
+    font "Serifa"
     header
     move_down 20
     content
@@ -41,35 +41,36 @@ class PropertyPdf < ToPdf
   end
 
   def footer
-    move_cursor_to 110
+    move_cursor_to 125
     pad_top(5) { p "<b>Precio:</b> #{@property.price}", size: 16 }
     fill_color "A33234"
-    fill_rectangle [0, 85], 530, 5
+    fill_rectangle [0, 100], 530, 5
     fill_color "000000"
-    move_cursor_to 73
+    move_cursor_to 90
 
     c = cursor
     bounding_box([0, c], width: 290) do
-      p "Dante Estudio Imobiliario", size: 15
+      p "Dante Estudio Imobiliario", size: 15, style: :bold
       move_up 6
-      i 'fa-globe', 'www.danteestudioinmobiliario.com.ar'
+      i 'fa-globe', 'www.danteestudioinmobiliario.com.ar', style: :italic
       move_up 1
-      i 'fa-map-marker', 'Diag 74 Nro 2083, La Plata (1900)'
+      i 'fa-map-marker', 'Diag 74 Nro 2083, La Plata (1900)', style: :italic
       move_down 3
-      i 'fa-phone', '(0221) 423 0180'
+      i 'fa-phone', '(0221) 423 0180', style: :italic
       move_down 8
       # p "Alejo Dante Col. 7254", size: 9
     end
     bounding_box([325, c], width: 200) do
-      p "#{@agent.name}", size: 16, align: :right
+      p "#{@agent.name}", size: 16, align: :right, style: :bold
       move_down 2
-      p 'Asesor Comercial', size: 12, align: :right
+      p 'Asesor Comercial', size: 12, align: :right, style: :bold
       move_up 6
-      i 'fa-mobile', '+54 (0221) 15 562 4435', size: 12, align: :right
+      i 'fa-mobile', '+54 (0221) 15 562 4435', size: 15, align: :right, style: :bold
       move_up 2
-      i 'fa-envelope', 'gonzagaldamez@gmail.com', size: 12, align: :right
+      i 'fa-envelope', 'gonzagaldamez@gmail.com', size: 12, align: :right, style: :bold
     end
-    move_cursor_to 10
+    move_down 18
+    p " ------- Prof. Responsable Alejo Dante Col. 7254 ------- ", align: :center, size: 11
   end
 
   # ----------------------------- CONTENT
