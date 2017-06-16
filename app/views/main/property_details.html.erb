@@ -101,12 +101,6 @@
                                             <li>
                                                 <a href="#">
                                                     <i class="fa fa-long-arrow-right"></i>
-                                                    <p class="infos"> Dirección: <span> <%= @presenter.property.address %> </span> </p>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-long-arrow-right"></i>
                                                     <p class="infos"> Ciudad: <span> <%= @presenter.property.city.name.titleize %> </span> </p>
                                                 </a>
                                             </li>
@@ -193,7 +187,7 @@
 
                     <div class="prop_map">
                       <p> <%= @presenter.property.address %></p>
-                      <% if !@presenter.property.google_maps_address.empty? %>
+                      <% if !@presenter.property.google_maps_address.blank? %>
                         <iframe src="<%= @presenter.map_url %>" width="600" height="350"></iframe>
                       <% end %>
                     </div>
@@ -271,7 +265,7 @@
                 <div class="tags_sec">
                     <% @presenter.property.features.each_with_index do |feature, index| %>
                       <div class="tags_box">
-                        <%= link_to feature.name, '#' %>
+                        <%= link_to feature, '#' %>
                       </div>
                     <% end %>
                 </div>
