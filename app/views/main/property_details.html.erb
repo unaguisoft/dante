@@ -64,7 +64,10 @@
                             <p class="bedrom"><i class="fa fa-child"></i> <%= @presenter.property.number_of_bathrooms %> Baños</p>
                         </div>
 
-                        <h3 class="sec_titl"> <%= @presenter.property.title %> </h3>
+                        <h3 class="sec_titl">
+                          <%= @presenter.property.title %> •
+                          <small><%= @presenter.property.status %></small>
+                        </h3>
 
                         <div class="col_labls larg_labl">
 
@@ -187,8 +190,12 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="col-md-12">
+
                     <div class="prop_map">
+                      <p> <%= @presenter.property.address %></p>
+                      <% if !@presenter.property.google_maps_address.empty? %>
                         <iframe src="<%= @presenter.map_url %>" width="600" height="350"></iframe>
+                      <% end %>
                     </div>
 
                 </div>

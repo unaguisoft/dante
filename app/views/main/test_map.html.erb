@@ -1,0 +1,14 @@
+<header class="content-header">
+  <h1>
+    Mapa
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </h1>
+</header>
+
+<section class="content">
+  <h4> <%= @address  %></h4>
+  <iframe src="<%= "#{base_map_url}#{@address}" %>" width="100%" height="350"></iframe>
+</section>
+

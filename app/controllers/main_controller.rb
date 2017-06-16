@@ -9,6 +9,12 @@ class MainController < ApplicationController
     @presenter = HomePresenter.new(params)
   end
 
+  # GET /test_map
+  def test_map
+    @address = params[:address]
+    render :test_map, layout: nil
+  end
+
   # GET /propiedades
   def properties
     filter = PropertyFilter.new(filter_params)

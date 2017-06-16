@@ -42,6 +42,7 @@ es:
         total_area: Sup. total
         perimeter: Perímetro
         address: Dirección
+        google_maps_address: Dirección del mapa
         city_id: Ciudad
         number_of_floors: Cant. de plantas
         number_of_rooms: Cant. de ambientes
