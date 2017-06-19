@@ -1,0 +1,154 @@
+<!-- Header bradcrumb -->
+<header class="bread_crumb">
+    <div class="pag_titl_sec">
+        <h1 class="pag_titl">Tasaciones</h1>
+        <h4 class="sub_titl">Estamos aquí para ayudarte</h4>
+    </div>
+    <div class="pg_links">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <p class="lnk_pag">
+                    <%= link_to 'Inicio', root_path  %>
+                  </p>
+                  <p class="lnk_pag"> / </p>
+                  <p class="lnk_pag">Tasaciones</p>
+                </div>
+                <div class="col-md-6 text-right">
+                  <p class="lnk_pag">
+                    <%= link_to 'Volver al Inicio', root_path  %>
+                  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="spacer-60"></div>
+<div class="container">
+    <div class="row">
+        <!-- Contact Section -->
+        <section id="contact_sec" class="col-md-8">
+            <!-- Contact form -->
+            <div class="row">
+                <div class="titl_sec">
+                    <div class="col-lg-12">
+                        <h3 class="main_titl text-left"> Formulario de Tasación </h3>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="cont_frm">
+                        <%= form_tag send_valuation_path do %>
+                            <div class="control-group form-group col-md-6 first">
+                                <div class="controls">
+                                    <%= text_field_tag 'question[name]', '', id: 'name', class: 'form-control', placeholder: 'Tu nombre', required: true  %>
+                                    <div class="in_ico">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <p class="help-block"></p>
+                                </div>
+
+                                <div class="controls">
+                                    <%= email_field_tag 'question[email]', '', id: 'email', class: 'form-control', placeholder: 'Tu correo', required: true  %>
+                                    <div class="in_ico">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </div>
+                                    <p class="help-block"></p>
+                                </div>
+
+                                <div class="controls">
+                                    <%= text_field_tag 'question[phone]', '', id: 'phone', class: 'form-control', placeholder: 'Tu teléfono', required: true  %>
+                                    <div class="in_ico">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <p class="help-block"></p>
+                                </div>
+
+                                <div class="controls">
+                                    <%= text_field_tag 'question[reason]', '', id: 'reason', class: 'form-control', placeholder: 'Motivo (ej. Divorcio, Sucesión, etc.)' %>
+                                    <div class="in_ico">
+                                        <i class="fa fa-tag"></i>
+                                    </div>
+                                    <p class="help-block"></p>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="control-group form-group col-md-6">
+                                <div class="controls">
+                                    <%= text_area_tag 'question[message]', '', id: 'message', class: 'form-control', placeholder: 'Mensaje', required: true, rows: 10, cols: 100 %>
+                                    <div class="in_ico">
+                                        <i class="fa fa-paper-plane-o"></i>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" data-disable-with="Enviando...">Solicitar tasación</button>
+                            </div>
+                          <% end %>
+                            <div class="clearfix"></div>
+                            <div id="success">
+                              <%= flash['notice'] if flash['notice'] %>
+                            </div>
+                            <!-- For success/fail messages -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </section>
+
+        <!-- Sidebar Section -->
+        <section id="sidebar" class="col-md-4">
+            <!-- Contact Information -->
+            <div class="row">
+                <div class="titl_sec">
+                    <div class="col-lg-12">
+                        <h3 class="main_titl text-left">Otras vías de contacto</h3>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="cont_info">
+                    <div class="info_sec first">
+                        <div class="icon_box">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                        <p class="infos">Diagonal 74 Nro 2083 e/ 16 y 56</p>
+                    </div>
+
+                    <div class="info_sec">
+                        <div class="icon_box">
+                            <i class="fa fa-envelope-o"></i>
+                        </div>
+                        <p class="infos"><a href="mailto:destudioinmobiliario@gmail.com">destudioinmobiliario@gmail.com</a>
+                        </p>
+                    </div>
+
+                    <div class="info_sec">
+                        <div class="icon_box">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <p class="infos"> <a href="tel:2214230180">(221) 423 0180</a> </p>
+                    </div>
+
+                    <div class="info_sec">
+                        <div class="icon_box">
+                            <i class="fa fa-mobile"></i>
+                        </div>
+                        <p class="infos"> 
+                          <a href="tel:221155730908"> (221) 15 573 0908  </a> |
+                          <a href="tel:221155059054"> (221) 15 504 9054  </a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.row -->
+        </section>
+
+        <div class="spacer-60"></div>
+
+    </div>
+</div>
+

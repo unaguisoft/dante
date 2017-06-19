@@ -11,6 +11,10 @@ class App.PropertyForm
 
   # ---- Binding de Eventos
   bindEvents: () ->
+    $("[data-behavior~=mapTester]").click (e)=>
+      e.preventDefault()
+      @testMap()
+
     $("[data-behavior~=searchOwner]").ajaxSelect()
     $('#fileupload').fileupload
       dataType: 'script'
@@ -29,9 +33,25 @@ class App.PropertyForm
   # ---- Funciones
   removePhoto: (photo_id)->
     $("#photo_#{photo_id}").remove()
-  
+
   onOwnerCreated: (data) ->
     $('input[data-behavior~=searchOwner]').select2('data', data)
+
+  testMap: ->
+    address = $('#js-map-address').val()
+    if address == ''
+      App.flash_snackbar_render({error: 'Ingrese una dirección'})
+      $('#js-map-address').focus()
+      return false
+
+    url = "/test_map?address=#{address}"
+    $.ajax
+      url: url
+    .done (data)->
+      modal = $('#js-modal')
+      modal.find('.modal-content').html(data)
+      modal.modal("show")
+
 # ---------------------------------
 
 

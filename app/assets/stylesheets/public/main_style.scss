@@ -746,6 +746,14 @@ h4.sub_titl {
     z-index: 100;
 }
 
+.bannr_sec h4.sub_titl {
+  font-family: 'Serifa';
+  font-style: normal;
+}
+.bannr_sec h1.main_titl {
+  font-family: 'Serifab';
+}
+
 .bannr_sec2 {
     padding: 0px 0px;
     margin: 0px auto;
@@ -870,12 +878,15 @@ h1.pag_titl {
 }
 
 .pag_titl_sec h1.pag_titl {
+    font-family: 'Serifab';
     margin-top: 0;
     margin-bottom: 20px;
 }
 
 .pag_titl_sec h4.sub_titl {
     margin-top: 0;
+    font-family: 'Serifa';
+    font-style: normal;
 }
 
 .pg_links p {

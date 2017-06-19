@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
     resources :properties do
       get 'upload_photos', to: 'properties#upload_photos', on: :member
-      match 'photos', via: [:post, :patch], to: 'photos#create' 
+      match 'photos', via: [:post, :patch], to: 'photos#create'
     end
 
     resources :investments do
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   end
 
 
+  get 'test_map', to: 'main#test_map', as: :test_map
   # -- PUBLIC --------------------------------------
   get 'propiedades', to: 'main#properties', as: :properties_for_web
   get 'propiedad/:id', to: 'main#property_details', as: :property_details
@@ -37,6 +38,8 @@ Rails.application.routes.draw do
   get 'contacto', to: 'main#contact', as: :contact
   post 'propiedad/:id/enviar_consulta', to: 'main#send_question', as: :send_question
   post 'enviar_contacto', to: 'main#send_contact', as: :send_contact
+  get  'tasacion', to: 'main#valuation', as: :valuation
+  post 'enviar_tasacion', to: 'main#send_valuation', as: :send_valuation
 
   get 'login', to: 'user_sessions#new', as: :login
   post 'logout', to: 'user_sessions#destroy', as: :logout

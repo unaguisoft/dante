@@ -1,9 +1,21 @@
 class PropertiesController < ApplicationController
 
-  before_action :set_property, only: [:edit, :update, :destroy, :upload_photos]
+  before_action :set_property, only: [:edit, :show, :update, :destroy, :upload_photos]
 
   def index
     @presenter = PropertyPresenter.new(params, current_user)
+  end
+
+  def show
+    respond_to do |format|
+      format.pdf do
+        pdf = PropertyPdf.new(@property, view_context)
+        send_data pdf.render,
+          filename: "dante_estudio_inmobiliario_#{@property.id}.pdf",
+          type: "application/pdf",
+          disposition: "inline"
+      end
+    end
   end
 
   def new
@@ -61,6 +73,7 @@ class PropertiesController < ApplicationController
             :address, :description, :title, :number_of_rooms, :bankable,
             :number_of_bedrooms, :number_of_bathrooms, :number_of_toilets,
             :should_display_on_web, :should_highlight_on_web, :city_id,
+            :google_maps_address,
             :owner_id, :user_id, feature_ids: []) if params[:property].present?
   end
 

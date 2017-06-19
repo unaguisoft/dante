@@ -11,7 +11,8 @@ class PropertyForWebPresenter
   end
 
   def map_url
-    address = "#{@property.address} #{@property.city.name}"
+    address = @property.google_maps_address
     "https://www.google.com/maps/embed/v1/place?key=#{ENV['MAP_KEY']}&q=#{address}"
   end
+
 end

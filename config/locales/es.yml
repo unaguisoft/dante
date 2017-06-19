@@ -13,3 +13,10 @@ es:
   user_roles:
     admin: Administrador
     agent: Agente
+
+  views:
+    pagination:
+      first: 'Inicio'
+      last: 'Último'
+      next: 'Siguiente'
+      previous: 'Anterior'

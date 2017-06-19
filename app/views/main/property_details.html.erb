@@ -64,7 +64,10 @@
                             <p class="bedrom"><i class="fa fa-child"></i> <%= @presenter.property.number_of_bathrooms %> Baños</p>
                         </div>
 
-                        <h3 class="sec_titl"> <%= @presenter.property.title %> </h3>
+                        <h3 class="sec_titl">
+                          <%= @presenter.property.title %> •
+                          <small><%= @presenter.property.status %></small>
+                        </h3>
 
                         <div class="col_labls larg_labl">
 
@@ -93,12 +96,6 @@
                                                 <a href="#">
                                                     <i class="fa fa-long-arrow-right"></i>
                                                     <p class="infos"> Categoría: <span> <%= @presenter.property.kind.titleize %> </span> </p>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-long-arrow-right"></i>
-                                                    <p class="infos"> Dirección: <span> <%= @presenter.property.address %> </span> </p>
                                                 </a>
                                             </li>
                                             <li>
@@ -187,8 +184,12 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="col-md-12">
+
                     <div class="prop_map">
+                      <p> <%= @presenter.property.address %></p>
+                      <% if !@presenter.property.google_maps_address.blank? %>
                         <iframe src="<%= @presenter.map_url %>" width="600" height="350"></iframe>
+                      <% end %>
                     </div>
 
                 </div>
@@ -264,7 +265,7 @@
                 <div class="tags_sec">
                     <% @presenter.property.features.each_with_index do |feature, index| %>
                       <div class="tags_box">
-                        <%= link_to feature.name, '#' %>
+                        <%= link_to feature, '#' %>
                       </div>
                     <% end %>
                 </div>

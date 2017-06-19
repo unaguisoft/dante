@@ -80,4 +80,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get test map' do
+    get test_map_path(address: '48 188 La Plata')
+    assert_response :success
+  end
+
 end
