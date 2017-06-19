@@ -1,3 +1,17 @@
+0.9
+- Por defecto, mostrar propiedades activas
+- Agregar estado de la propiedad al frontend
+- Quitar decimales
+- Agregar GoogleAnalytics
+- Cambiar bajada/slogan
+- Agrega traducción de botones de paginación
+- Agregar favicon
+- Agregar dirección de las propiedades en la página web
+- Generar PDF de una propiedad
+- Agregar precio al listado de propiedades
+- Cambiar tipografía
+- Formulario de Tasaciones
+
 0.8.2
 - Modifica url que se envía en los emails porque estaba mal
 
