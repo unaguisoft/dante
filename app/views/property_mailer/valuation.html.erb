@@ -1,0 +1,21 @@
+<html>
+  <body>
+    Un usuario ha solicitado una tasación desde la página
+    <dl>
+      <dt> Nombre </dt>
+      <dd> <%= @question['name'] %> </dd>
+
+      <dt> Teléfono </dt>
+      <dd> <%= @question['phone'] %> </dd>
+
+      <dt> Correo </dt>
+      <dd> <%= @question['email'] %> </dd>
+
+      <dt> Motivo </dt>
+      <dd> <%= @question['reason'] %> </dd>
+
+      <dt> Mensaje </dt>
+      <dd> <%= simple_format(@question['message']) %> </dd>
+    </dl>
+  </body>
+</html>

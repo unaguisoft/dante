@@ -39,11 +39,16 @@ class MainController < ApplicationController
     redirect_to contact_path, notice: 'El correo ha sido enviado'
   end
 
+  # POST /enviar_tasacion
+  def send_valuation
+    PropertyMailer.valuation(params[:question]).deliver_now
+    redirect_to valuation_path, notice: 'La solicitud ha sido enviada. Lo contactaremos a la brevedad'
+  end
+
   # GET /inversion/:id
   def investment_details
     @investment = Investment.find(params[:id])
   end
-
 
   private
 

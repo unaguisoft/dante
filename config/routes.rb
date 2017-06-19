@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get 'contacto', to: 'main#contact', as: :contact
   post 'propiedad/:id/enviar_consulta', to: 'main#send_question', as: :send_question
   post 'enviar_contacto', to: 'main#send_contact', as: :send_contact
+  get  'tasacion', to: 'main#valuation', as: :valuation
+  post 'enviar_tasacion', to: 'main#send_valuation', as: :send_valuation
 
   get 'login', to: 'user_sessions#new', as: :login
   post 'logout', to: 'user_sessions#destroy', as: :logout
