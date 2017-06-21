@@ -12,7 +12,7 @@ class ToPdf < Prawn::Document
   def initialize(view, page_layout = :portrait, page_size = 'A4')
     super(page_size: page_size, page_layout: page_layout, info: METADATA)
     add_fonts()
-    
+
     @view = view
     font 'Helvetica', size: 10
   end
@@ -147,10 +147,10 @@ class ToPdf < Prawn::Document
 
   def add_fonts
     font_families.update("Serifa" => {
-      :normal => Rails.root.join("app/assets/fonts/SERIFAL.ttf"), #Light
-      :italic => Rails.root.join("app/assets/fonts/SERIFAT.ttf"), #Thin
-      :bold => Rails.root.join("app/assets/fonts/SERIFAN.ttf"), #Bold
-      :extra_bold => Rails.root.join("app/assets/fonts/SERIFAB.ttf") #Big Bold
+      :normal => Rails.root.join("app/assets/fonts/SERIFAL.TTF"), #Light
+      :italic => Rails.root.join("app/assets/fonts/SERIFAT.TTF"), #Thin
+      :bold => Rails.root.join("app/assets/fonts/SERIFAN.TTF"), #Bold
+      :extra_bold => Rails.root.join("app/assets/fonts/SERIFAB.TTF") #Big Bold
     })
   end
 
