@@ -7,7 +7,9 @@ class PropertyPresenter
   end
 
   def properties
-    @properties ||= filter.call.page(@params[:page]).decorate
+    @properties = filter.call
+
+    @properties.includes(:city, :user).page(@params[:page]).decorate
   end
 
   def filter
