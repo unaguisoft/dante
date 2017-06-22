@@ -3,10 +3,10 @@ class PhotosController < ApplicationController
 
 
   include PropertyScoped
-  
+
   def create
     @photo = @property.photos.build(photo_params)
-    @photo.sort_position = Photo.last.sort_position + 1
+    @photo.sort_position = @property.get_next_photo_position
     @photo.save!
     respond_to do |format|
       format.js

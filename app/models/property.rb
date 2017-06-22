@@ -62,4 +62,14 @@ class Property < ApplicationRecord
   end
 
   include IntegerInCents
+
+  def get_next_photo_position
+    max_sort_position = photos.maximum(:sort_position)
+    if max_sort_position
+      max_sort_position + 1
+    else
+      1
+    end
+  end
+
 end

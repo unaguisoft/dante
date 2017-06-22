@@ -5,7 +5,7 @@ class PropertyPdf < ToPdf
   def initialize(property, view)
     super view, :portrait, 'A4'
     @property = property.decorate
-    @agent    = property.user.decorate 
+    @agent    = property.user.decorate
     @view     = view
 
     font "Serifa"
@@ -88,7 +88,8 @@ class PropertyPdf < ToPdf
 
     c = cursor
     if principal_photo
-      img uploaded_file_path("#{IMAGES_PATH}#{principal_photo.file_uid}"), left: 0, top: c, width: 190, height: 156
+      # img uploaded_file_path("#{IMAGES_PATH}#{principal_photo.file_uid}"), left: 0, top: c, width: 190, height: 156
+      img "#{RAILS_ROOT}#{principal_photo.file.url}", left: 0, top: c, width: 190, height: 156
     end
 
     build_thumbnails(c, photos) if photos.present?
@@ -136,7 +137,7 @@ class PropertyPdf < ToPdf
   def property_description
     display_separator
     h5 "Detalle", align: :center
-    p "#{@property.description}".truncate(700) 
+    p "#{@property.description}".truncate(700)
   end
 
   def property_features
