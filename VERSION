@@ -1,3 +1,9 @@
+1.0
+- Agregar dirección al listado de propiedades
+- Agregar botón para generar PDF de propiedad
+- N+1 query problem
+- Bug fixes
+
 0.9
 - Por defecto, mostrar propiedades activas
 - Agregar estado de la propiedad al frontend
