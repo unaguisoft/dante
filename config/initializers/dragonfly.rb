@@ -2,7 +2,7 @@ require 'dragonfly'
 
 # Configure
 Dragonfly.app.configure do
-  plugin :imagemagick
+  plugin :imagemagick, identify_command: "identify -limit memory 0 -limit map 0"
 
   secret "9ed28b586aef74be96d721b6f14c9526fb4571385ac2216dc77666a7b5761b48"
 
