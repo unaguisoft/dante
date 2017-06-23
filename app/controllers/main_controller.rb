@@ -18,7 +18,7 @@ class MainController < ApplicationController
   # GET /propiedades
   def properties
     filter = PropertyFilter.new(filter_params)
-    @properties = filter.call(Property.for_web).decorate
+    @properties = filter.call(Property.for_web).includes(:city, :photos).decorate
   end
 
   # GET /propiedad/:id

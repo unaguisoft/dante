@@ -14,7 +14,7 @@ class HomePresenter
   end
 
   def highlighted_properties(limit=3)
-    Property.for_web.highlighted.sample(limit)
+    Property.for_web.highlighted.includes(:photos, :city).sample(limit)
   end
 
   def investments(limit=3)

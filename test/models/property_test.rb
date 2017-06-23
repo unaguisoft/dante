@@ -79,4 +79,16 @@ class PropertyTest < ActiveSupport::TestCase
     assert_includes property.errors[:user], 'no puede estar en blanco'
   end
 
+  test 'should return max photo sort_position + 1' do
+    property = properties(:casa_de_barbie)
+    assert_not_equal 0, property.photos.count
+    assert_equal 5, property.get_next_photo_position
+  end
+
+  test 'should return 1 as next photo sort_position when has no photos' do
+    property = properties(:casa_de_ken)
+    assert_equal 0, property.photos.count
+    assert_equal 1, property.get_next_photo_position
+  end
+
 end

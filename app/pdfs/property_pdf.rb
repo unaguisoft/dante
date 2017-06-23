@@ -1,11 +1,11 @@
 class PropertyPdf < ToPdf
 
-  IMAGES_PATH = ENV['IMAGES_PATH']
+  AMAZON_BUCKET_URL = ENV['AMAZON_BUCKET_URL']
 
   def initialize(property, view)
     super view, :portrait, 'A4'
     @property = property.decorate
-    @agent    = property.user.decorate 
+    @agent    = property.user.decorate
     @view     = view
 
     font "Serifa"
@@ -88,7 +88,8 @@ class PropertyPdf < ToPdf
 
     c = cursor
     if principal_photo
-      img uploaded_file_path("#{IMAGES_PATH}#{principal_photo.file_uid}"), left: 0, top: c, width: 190, height: 156
+      url = URI.escape("#{AMAZON_BUCKET_URL}#{principal_photo.file_uid}")
+      img open(url), left: 0, top: c, width: 190, height: 156
     end
 
     build_thumbnails(c, photos) if photos.present?
@@ -99,8 +100,9 @@ class PropertyPdf < ToPdf
     origin = 200
 
     photos.first(3).each do |photo|
+      url = URI.escape("#{AMAZON_BUCKET_URL}#{photo.file_uid}")
       photo = photos.delete(photo)
-      img uploaded_file_path("#{IMAGES_PATH}#{photo.file_uid}"), left: origin, top: cursor, width: 103, height: 75
+      img open(url), left: origin, top: cursor, width: 103, height: 75
       origin += 110
     end
 
@@ -108,8 +110,9 @@ class PropertyPdf < ToPdf
 
     origin = 200
     photos.last(3).each do |photo|
+      url = URI.escape("#{AMAZON_BUCKET_URL}#{photo.file_uid}")
       photo = photos.delete(photo)
-      img uploaded_file_path("#{IMAGES_PATH}#{photo.file_uid}"), left: origin, top: cursor - 80, width: 103, height: 75
+      img open(url), left: origin, top: cursor - 80, width: 103, height: 75
       origin += 110
     end
   end
@@ -136,7 +139,7 @@ class PropertyPdf < ToPdf
   def property_description
     display_separator
     h5 "Detalle", align: :center
-    p "#{@property.description}".truncate(700) 
+    p "#{@property.description}".truncate(700)
   end
 
   def property_features
