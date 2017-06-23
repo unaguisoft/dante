@@ -4,6 +4,9 @@
 - N+1 query problem
 - Bug fixes
 
+0.9.1
+- Cambia el teléfono en el PDF porque los agentes no tienen un campo teléfono
+
 0.9
 - Por defecto, mostrar propiedades activas
 - Agregar estado de la propiedad al frontend
