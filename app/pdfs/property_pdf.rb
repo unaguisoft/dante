@@ -64,7 +64,7 @@ class PropertyPdf < ToPdf
       move_down 2
       p 'Asesor Comercial', size: 12, align: :right, style: :bold
       move_up 6
-      i 'fa-mobile', '+54 (0221) 15 562 4435', size: 15, align: :right, style: :bold
+      i 'fa-phone', '(0221) 423 0180', size: 15, align: :right, style: :bold
       move_up 2
       i 'fa-envelope', "#{@agent.email}", size: 12, align: :right, style: :bold
     end
