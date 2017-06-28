@@ -1,3 +1,9 @@
+1.0
+- Agregar dirección al listado de propiedades
+- Agregar botón para generar PDF de propiedad
+- N+1 query problem
+- Bug fixes
+
 0.9.1
 - Cambia el teléfono en el PDF porque los agentes no tienen un campo teléfono
 
