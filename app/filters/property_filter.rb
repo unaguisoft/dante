@@ -16,8 +16,13 @@ class PropertyFilter
     properties = properties.where(property_kind: @property_kind) if @property_kind.present?
     properties = properties.where(kind: @kind) if @kind.present?
     properties = properties.where(city_id: @city_id) if @city_id.present?
-    properties = properties.where(user_id: @user_id) if @user_id.present?
-    properties = properties.where(user: @current_user) if @current_user.present? && @current_user.role == 'agent'
+
+    if @current_user.present? && @current_user.agent? && !@user_id.present?
+      properties = properties.where(user: @current_user)
+    else
+      properties = properties.where(user_id: @user_id) if @user_id.present?
+    end
+
     properties = properties.where('price_in_cents <= ?', (@price_to.to_d * 10_000)) if @price_to.present?
     properties = properties.where('price_in_cents >= ?', (@price_from.to_d * 10_000)) if @price_from.present?
     properties = properties.where(bankable: true) if @bankable.present? && @bankable == '1'
@@ -26,7 +31,7 @@ class PropertyFilter
 
     properties.order(:id)
   end
-  
+
   def status
     @status ||= 'activo'
   end

@@ -66,14 +66,12 @@
   <div class="row">
     <fieldset class="form-group">
 
-      <% if is?('admin') %>
-        <div class="col-md-3">
-          <%= f.label :user_id %>
-          <%= f.select :user_id,
-            options_for_select(User.all.map { |u| [u.name.capitalize, u.id]}, f.object.user_id),
-                  class: 'form-control', prompt: 'Seleccione un agente' %>
-        </div>
-      <% end %>
+      <div class="col-md-3">
+        <%= f.label :user_id %>
+        <%= f.select :user_id,
+          options_for_select(User.all.map { |u| [u.name.capitalize, u.id]}, f.object.user_id),
+                class: 'form-control', prompt: 'Seleccione un agente' %>
+      </div>
 
       <div class="col-md-3">
         <div class="fake-label"></div>
@@ -96,7 +94,7 @@
         <%= f.submit 'Filtrar', class: 'btn btn-block btn-primary',
           'data-disable-with' => 'Filtrando...' %>
       </div>
-      
+
     </fieldset>
   </div>
 

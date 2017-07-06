@@ -1,5 +1,5 @@
 <tr id="<%= dom_id(property) %>">
-  <td> <%= link_to property.id, [:edit, property] %> </td>
+  <td> <%= link_to property.id, property %> </td>
   <td> <%= property.title %> </td>
   <td> <%= property.address %> </td>
   <td> <%= property.city %> </td>
@@ -11,13 +11,16 @@
     <%= link_to [property, format: 'pdf'], class: 'btn btn-xs btn-info' do %>
       <i class="fa fa-file-pdf-o"></i>
     <% end %>
-    <%= link_to [:edit, property], class: 'btn btn-xs btn-primary' do %>
-      <i class="fa fa-pencil"></i>
-    <% end %>
-    <%= link_to property, method: :delete, data: {confirm: '¿Está seguro?'}, 
-      class: 'btn btn-xs btn-danger' do %>
-      <i class="fa fa-trash"></i>
+
+    <% if is?(:admin) || property.user == current_user %>
+      <%= link_to [:edit, property], class: 'btn btn-xs btn-primary' do %>
+        <i class="fa fa-pencil"></i>
       <% end %>
+      <%= link_to property, method: :delete, data: {confirm: '¿Está seguro?'},
+        class: 'btn btn-xs btn-danger' do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+    <% end %>
   </td>
 
 </tr>

@@ -45,6 +45,9 @@ end
 group :test do
   gem 'minitest-reporters'
   gem 'rails-controller-testing'
+  gem 'simplecov', require: false
+  gem 'guard'
+  gem 'guard-minitest'
 end
 
 group :production do

@@ -1,0 +1,40 @@
+<div class="box box-primary">
+
+  <div class="box-header with-border">
+    <h3 class="box-title">
+      <span class="fa fa-home"></span>
+      Información para el sitio web
+    </h3>
+  </div>
+
+  <div class="box-body">
+
+    <div class="row">
+      <div class="col-md-offset-1 col-md-11">
+        <dl>
+          <dt>Se muestra en la web</dt>
+          <dd><%= property.should_display_on_web? ? 'Si' : 'No' %></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-offset-1 col-md-11">
+        <dl>
+          <dt>Destacada en la web</dt>
+          <dd><%= property.should_highlight_on_web ? 'Si' : 'No' %></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-offset-1 col-md-11">
+        <dl>
+          <dt>Se muestra el precio en la web</dt>
+          <dd><%= property.should_display_price ? 'Si' : 'No' %></dd>
+        </dl>
+      </div>
+    </div>
+
+  </div>
+</div>
