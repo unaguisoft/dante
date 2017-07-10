@@ -78,6 +78,11 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
     assert_includes assigns(:presenter).send(:properties), @property.decorate
   end
 
+  test 'should show property' do
+    get property_path(@property)
+    assert_response :success
+  end
+
   test "should get new property" do
     get new_property_path
     assert_not_nil assigns(:property)
@@ -125,4 +130,21 @@ class PropertiesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to properties_path
   end
 
+  # PERMISSIONS
+
+  test 'should not authorize other agent to edit property' do
+    sign_out
+    sign_in_as(users(:joey))
+
+    get edit_property_path(@property), params: { id: @property.id }
+    assert_redirected_to login_path
+  end
+
+  test 'should not authorize other agent to delete property' do
+    sign_out
+    sign_in_as(users(:joey))
+
+    delete property_path(@property), params: { id: @property.id }
+    assert_redirected_to login_path
+  end
 end

@@ -1,6 +1,7 @@
 class PropertiesController < ApplicationController
 
   before_action :set_property, only: [:edit, :show, :update, :destroy, :upload_photos]
+  before_action :check_permissions, only: [:edit, :update, :destroy]
 
   def index
     @presenter = PropertyPresenter.new(params, current_user)
@@ -8,6 +9,9 @@ class PropertiesController < ApplicationController
 
   def show
     respond_to do |format|
+      format.html {
+        @property = @property.decorate
+      }
       format.pdf do
         pdf = PropertyPdf.new(@property, view_context)
         send_data pdf.render,
@@ -79,6 +83,10 @@ class PropertiesController < ApplicationController
 
   def set_property
     @property = Property.find(params[:id])
+  end
+
+  def check_permissions
+    authorize!(is?(:admin) || @property.user == current_user)
   end
 
 end

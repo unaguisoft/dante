@@ -1,0 +1,93 @@
+<div class="box box-primary">
+
+  <div class="box-header with-border">
+    <h3 class="box-title">
+      <span class="fa fa-home"></span>
+      Información General
+    </h3>
+  </div>
+
+  <div class="box-body">
+
+    <div class="row">
+      <div class="col-md-12">
+        <dl>
+          <dt> Título </dt>
+          <dd> <%= property.title %> </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <dl>
+          <dt>Categoría</dt>
+          <dd><%= property.kind.humanize %></dd>
+        </dl>
+      </div>
+
+      <div class="col-md-6">
+        <dl>
+          <dt>Tipo</dt>
+          <dd><%= property.property_kind.humanize %></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <dl>
+          <dt>Estado de la transacción</dt>
+          <dd><%= property.status.humanize.capitalize %></dd>
+        </dl>
+      </div>
+
+      <div class="col-md-6">
+        <dl>
+          <dt>Estado de la propiedad</dt>
+          <dd><%= property.property_status.humanize.capitalize %></dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- Datos del dueño -->
+    <div class="row">
+      <div class="col-md-12">
+        <dl>
+          <dt>Dueño</dt>
+          <dd><%= property.owner.to_s %></dd>
+        </dl>
+      </div>
+    </div>
+
+
+    <!-- Ubicación -->
+    <div class="row">
+      <div class="col-md-12">
+        <dl>
+          <dt>Dirección</dt>
+          <dd><%= property.complete_address %></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <dl>
+          <dt>Agente</dt>
+          <dd><%= property.agent.decorate.name_and_email %></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <dl>
+          <dt>Descripción</dt>
+          <dd><%= property.description %></dd>
+        </dl>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -11,3 +11,10 @@ rachel:
   salt:             <%= salt = "oasnfionasdoinf" %>
   crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("friends", salt) %>
   role:             <%= User.roles[:agent] %>
+
+joey:
+  name:             Joey
+  email:            joey@tribbiani.com
+  salt:             <%= salt = "oasnfionasdoinf" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("friends", salt) %>
+  role:             <%= User.roles[:agent] %>
