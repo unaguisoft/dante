@@ -32,7 +32,7 @@ casa_de_barbie:
 
 casa_de_mickey:
   kind: 0 # Commercial
-  status: 2 # Vendido
+  status: 0 # Activo
   price_in_cents: 1000_000_000
   currency: 0 # ARS
   should_display_price: false
@@ -61,7 +61,7 @@ casa_de_mickey:
 
 casa_de_ken:
   kind: 0 # Commercial
-  status: 1 # Reservado
+  status: 0 # Activo
   price_in_cents: 1500_000_000
   currency: 0 # ARS
   should_display_price: false

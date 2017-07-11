@@ -1,5 +1,7 @@
 1.1
-- Ver propiedad en backoffice
+- Deja de filtrar por usuario: todos pueden ver todo
+- Sólo admin o agente_a_cargo pueden editar una propiedad
+- Agrega show de propiedad (entró en deploy anterior)
 
 1.0
 - Agregar dirección al listado de propiedades
