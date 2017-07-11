@@ -1,0 +1,68 @@
+<header class="content-header">
+  <h1>
+    Propiedad
+    <% if is?(:admin) || @property.user == current_user %>
+      <%= link_to 'Editar', [:edit, @property], class: 'btn btn-md btn-primary' %>
+    <% end %>
+  </h1>
+</header>
+
+<section class="content">
+
+  <article>
+    <section>
+
+      <div class="row">
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-12">
+              <%= render partial: 'properties/show/general_data',
+                    locals: { property: @property } %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <%= render partial: 'properties/show/distribution_data',
+                      locals: { property: @property }%>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <%= render partial: "properties/show/photos",
+                    locals: { property: @property } %>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-12">
+              <%= render partial: 'properties/show/financial_data',
+                    locals: { property: @property }%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <%= render partial: 'properties/show/construction_data',
+                    locals: { property: @property }%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <%= render partial: 'properties/show/public_data',
+                    locals: { property: @property }%>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <%= render partial: 'properties/show/features',
+                    locals: { property: @property }%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </article>
+</section>

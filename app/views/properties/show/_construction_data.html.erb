@@ -1,0 +1,59 @@
+<div class="box box-primary">
+
+  <div class="box-header with-border">
+    <h3 class="box-title">
+      <span class="fa fa-home"></span>
+      Información Catastral
+    </h3>
+  </div>
+
+  <div class="box-body">
+
+    <div class="row">
+      <div class="col-md-6">
+        <dl>
+          <dt>Sup. cubierta (m2)</dt>
+          <dd><%= property.built_area %></dd>
+        </dl>
+      </div>
+
+      <div class="col-md-6">
+        <dl>
+          <dt>Sup. semicub. (m2)</dt>
+          <dd><%= property.semi_built_area %></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <dl>
+          <dt>Sup. Desc.</dt>
+          <dd><%= property.open_area %></dd>
+        </dl>
+      </div>
+      <div class="col-md-6">
+        <dl>
+          <dt>Sup. total</dt>
+          <dd><%= property.total_area %></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <dl>
+          <dt>Perímetro</dt>
+          <dd><%= property.perimeter %></dd>
+        </dl>
+      </div>
+      <div class="col-md-6">
+        <dl>
+          <dt>Antigüedad</dt>
+          <dd><%= property.year %></dd>
+        </dl>
+      </div>
+    </div>
+
+  </div>
+</div>

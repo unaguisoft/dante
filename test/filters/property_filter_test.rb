@@ -9,16 +9,20 @@ class PropertyFilterTest < ActiveSupport::TestCase
     @casa_de_mickey = properties(:casa_de_mickey)
   end
 
+  test "should not filter by user when any other filter is applied" do
+    properties = PropertyFilter.new(id: @casa_de_ken.id, current_user: @ross).call
+    assert_includes properties, @casa_de_ken
+
+    properties = PropertyFilter.new(title: @casa_de_mickey.title, current_user: @ross).call
+    assert_includes properties, @casa_de_mickey
+  end
+
   test "should filter by id" do
     properties = PropertyFilter.new(id: nil, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
     
     properties = PropertyFilter.new(id: @casa_de_barbie.id, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
-    
-    properties = PropertyFilter.new(id: @casa_de_ken.id, status: 'reservado', current_user: @ross).call
-    assert_includes properties, @casa_de_ken
-    assert_not_includes properties, @casa_de_barbie
   end
 
   test "should filter by title" do
@@ -46,7 +50,7 @@ class PropertyFilterTest < ActiveSupport::TestCase
     properties = PropertyFilter.new(kind: nil, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
 
-    properties = PropertyFilter.new(kind: 0, status: 'reservado', current_user: @ross).call
+    properties = PropertyFilter.new(kind: 0, current_user: @ross).call
     assert_includes properties, @casa_de_ken
     assert_not_includes properties, @casa_de_barbie
     
@@ -62,13 +66,14 @@ class PropertyFilterTest < ActiveSupport::TestCase
     # Default status is 'active'
     properties = PropertyFilter.new(status: nil, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
-    assert_not_includes properties, @casa_de_ken
-    assert_not_includes properties, @casa_de_mickey
+    assert_includes properties, @casa_de_ken
+    assert_includes properties, @casa_de_mickey
 
+    @casa_de_ken.update(status: 1)
     properties = PropertyFilter.new(status: 0, current_user: @ross).call
     assert_includes properties, @casa_de_barbie
     assert_not_includes properties, @casa_de_ken
-    assert_not_includes properties, @casa_de_mickey
+    assert_includes properties, @casa_de_mickey
 
     properties = PropertyFilter.new(status: 1, current_user: @ross).call
     assert_includes properties, @casa_de_ken
@@ -85,7 +90,7 @@ class PropertyFilterTest < ActiveSupport::TestCase
     assert_includes properties, @casa_de_barbie
     assert_not_includes properties, @casa_de_ken
     
-    properties = PropertyFilter.new(city_id: cities(:tolosa), status: 'reservado', current_user: @ross).call
+    properties = PropertyFilter.new(city_id: cities(:tolosa), current_user: @ross).call
     assert_includes properties, @casa_de_ken
     assert_not_includes properties, @casa_de_barbie
     
@@ -101,7 +106,7 @@ class PropertyFilterTest < ActiveSupport::TestCase
     assert_includes properties, @casa_de_barbie
     assert_not_includes properties, @casa_de_ken
     
-    properties = PropertyFilter.new(user_id: users(:rachel), status: 'reservado', current_user: @ross).call
+    properties = PropertyFilter.new(user_id: users(:rachel), current_user: @ross).call
     assert_includes properties, @casa_de_ken
     assert_not_includes properties, @casa_de_barbie
         
@@ -117,7 +122,7 @@ class PropertyFilterTest < ActiveSupport::TestCase
     assert_includes properties, @casa_de_barbie
     assert_not_includes properties, @casa_de_ken
     
-    properties = PropertyFilter.new(price_from: @casa_de_ken.price, price_to: @casa_de_ken.price, status: 'reservado', current_user: @ross).call
+    properties = PropertyFilter.new(price_from: @casa_de_ken.price, price_to: @casa_de_ken.price, current_user: @ross).call
     assert_includes properties, @casa_de_ken
     assert_not_includes properties, @casa_de_barbie
         
@@ -125,25 +130,20 @@ class PropertyFilterTest < ActiveSupport::TestCase
     assert_empty properties
   end
   
-  test "should filter by current_user" do
-    # Un admin puede ver todas las propiedades
+  test "should not filter by current_user" do
     properties = PropertyFilter.new(current_user: @ross).call
     assert_includes properties, @casa_de_barbie
-
-    # Un agente no puede ver más propiedades que las suyas
-    rachel = users(:rachel)
-    properties = PropertyFilter.new(status: 'reservado', current_user: rachel).call
-    assert_not_includes properties, @casa_de_barbie
+    assert_includes properties, @casa_de_mickey
     assert_includes properties, @casa_de_ken
   end
 
   test "should filter by number_of_bedrooms" do
-    properties = PropertyFilter.new(number_of_bedrooms: 3, status: 'reservado').call
+    properties = PropertyFilter.new(number_of_bedrooms: 3).call
     assert_includes properties, @casa_de_ken
     assert_not_includes properties, @casa_de_barbie
     assert_not_includes properties, @casa_de_mickey
 
-    properties = PropertyFilter.new(number_of_bedrooms: 2, status: 'vendido').call
+    properties = PropertyFilter.new(number_of_bedrooms: 2).call
     assert_includes properties, @casa_de_mickey
     assert_not_includes properties, @casa_de_barbie
     assert_not_includes properties, @casa_de_ken
@@ -153,5 +153,5 @@ class PropertyFilterTest < ActiveSupport::TestCase
     assert_not_includes properties, @casa_de_ken
     assert_not_includes properties, @casa_de_mickey
   end
-  
+
 end
