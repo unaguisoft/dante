@@ -47,7 +47,7 @@
                             <ul id="slid_nav">
                               <% @presenter.property.photos.each_with_index do |photo, index| %>
                                 <li>
-                                  <%= link_to '', 'data-slide-index' => (index+1) do %>
+                                  <%= link_to '', 'data-slide-index' => (index) do %>
                                     <%= image_tag photo.file.thumb('132x80#').url, class: 'img-responsive img-hover' %>
                                   <% end %>
                                 </li>

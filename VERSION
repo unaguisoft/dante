@@ -1,3 +1,6 @@
+1.1.1
+- Bug en carousel que hacía que al apretar en thumbnail se mostrara la siguiente
+
 1.1
 - Deja de filtrar por usuario: todos pueden ver todo
 - Sólo admin o agente_a_cargo pueden editar una propiedad
