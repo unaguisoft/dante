@@ -1,0 +1,47 @@
+<header class="bread_crumb">
+    <div class="pag_titl_sec">
+        <h1 class="pag_titl">Blog</h1>
+        <h4 class="sub_titl">Encuentra tu hogar</h4>
+    </div>
+    <div class="pg_links">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <p class="lnk_pag">
+                    <%= link_to 'Inicio', root_path %>
+                  </p>
+                  <p class="lnk_pag"> / </p>
+                  <p class="lnk_pag">Blog</p>
+                </div>
+                <div class="col-md-6 text-right">
+                  <p class="lnk_pag">
+                    <%= link_to 'Volver al Blog', posts_for_web_path %>
+                  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="spacer-60"></div>
+<div class="container">
+  <div class="row">
+    <!-- Properties Section -->
+      <section id="blog">
+        <div class="container">
+            <div class="row blog-post">
+              <div class="col-md-8 col-md-offset-2 col-sm-12">
+                <h1> <%= @post.title %> </h1>
+                <div class="image-container">
+                  <%= image_tag @post.image.url %>
+                </div>
+                <p> <%= @post.subtitle %> </p> <br>
+                <%= @post.body.html_safe %>
+                <br><br>
+                <%= link_to 'Volver al blog', posts_for_web_path %>
+              </div>
+            </div>
+        </div>
+    </section>
+  </div>
+</div>

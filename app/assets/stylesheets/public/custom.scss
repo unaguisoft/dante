@@ -14,4 +14,17 @@
   font-style: normal;
 }
 
-
+// Blog
+.blog-post {
+  .image-container, h1 {
+    text-align: center;
+  }
+  img {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  p, .body {
+    text-align: justify;
+    line-height: 20px;
+  }
+}

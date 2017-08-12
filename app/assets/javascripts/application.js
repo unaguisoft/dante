@@ -20,6 +20,7 @@
 //= require jquery.fileupload
 //= require moment
 //= require moment/es
+//= require trix
 //= require bootstrap-datetimepicker
 
 //= require init

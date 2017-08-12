@@ -1,0 +1,55 @@
+<%= form_for @post do |f| %>
+
+<article>
+  <section>
+
+    <div class="box box-primary">
+
+      <div class="box-body">
+
+
+        <fieldset class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control', required: true,
+            placeholder: 'Ingrese el título del post' %>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <%= f.label :subtitle %>
+          <%= f.text_field :subtitle, class: 'form-control', required: true,
+            placeholder: 'Ingrese el subtítulo del post' %>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <%= f.label :image %>
+          <% if !f.object.image.nil? %>
+            <%= image_tag f.object.image.url, class: 'thumbnail' %>
+          <% end %>
+          <%= f.file_field :image %>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <%= f.label :body %>
+          <%= content_tag 'trix-editor', '', input: 'js-body', class: 'trix-content' %>
+          <%= f.hidden_field :body, id: 'js-body' %>
+          <%# f.text_area :body, class: 'form-control', required: true,
+            rows: 20, placeholder: 'Ingrese el cuerpo del post' %>
+        </fieldset>
+
+      </div>
+
+    </div>
+  </section>
+</article>
+
+<div class="row">
+  <div class="col-md-12">
+    <fieldset class="form-group">
+      <%= f.submit 'Guardar post', class: 'btn btn-success', data: { 'disable-with' => 'Guardando...' } %>
+    </fieldset>
+  </div>
+</div>
+
+<% end %>
+
+
