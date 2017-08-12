@@ -1,0 +1,51 @@
+<header class="bread_crumb">
+    <div class="pag_titl_sec">
+        <h1 class="pag_titl">Blog</h1>
+        <h4 class="sub_titl">Encuentra tu hogar</h4>
+    </div>
+    <div class="pg_links">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                  <p class="lnk_pag">
+                    <%= link_to 'Inicio', root_path %>
+                  </p>
+                  <p class="lnk_pag"> / </p>
+                  <p class="lnk_pag">Blog</p>
+                </div>
+                <div class="col-md-6 text-right">
+                  <p class="lnk_pag">
+                    <%= link_to 'Volver al Inicio', root_path %>
+                  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="spacer-60"></div>
+<div class="container">
+  <div class="row">
+    <!-- Properties Section -->
+      <section id="blog">
+        <div class="container">
+          <% @posts.each do |post| %>
+            <div class="row blog-post">
+              <div class="col-md-8 col-md-offset-2 col-sm-12">
+                <h1> <%= post.title %> </h1>
+                <div class="image-container">
+                  <%= link_to post_for_web_path(post.id) do %>
+                    <%= image_tag post.image.url %>
+                  <% end %>
+                </div>
+                <p> <%= post.subtitle %> </p>
+                <%= link_to 'Leer más', post_for_web_path(post.id) %>
+              </div>
+            </div>
+          <% end %>
+
+          <%= paginate @posts %>
+        </div>
+    </section>
+  </div>
+</div>

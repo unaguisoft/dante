@@ -19,6 +19,11 @@ es:
         name: *name
       city:
         name: *name
+      post:
+        title: Título
+        subtitle: Subtítulo
+        image: Imagen
+        body: Cuerpo
       owner:
         first_name: *name
         last_name: Apellido

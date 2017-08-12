@@ -1,0 +1,27 @@
+<header class="content-header">
+  <%= link_to 'Nuevo post', [:new, :post], class: 'btn btn-primary pull-right' %>
+  <h1>Posts</h1>
+</header>
+
+<section class="content">
+
+  <article class="box box-primary">
+    <section class="box-body">
+      <table class="table table-custom table-hover">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Título</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @posts %>
+        </tbody>
+      </table>
+    </section>
+  </article>
+
+</section>
+

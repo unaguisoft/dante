@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resources :photos, only: [:destroy]
     resources :investment_photos, only: [:destroy]
     resources :users
+
+    resources :posts
   end
 
 
@@ -34,6 +36,8 @@ Rails.application.routes.draw do
   # -- PUBLIC --------------------------------------
   get 'propiedades', to: 'main#properties', as: :properties_for_web
   get 'propiedad/:id', to: 'main#property_details', as: :property_details
+  get 'blog', to: 'main#posts_for_web', as: :posts_for_web
+  get 'blog/:id', to: 'main#post_for_web', as: :post_for_web
   get 'inversion/:id', to: 'main#investment_details', as: :investment_details
   get 'contacto', to: 'main#contact', as: :contact
   post 'propiedad/:id/enviar_consulta', to: 'main#send_question', as: :send_question

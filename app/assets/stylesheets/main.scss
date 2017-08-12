@@ -119,3 +119,16 @@ tr.is-selected td {
 .features.form-checkboxes label {
   width: 42%;
 }
+
+/* Trix editor */
+.trix-content {
+  background: white;
+  min-height: 35em;
+  color: #555;
+  border-color: 1px solid #CCC;
+}
+
+/* Images */
+img.thumbnail {
+  width: 80px;
+}

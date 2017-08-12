@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Titulo post 1
+  subtitle: Subtitulo post 1
+  body: Cuerpo post 1
+  image_uid: image_one_id
+  image_name: image_one_name
+
+two:
+  title: Titulo post 2
+  subtitle: Subtitulo post 2
+  body: Cuerpo post 2
+  image_uid: image_two_id
+  image_name: image_two_name

@@ -85,4 +85,19 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get posts' do
+    get posts_for_web_path
+    assert_equal Post.count, assigns(:posts).count
+
+    assert_response :success
+  end
+
+  test 'should get a post' do
+    a_post = posts(:one)
+    get post_for_web_path(id: a_post.id)
+    assert_equal a_post, assigns(:post)
+
+    assert_response :success
+  end
+
 end

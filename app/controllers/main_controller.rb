@@ -26,6 +26,16 @@ class MainController < ApplicationController
     @presenter = PropertyForWebPresenter.new(params[:id])
   end
 
+  # GET /blog
+  def posts_for_web
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(3)
+  end
+
+  # GET /blog/:idj
+  def post_for_web
+    @post = Post.find(params[:id])
+  end
+
   # POST /propiedad/:id/enviar_consulta
   def send_question
     property = Property.find(params[:id])
@@ -49,6 +59,7 @@ class MainController < ApplicationController
   def investment_details
     @investment = Investment.find(params[:id])
   end
+
 
   private
 

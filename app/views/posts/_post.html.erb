@@ -1,0 +1,11 @@
+<tr id="<%= dom_id(post) %>">
+  <td> <%= post.created_at %> </td>
+  <td> <%= link_to post.title, [:edit, post] %> </td>
+  <td>
+    <%= link_to 'Editar', [:edit, post], class: 'btn btn-xs btn-primary' %>
+    <%= link_to 'Eliminar', post, method: :delete,
+        data: {confirm: '¿Está seguro?'}, class: 'btn btn-xs btn-danger' %>
+  </td>
+
+</tr>
+
