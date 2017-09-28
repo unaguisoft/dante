@@ -1,7 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:destroy, :update]
 
-
   include PropertyScoped
 
   def create
